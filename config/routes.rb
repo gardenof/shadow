@@ -1,7 +1,8 @@
 Shadow::Application.routes.draw do
-  resources :game_assets
+  resources :characters
+  match 'edit_assets' => "game_assets#edit"
 
-  resources :players
+  resources :game_assets
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

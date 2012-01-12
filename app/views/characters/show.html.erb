@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+	<table border="1" cellpadding="5" cellspacing="5" width="100%">
+		<th><b>Character <%= @character.id %><br> <%= @character.name %>'s Assets:<br></b></th>
+	</table>
+
+	<table border="1" cellpadding="5" cellspacing="5" width="100%">
+		<tr>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Buttons</th>
+		</tr>
+		<tr>
+			<% @character.game_assets.each do |c| %>
+			<td width="20%"><%= c.name %></td>
+			<td>$<%= c.price %></td>
+			<td><%= link_to 'Edit', edit_game_asset_path(c.id) %>
+					<%= link_to 'Destroy', game_asset_path(c.id), confirm: 'Are you sure?', method: :delete %>
+			</td>
+			</tr>
+			<% end %>
+	</table>
+
+	<table border="1" cellpadding="5" cellspacing="5" width="100%">
+			<td width="20%"><CENTER><b>Total:</b></CENTER></td>
+			<td width="80%"> total will be here<td>
+	</table>
+
+	<table border="1" cellpadding="5" cellspacing="5" width="100%">
+		<th><b> || <%= link_to 'Back', characters_path %>  ||  <%= link_to 'New Game asset', new_game_asset_path %>  ||<br></b></th>
+	</table>
+</p>
+
+
