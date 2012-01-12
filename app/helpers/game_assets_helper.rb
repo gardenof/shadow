@@ -1,0 +1,2 @@
+module GameAssetsHelper
+end

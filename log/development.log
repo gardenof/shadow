@@ -1,0 +1,175 @@
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (0.8ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreatePlayers (20120112161226)
+  [1m[35m (0.4ms)[0m  CREATE TABLE "players" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120112161226')[0m
+Migrating to CreateGameAssets (20120112161333)
+  [1m[35m (0.3ms)[0m  CREATE TABLE "game_assets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "price" integer, "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120112161333')[0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("game_assets")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("players")[0m
+
+
+Started GET "/players" for 127.0.0.1 at 2012-01-12 11:17:53 -0500
+  Processing by PlayersController#index as HTML
+  [1m[36mPlayer Load (0.1ms)[0m  [1mSELECT "players".* FROM "players" [0m
+Rendered players/index.html.erb within layouts/application (10.9ms)
+Compiled players.css  (5ms)  (pid 3576)
+Compiled scaffolds.css  (11ms)  (pid 3576)
+Compiled application.js  (3ms)  (pid 3576)
+Compiled jquery.js  (2ms)  (pid 3576)
+Compiled jquery_ujs.js  (0ms)  (pid 3576)
+Compiled game_assets.js  (70ms)  (pid 3576)
+Compiled players.js  (63ms)  (pid 3576)
+Completed 200 OK in 325ms (Views: 323.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/players.css?body=1" for 127.0.0.1 at 2012-01-12 11:17:54 -0500
+Served asset /players.css - 200 OK (6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-12 11:17:54 -0500
+Served asset /application.css - 200 OK (0ms)
+
+
+Started GET "/assets/game_assets.css?body=1" for 127.0.0.1 at 2012-01-12 11:17:54 -0500
+Served asset /game_assets.css - 200 OK (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-12 11:17:54 -0500
+Served asset /jquery.js - 200 OK (4ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-01-12 11:17:54 -0500
+Served asset /scaffolds.css - 200 OK (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-12 11:17:54 -0500
+Served asset /jquery_ujs.js - 200 OK (3ms)
+
+
+Started GET "/assets/game_assets.js?body=1" for 127.0.0.1 at 2012-01-12 11:17:54 -0500
+Served asset /game_assets.js - 200 OK (3ms)
+
+
+Started GET "/assets/players.js?body=1" for 127.0.0.1 at 2012-01-12 11:17:54 -0500
+Served asset /players.js - 200 OK (3ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-12 11:17:54 -0500
+Served asset /application.js - 200 OK (0ms)
+
+
+Started GET "/gameassets" for 127.0.0.1 at 2012-01-12 11:18:07 -0500
+
+ActionController::RoutingError (No route matches [GET] "/gameassets"):
+  
+
+Rendered /Users/edendelgado/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/gameassets" for 127.0.0.1 at 2012-01-12 11:18:16 -0500
+
+ActionController::RoutingError (No route matches [GET] "/gameassets"):
+  
+
+Rendered /Users/edendelgado/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/gameassets" for 127.0.0.1 at 2012-01-12 11:18:18 -0500
+
+ActionController::RoutingError (No route matches [GET] "/gameassets"):
+  
+
+Rendered /Users/edendelgado/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/gameassetss" for 127.0.0.1 at 2012-01-12 11:18:20 -0500
+
+ActionController::RoutingError (No route matches [GET] "/gameassetss"):
+  
+
+Rendered /Users/edendelgado/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/gameasset" for 127.0.0.1 at 2012-01-12 11:18:22 -0500
+
+ActionController::RoutingError (No route matches [GET] "/gameasset"):
+  
+
+Rendered /Users/edendelgado/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/game_assets" for 127.0.0.1 at 2012-01-12 11:18:29 -0500
+  Processing by GameAssetsController#index as HTML
+  [1m[35mGameAsset Load (0.1ms)[0m  SELECT "game_assets".* FROM "game_assets" 
+Rendered game_assets/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-12 11:18:29 -0500
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/game_assets.css?body=1" for 127.0.0.1 at 2012-01-12 11:18:29 -0500
+Served asset /game_assets.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/players.css?body=1" for 127.0.0.1 at 2012-01-12 11:18:29 -0500
+Served asset /players.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-01-12 11:18:29 -0500
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/game_assets.js?body=1" for 127.0.0.1 at 2012-01-12 11:18:29 -0500
+Served asset /game_assets.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/players.js?body=1" for 127.0.0.1 at 2012-01-12 11:18:29 -0500
+Served asset /players.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-12 11:18:29 -0500
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/game_assets/new" for 127.0.0.1 at 2012-01-12 11:18:44 -0500
+  Processing by GameAssetsController#new as HTML
+Rendered game_assets/_form.html.erb (9.0ms)
+Rendered game_assets/new.html.erb within layouts/application (44.3ms)
+Completed 200 OK in 51ms (Views: 50.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-12 11:18:44 -0500
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/game_assets.css?body=1" for 127.0.0.1 at 2012-01-12 11:18:44 -0500
+Served asset /game_assets.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/players.css?body=1" for 127.0.0.1 at 2012-01-12 11:18:44 -0500
+Served asset /players.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-01-12 11:18:44 -0500
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/game_assets.js?body=1" for 127.0.0.1 at 2012-01-12 11:18:44 -0500
+Served asset /game_assets.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/players.js?body=1" for 127.0.0.1 at 2012-01-12 11:18:44 -0500
+Served asset /players.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-12 11:18:44 -0500
+Served asset /application.js - 304 Not Modified (0ms)

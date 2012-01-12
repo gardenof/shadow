@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @game_asset.name %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @game_asset.price %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @game_asset.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_game_asset_path(@game_asset) %> |
+<%= link_to 'Back', game_assets_path %>
