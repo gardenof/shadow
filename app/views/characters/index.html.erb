@@ -1,24 +1,40 @@
 
 <table border="1" cellpadding="5" cellspacing="5" width="100%">
   <tr>
-    <th colspan="2">Game Characters</th>
+    <th colspan="4">Game Characters</th>
   </tr>
   <tr>
-    <td width="20%"><b>Name<b></td><td><b>Buttons<b></td>
+    <td width="20%"><b>Name<b></td>
+    <td><b>Assets<b></td>
+    <td><b>Expenses<b></td>
+    <td><b>Buttons<b></td>
   </tr>
   <tr>
     <% @characters.each do |character| %>
     <td width="20%"><%= character.name %></td>
     <td>
+  
+    </td>
+    <td> 
+    </td>
+    <td>  
     <%= link_to 'Show', character %>
     <%= link_to 'Edit', edit_character_path(character) %>
-    <%= link_to 'Destroy', character, confirm: 'Are you sure?', method: :delete %>
+    <%= link_to 'Destroy', character, confirm: 'Are you sure?', method: :delete %> 
     </td>
-  </tr>
-    <% end %>
+    </tr>
+   <% end %>
 
   <tr>
-    <th colspan="2"><%= link_to 'New Character', new_character_path %></th>
+      <th colspan="1">Total:</th>
+      <td >total will be here </td>
+      <td >total will be here </td>
+    
+  </tr> 
+
+
+  <tr>
+    <th colspan="4"><%= link_to 'New Character', new_character_path %></th>
   </tr> 
 </table>
 

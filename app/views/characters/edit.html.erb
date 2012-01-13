@@ -1,6 +1,17 @@
-<h1>Editing character</h1>
 
-<%= render 'form' %>
 
-<%= link_to 'Show', @character %> |
-<%= link_to 'Back', characters_path %>
+<table border="1" cellpadding="5" cellspacing="5" width="100%">
+  <tr>
+    <th colspan="4">Editing character</th>
+  </tr>
+
+  <tr>
+  	<td>
+  		<%= render 'form' %>
+    </td>
+  </tr>
+
+  <tr>
+    <th colspan="4"><%= link_to 'Back', characters_path %>  ||  <%= link_to 'Show Character', @character %> </th>
+  </tr> 
+</table>

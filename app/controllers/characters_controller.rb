@@ -44,7 +44,7 @@ class CharactersController < ApplicationController
 
     respond_to do |format|
       if @character.save
-        format.html { redirect_to @character, notice: 'Character was successfully created.' }
+        format.html { redirect_to @character, notice: 'Character was successfully created. You can now add your assets or expenses' }
         format.json { render json: @character, status: :created, location: @character }
       else
         format.html { render action: "new" }
