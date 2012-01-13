@@ -1,5 +1,17 @@
-<h1>New character</h1>
 
-<%= render 'form' %>
 
-<%= link_to 'Back', characters_path %>
+<table border="1" cellpadding="5" cellspacing="5" width="100%">
+  <tr>
+    <th colspan="4">New character</th>
+  </tr>
+
+  <tr>
+  	<td>
+  		<%= render 'form' %>
+    </td>
+  </tr>
+
+  <tr>
+    <th colspan="4"><%= link_to 'Back', characters_path %> </th>
+  </tr> 
+</table>
