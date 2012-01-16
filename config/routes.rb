@@ -1,7 +1,8 @@
 Shadow::Application.routes.draw do
-  resources :characters
-  match 'edit_assets' => "game_assets#edit"
+  root :to => 'characters#index'
 
+  resources :game_expenses
+  resources :characters
   resources :game_assets
 
   # The priority is based upon order of creation:

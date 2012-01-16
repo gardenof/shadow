@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 	<table border="1" cellpadding="5" cellspacing="5" width="100%">
-		<th><b>Character <%= @character.id %><br> <%= @character.name %>'s Assets:<br></b></th>
+		<th><b>Character # <%= @character.id %><br> <%= @character.name %>'s Assets:<br></b></th>
 	</table>
 
 	<table border="1" cellpadding="5" cellspacing="5" width="100%">
@@ -14,8 +14,37 @@
 			<% @character.game_assets.each do |c| %>
 			<td width="20%"><%= c.name %></td>
 			<td>$<%= c.price %></td>
+
 			<td><%= link_to 'Edit', edit_game_asset_path(c.id) %>
 					<%= link_to 'Destroy', game_asset_path(c.id), confirm: 'Are you sure?', method: :delete %>
+			</td>
+			</tr>
+			<% end %>
+	</table>
+
+		<table border="1" cellpadding="5" cellspacing="5" width="100%">
+			<tr>
+				<th width="20%">Total:</th>
+				<td><%= number_to_currency(@total_a) %> </td>
+		</tr>
+	</table>
+
+	<table border="1" cellpadding="5" cellspacing="5" width="100%">
+		<th><b> <%= @character.name %>'s Expenses:<br></b></th>
+	</table>
+
+	<table border="1" cellpadding="5" cellspacing="5" width="100%">
+		<tr>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Buttons</th>
+		</tr>
+		<tr>
+			<% @character.game_expenses.each do |c| %>
+			<td width="20%"><%= c.name %></td>
+			<td>$<%= c.price %></td>
+			<td><%= link_to 'Edit', edit_game_expense_path(c.id) %>
+					<%= link_to 'Destroy', game_expense_path(c.id), confirm: 'Are you sure?', method: :delete %>
 			</td>
 			</tr>
 			<% end %>
@@ -24,12 +53,13 @@
 	<table border="1" cellpadding="5" cellspacing="5" width="100%">
 <tr>
 <th width="20%">Total:</th>
-<td>total will be here </td>
+<td><%= number_to_currency(@total_d) %> </td>
 </tr>
 </table>
 
 	<table border="1" cellpadding="5" cellspacing="5" width="100%">
-		<th><b> || <%= link_to 'Back', characters_path %>  ||  <%= link_to 'New Game asset', new_game_asset_path %>  ||<br></b></th>
+		<th><b> || <%= link_to 'Back', characters_path %>  ||  <%= link_to 'New Game asset', new_game_asset_path %>  ||  <%= link_to 'New Game expense', new_game_expense_path %>
+  ||<br></b></th>
 	</table>
 </p>
 

@@ -13,6 +13,10 @@ class CharactersController < ApplicationController
   # GET /characters/1
   # GET /characters/1.json
   def show
+    character_assets = Character.new
+    @total_a=character_assets.sum_a(params[:id])
+    @total_d=character_assets.sum_d(params[:id])
+
     @character = Character.find(params[:id])
 
     respond_to do |format|
@@ -80,4 +84,6 @@ class CharactersController < ApplicationController
       format.json { head :ok }
     end
   end
+
+
 end

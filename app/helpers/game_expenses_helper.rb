@@ -1,0 +1,2 @@
+module GameExpensesHelper
+end

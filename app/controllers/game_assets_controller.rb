@@ -35,16 +35,18 @@ class GameAssetsController < ApplicationController
   # GET /game_assets/1/edit
   def edit
     @game_asset = GameAsset.find(params[:id])
+    
+    
   end
 
   # POST /game_assets
   # POST /game_assets.json
   def create
-    @game_asset = GameAsset.new(params[:game_asset])
+     @game_asset = GameAsset.new(params[:game_asset])
 
     respond_to do |format|
       if @game_asset.save
-        format.html { redirect_to @game_asset, notice: 'Game asset was successfully created.' }
+        format.html { redirect_to characters_path notice: 'Game asset was successfully created.' }
         format.json { render json: @game_asset, status: :created, location: @game_asset }
       else
         format.html { render action: "new" }
@@ -60,7 +62,7 @@ class GameAssetsController < ApplicationController
 
     respond_to do |format|
       if @game_asset.update_attributes(params[:game_asset])
-        format.html { redirect_to @game_asset, notice: 'Game asset was successfully updated.' }
+        format.html { redirect_to character_path(@game_asset.character), notice: 'Game asset was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -76,8 +78,14 @@ class GameAssetsController < ApplicationController
     @game_asset.destroy
 
     respond_to do |format|
-      format.html { redirect_to game_assets_url }
+      format.html { redirect_to character_path(@game_asset.character) }
       format.json { head :ok }
     end
   end
+
+  def total
+    player = GameAsset.new
+    @total=player.sum
+  end
+
 end

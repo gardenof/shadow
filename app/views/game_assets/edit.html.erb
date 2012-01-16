@@ -1,6 +1,15 @@
-<h1>Editing game_asset</h1>
+<table border="1" cellpadding="5" cellspacing="5" width="100%">
+  <tr>
+    <th colspan="4">Editing Game Asset</th>
+  </tr>
 
-<%= render 'form' %>
+  <tr>
+  	<td>
+  		<%= render 'form' %>
+    </td>
+  </tr>
 
-<%= link_to 'Show', @game_asset %> |
-<%= link_to 'Back', game_assets_path %>
+  <tr>
+    <th colspan="4">|| <%= link_to 'Back', character_path(@game_asset.character)  %>  ||   </th>
+  </tr> 
+</table>
