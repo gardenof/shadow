@@ -72116,3 +72116,128 @@ Served asset /players.js - 304 Not Modified (0ms)
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-16 16:26:47 -0500
 Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/characters" for 127.0.0.1 at 2012-01-16 17:34:17 -0500
+  Processing by CharactersController#index as HTML
+  [1m[35mCharacter Load (0.1ms)[0m  SELECT "characters".* FROM "characters" 
+Rendered characters/index.html.erb within layouts/application (12.9ms)
+Completed 200 OK in 21ms (Views: 20.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-16 17:34:17 -0500
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/game_expenses.css?body=1" for 127.0.0.1 at 2012-01-16 17:34:17 -0500
+Served asset /game_expenses.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-01-16 17:34:17 -0500
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/characters.css?body=1" for 127.0.0.1 at 2012-01-16 17:34:17 -0500
+Served asset /characters.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/game_assets.css?body=1" for 127.0.0.1 at 2012-01-16 17:34:17 -0500
+Served asset /game_assets.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/players.css?body=1" for 127.0.0.1 at 2012-01-16 17:34:17 -0500
+Served asset /players.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-16 17:34:17 -0500
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-16 17:34:18 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/characters.js?body=1" for 127.0.0.1 at 2012-01-16 17:34:18 -0500
+Served asset /characters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/game_assets.js?body=1" for 127.0.0.1 at 2012-01-16 17:34:18 -0500
+Served asset /game_assets.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/game_expenses.js?body=1" for 127.0.0.1 at 2012-01-16 17:34:18 -0500
+Served asset /game_expenses.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/players.js?body=1" for 127.0.0.1 at 2012-01-16 17:34:18 -0500
+Served asset /players.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-16 17:34:18 -0500
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/characters/1" for 127.0.0.1 at 2012-01-16 17:34:21 -0500
+  Processing by CharactersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCharacter Load (0.1ms)[0m  [1mSELECT "characters".* FROM "characters" WHERE "characters"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mGameAsset Load (0.2ms)[0m  SELECT "game_assets".* FROM "game_assets" WHERE "game_assets"."character_id" = 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "characters".* FROM "characters" WHERE "characters"."id" = ? LIMIT 1[0m
+  [1m[35mGameExpense Load (0.1ms)[0m  SELECT "game_expenses".* FROM "game_expenses" WHERE "game_expenses"."character_id" = 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "characters".* FROM "characters" WHERE "characters"."id" = ? LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "game_assets".* FROM "game_assets" WHERE "game_assets"."character_id" = 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "game_expenses".* FROM "game_expenses" WHERE "game_expenses"."character_id" = 1[0m
+Rendered characters/show.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 59ms (Views: 11.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-01-16 17:34:21 -0500
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/characters.css?body=1" for 127.0.0.1 at 2012-01-16 17:34:21 -0500
+Served asset /characters.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/game_assets.css?body=1" for 127.0.0.1 at 2012-01-16 17:34:21 -0500
+Served asset /game_assets.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/game_expenses.css?body=1" for 127.0.0.1 at 2012-01-16 17:34:21 -0500
+Served asset /game_expenses.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-01-16 17:34:21 -0500
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/players.css?body=1" for 127.0.0.1 at 2012-01-16 17:34:21 -0500
+Served asset /players.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-01-16 17:34:21 -0500
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-01-16 17:34:21 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/characters.js?body=1" for 127.0.0.1 at 2012-01-16 17:34:21 -0500
+Served asset /characters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/game_assets.js?body=1" for 127.0.0.1 at 2012-01-16 17:34:21 -0500
+Served asset /game_assets.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/game_expenses.js?body=1" for 127.0.0.1 at 2012-01-16 17:34:21 -0500
+Served asset /game_expenses.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/players.js?body=1" for 127.0.0.1 at 2012-01-16 17:34:21 -0500
+Served asset /players.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-01-16 17:34:21 -0500
+Served asset /application.js - 304 Not Modified (0ms)
