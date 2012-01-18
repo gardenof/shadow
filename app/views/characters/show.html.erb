@@ -58,7 +58,7 @@
 </table>
 
 	<table border="1" cellpadding="5" cellspacing="5" width="100%">
-		<th><b> || <%= link_to 'Back', characters_path %>  ||  <%= link_to 'New Game asset', new_game_asset_path %>  ||  <%= link_to 'New Game expense', new_game_expense_path %>
+		<th><b> || <%= link_to 'Back', characters_path %>  ||  <%= link_to 'New Game asset', new_game_asset_path(:character_id => @character.id) %>  ||  <%= link_to 'New Game expense', new_game_expense_path(:character_id => @character.id) %>
   ||<br></b></th>
 	</table>
 </p>

@@ -24,6 +24,7 @@ class GameExpensesController < ApplicationController
   # GET /game_expenses/new
   # GET /game_expenses/new.json
   def new
+    @character  = Character.find(params[:character_id])
     @game_expense = GameExpense.new
 
     respond_to do |format|
@@ -44,7 +45,7 @@ class GameExpensesController < ApplicationController
 
     respond_to do |format|
       if @game_expense.save
-        format.html { redirect_to characters_path , notice: 'Game expense was successfully created.' }
+        format.html { redirect_to character_path(@game_expense.character_id) , notice: 'Game expense was successfully created.' }
         format.json { render json: @game_expense, status: :created, location: @game_expense }
       else
         format.html { render action: "new" }

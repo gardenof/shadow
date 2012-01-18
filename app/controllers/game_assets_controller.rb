@@ -24,7 +24,9 @@ class GameAssetsController < ApplicationController
   # GET /game_assets/new
   # GET /game_assets/new.json
   def new
+    @character  = Character.find(params[:character_id])
     @game_asset = GameAsset.new
+  
 
     respond_to do |format|
       format.html # new.html.erb
@@ -46,7 +48,7 @@ class GameAssetsController < ApplicationController
 
     respond_to do |format|
       if @game_asset.save
-        format.html { redirect_to characters_path notice: 'Game asset was successfully created.' }
+        format.html { redirect_to character_path(@game_asset.character_id), notice: 'Game asset was successfully created.' }
         format.json { render json: @game_asset, status: :created, location: @game_asset }
       else
         format.html { render action: "new" }

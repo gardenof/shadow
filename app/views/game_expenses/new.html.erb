@@ -1,6 +1,7 @@
 <table border="1" cellpadding="5" cellspacing="5" width="100%">
   <tr>
-    <th colspan="4">New Game Expense</th>
+    <th colspan="4">New Game Expense <%= @character.name %></th>
+
   </tr>
 
   <tr>
@@ -10,7 +11,6 @@
   </tr>
 
   <tr>
-    <th colspan="4"><%= link_to 'Back', characters_path %> </th>
+    <th colspan="4"><%= link_to 'Back', character_path(@character.id) %> </th>
   </tr> 
 </table>
-<!-- <%= link_to 'Back', game_expenses_path %>
