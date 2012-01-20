@@ -2,6 +2,8 @@ class CharactersController < ApplicationController
   # GET /characters
   # GET /characters.json
   def index
+
+
     @characters = Character.all
 
     respond_to do |format|
@@ -13,11 +15,10 @@ class CharactersController < ApplicationController
   # GET /characters/1
   # GET /characters/1.json
   def show
-    character_assets = Character.new
-    @total_a=character_assets.sum_a(params[:id])
-    @total_d=character_assets.sum_d(params[:id])
-
     @character = Character.find(params[:id])
+
+    @total_a=@character.sum_a
+    @total_d=@character.sum_e
 
     respond_to do |format|
       format.html # show.html.erb

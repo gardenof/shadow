@@ -1,5 +1,15 @@
-<h1>Editing game_expense</h1>
+<table border="1" cellpadding="5" cellspacing="5" width="100%">
+  <tr>
+    <th colspan="4">Editing <%= @game_expense.character.name %> Game Expense</th>
+  </tr>
 
-<%= render 'form' %>
- 
-<%= link_to 'Back', character_path(@game_expense.character) %>
+  <tr>
+  	<td>
+  		<%= render 'form' %>
+    </td>
+  </tr>
+
+  <tr>
+    <th colspan="4">|| <%= link_to 'Back', character_path(@game_expense.character)  %>  ||   </th>
+  </tr> 
+</table>

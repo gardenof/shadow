@@ -13,11 +13,9 @@
   <tr>
     <% @characters.each do |character| %>
     <td width="20%"><%= character.name %></td>
-    <td>
-  
-    </td>
-    <td> 
-    </td>
+    <td > <%=   %>  </td>
+    <td > <%=  %>  </td>
+
     <td>  
     <%= link_to 'Show', character %>
     <%= link_to 'Edit', edit_character_path(character) %>
