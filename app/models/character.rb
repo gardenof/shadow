@@ -4,18 +4,24 @@ class Character < ActiveRecord::Base
 
 	def sum_a 
 		total = 0
-		player = Character.find(self.id)
-		player.game_assets.each do |a|
+		self.game_assets.each do |a|
 			  total = a.price + total
 		end
 	total
 	end		
 	def sum_e
 		total = 0
-		player = Character.find(self.id)
-		player.game_expenses.each do |a|
+		self.game_expenses.each do |a|
 			  total = a.price + total
 		end
 	total
 	end		
+
+	def sum
+		 self.each do |c|
+		 		print name
+		 end
+		 print total
+	end
+
 end

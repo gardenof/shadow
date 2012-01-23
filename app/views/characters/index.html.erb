@@ -13,8 +13,8 @@
   <tr>
     <% @characters.each do |character| %>
     <td width="20%"><%= character.name %></td>
-    <td > <%=   %>  </td>
-    <td > <%=  %>  </td>
+    <td > <%= number_to_currency(character.sum_a)  %>  </td>
+    <td > <%= number_to_currency(character.sum_e) %>  </td>
 
     <td>  
     <%= link_to 'Show', character %>
@@ -26,9 +26,9 @@
 
   <tr>
       <th colspan="1">Total:</th>
-      <td >total will be here </td>
-      <td >total will be here </td>
-    
+      <td > <b> <%=number_to_currency(GameAsset.total)%> </b></td>
+      <td > <b> <%=number_to_currency(GameExpense.total) %> </b></td>
+      <td></td>
   </tr> 
 
 

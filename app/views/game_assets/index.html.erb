@@ -9,15 +9,12 @@
     <th></th>
     <th></th>
   </tr>
-
 <% @game_assets.each do |game_asset| %>
+ 
   <tr>
     <td><%= game_asset.name %></td>
     <td><%= game_asset.price %></td>
     <td><%= game_asset.character_id %></td>
-
-
-
 
     <td><%= link_to 'Show', game_asset %></td>
     <td><%= link_to 'Edit', edit_game_asset_path(game_asset) %></td>
@@ -25,6 +22,7 @@
   </tr>
 <% end %>
 </table>
+
 
 <br />
 

@@ -1,11 +1,10 @@
 class CharactersController < ApplicationController
   # GET /characters
   # GET /characters.json
-  def index
-
-
+  def index    
     @characters = Character.all
-
+    @eden     = GameAsset.all
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @characters }
@@ -18,7 +17,7 @@ class CharactersController < ApplicationController
     @character = Character.find(params[:id])
 
     @total_a=@character.sum_a
-    @total_d=@character.sum_e
+    @total_e=@character.sum_e
 
     respond_to do |format|
       format.html # show.html.erb

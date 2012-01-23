@@ -1,16 +1,12 @@
 class GameAsset < ActiveRecord::Base
 	belongs_to :character
 
-	def sum 
+	def self.total 
 		total = 0
-		GameAsset.all.each do |a|
+     one = GameAsset.all
+		one.each do |a|
 			  total = a.price + total
-			end
-			total
-	end		
-
-	def add_upcase(before_upcase)
-    all_caps = String.new(before_upcase)
-    all_caps.upcase
-  end
+		end
+	total
+	end
 end
