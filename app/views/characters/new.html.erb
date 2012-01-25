@@ -1,15 +1,24 @@
 <table border="1" cellpadding="5" cellspacing="5" width="100%">
   <tr>
-    <th colspan="4">New character</th>
-  </tr>
-
+    <th colspan="4">New Character</th>
   <tr>
   	<td>
   		<%= render 'form' %>
     </td>
   </tr>
-
+   </tr>
+    <tr>
+    <th colspan="4">
+      <div id="menu">
+        <ul>  
+          <li><%= link_to 'Back', characters_path %></li>
+        </ul>
+      </div>
+    </th>
+  </tr>
+<!--
   <tr>
     <th colspan="4"><%= link_to 'Back', characters_path %> </th>
   </tr> 
+  -->
 </table>

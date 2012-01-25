@@ -1,39 +1,62 @@
-<p id="notice"><%= notice %></p>
+<%= stylesheet_link_tag "stylesheet.css" %>
+<table class="table1"  width="100%">
+    <thead>
+    <tr>
+      <th colspan="4">
+            <img  src="/images/shadowrun-logo.png" alt="shadowrun" height=125 />
+          
+      </th>
+    </tr>
+  </thead>
+</table>
+<table  width="100%">
+  <thead>
+  <tr>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th width="20%"><b>Name<b></th>
+    <th><b>Assets<b></th>
+    <th><b>Expenses<b></th>
+    <th><b>Buttons<b></th>
+  </tr>
 
-<table border="1" cellpadding="5" cellspacing="5" width="100%">
-  <tr>
-    <th colspan="4">Game Characters</th>
-  </tr>
-  <tr>
-    <td width="20%"><b>Name<b></td>
-    <td><b>Assets<b></td>
-    <td><b>Expenses<b></td>
-    <td><b>Buttons<b></td>
-  </tr>
   <tr>
     <% @characters.each do |character| %>
     <td width="20%"><%= character.name %></td>
     <td > <%= number_to_currency(character.sum_a)  %>  </td>
     <td > <%= number_to_currency(character.sum_e) %>  </td>
 
-    <td>  
+ <td>  
     <%= link_to 'Show', character %>
     <%= link_to 'Edit', edit_character_path(character) %>
     <%= link_to 'Destroy', character, confirm: 'Are you sure?', method: :delete %> 
-    </td>
+
     </tr>
    <% end %>
-
+</tbody>
+<tbody>
   <tr>
       <th colspan="1">Total:</th>
       <td > <b> <%=number_to_currency(GameAsset.total)%> </b></td>
       <td > <b> <%=number_to_currency(GameExpense.total) %> </b></td>
       <td></td>
   </tr> 
+</tbody>
 
-
+<!--
   <tr>
     <th colspan="4"><%= link_to 'New Character', new_character_path %></th>
   </tr> 
+  -->
 </table>
+
+
+        <div id="menu">
+          <ul>  
+            <li><%= link_to 'Add New Character', new_character_path %></li>
+          </ul>
+        </div>
+     
 

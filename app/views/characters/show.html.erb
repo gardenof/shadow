@@ -1,66 +1,83 @@
 <p id="notice"><%= notice %></p>
 
-	<table border="1" cellpadding="5" cellspacing="5" width="100%">
-		<th><b>Character # <%= @character.id %><br> <%= @character.name %>'s Assets:<br></b></th>
+	<table width="100%">
+		<thead>
+				<th><b>Character # <%= @character.id %>, <%= @character.name %>'s Assets:<br></b></th>
+		</thead>
 	</table>
 
-	<table border="1" cellpadding="5" cellspacing="5" width="100%">
+	<table  width="100%">
+	 <tbody>
 		<tr>
 			<th>Name</th>
 			<th>Price</th>
 			<th>Buttons</th>
-		</tr>
-		<tr>
+			</tr>
+		  <tr>
 			<% @character.game_assets.each do |c| %>
 			<td width="20%"><%= c.name %></td>
-			<td>$<%= number_to_currency(c.price) %></td>
+			<td><%= number_to_currency(c.price) %></td>
 
 			<td><%= link_to 'Edit', edit_game_asset_path(c.id) %>
 					<%= link_to 'Destroy', game_asset_path(c.id), confirm: 'Are you sure?', method: :delete %>
 			</td>
 			</tr>
 			<% end %>
-	</table>
-
-		<table border="1" cellpadding="5" cellspacing="5" width="100%">
 			<tr>
 				<th width="20%">Total:</th>
 				<td> <b> <%= number_to_currency(@total_a) %> </b> </td>
-		</tr> 
+		
+				</tr>
+		</tbody>
 	</table>
 
-	<table border="1" cellpadding="5" cellspacing="5" width="100%">
-		<th><b> <%= @character.name %>'s Expenses:<br></b></th>
+
+	<table width="100%">
+		<thead>
+			<th><b> <%= @character.name %>'s Expenses:<br></b></th>
+		</thead>
 	</table>
 
-	<table border="1" cellpadding="5" cellspacing="5" width="100%">
-		<tr>
-			<th>Name</th>
-			<th>Price</th>
-			<th>Buttons</th>
-		</tr>
-		<tr>
-			<% @character.game_expenses.each do |c| %>
-			<td width="20%"><%= c.name %></td>
-			<td>$<%= number_to_currency(c.price) %></td>
-			<td><%= link_to 'Edit', edit_game_expense_path(c.id) %>
-					<%= link_to 'Destroy', game_expense_path(c.id), confirm: 'Are you sure?', method: :delete %>
-			</td>
+	<table width="100%">
+		<tbody>
+			<tr>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Buttons</th>
 			</tr>
-			<% end %>
+			<tr>
+				<% @character.game_expenses.each do |c| %>
+				<td width="20%"><%= c.name %></td>
+				<td><%= number_to_currency(c.price) %></td>
+				<td><%= link_to 'Edit', edit_game_expense_path(c.id) %>
+						<%= link_to 'Destroy', game_expense_path(c.id), confirm: 'Are you sure?', method: :delete %>
+				</td>
+			</tr>
+				<% end %>
+						<tr>
+			<th width="20%">Total:</th>
+			<td> <b> <%= number_to_currency(@total_e) %> </b> </td>
+			</tr>
+		</tbody>
 	</table>
 
-	<table border="1" cellpadding="5" cellspacing="5" width="100%">
-<tr>
-<th width="20%">Total:</th>
-<td> <b> <%= number_to_currency(@total_e) %> </b> </td>
-</tr>
-</table>
 
-	<table border="1" cellpadding="5" cellspacing="5" width="100%">
+        <div id="menu">
+            
+            <%= link_to 'Back', characters_path %>
+            <%= link_to 'New Game asset', new_game_asset_path(:character_id => @character.id) %>
+            <%= link_to 'New Game expense', new_game_expense_path(:character_id => @character.id) %>
+  		 </div>
+     
+
+
+
+<!--
+	<table width="100%">
 		<th><b> || <%= link_to 'Back', characters_path %>  ||  <%= link_to 'New Game asset', new_game_asset_path(:character_id => @character.id) %>  ||  <%= link_to 'New Game expense', new_game_expense_path(:character_id => @character.id) %>
   ||<br></b></th>
 	</table>
+	-->
 </p>
 
 
