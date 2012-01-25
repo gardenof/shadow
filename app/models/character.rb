@@ -24,4 +24,7 @@ class Character < ActiveRecord::Base
 		 print total
 	end
 
+	def street_cost
+			street=self * 0.2
+	end
 end

@@ -12,13 +12,15 @@
 		<tr>
 			<th>Name</th>
 			<th>Price</th>
+			<th>Street Cost</th>
 			<th>Buttons</th>
 			</tr>
+		
 		  <tr>
 			<% @character.game_assets.each do |c| %>
 			<td width="20%"><%= c.name %></td>
 			<td><%= number_to_currency(c.price, options = {:unit => "¥"}) %></td>
-
+			<td> <%= number_to_currency(c.price-(c.price*0.2), options = {:unit => "¥"}) %> </td>
 			<td><%= link_to 'Edit', edit_game_asset_path(c.id) %>
 					<%= link_to 'Destroy', game_asset_path(c.id), confirm: 'Are you sure?', method: :delete %>
 			</td>

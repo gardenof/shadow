@@ -9,4 +9,8 @@ class GameAsset < ActiveRecord::Base
 		end
 	total
 	end
+
+	def street_cost
+			street=self * 0.2
+	end
 end
