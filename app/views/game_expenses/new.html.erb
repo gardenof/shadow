@@ -1,8 +1,9 @@
-<table border="1" cellpadding="5" cellspacing="5" width="100%">
-  <tr>
-    <th colspan="4">New Game Expense <%= @character.name %></th>
-
-  </tr>
+<table width="100%">
+  <thead>
+    <tr>
+      <th colspan="4">New Game Expense For <%= @character.name %></th>
+    </tr>
+  </thead>}
 
   <tr>
   	<td>
@@ -10,7 +11,7 @@
     </td>
   </tr>
 
-  <tr>
-    <th colspan="4"><%= link_to 'Back', character_path(@character.id) %> </th>
-  </tr> 
 </table>
+<div id = "menu">
+  <%= link_to 'Back', character_path(@character.id) %> </th>
+</div>
