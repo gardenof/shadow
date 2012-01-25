@@ -25,8 +25,8 @@
   <tr>
     <% @characters.each do |character| %>
     <td width="20%"><%= character.name %></td>
-    <td > <%= number_to_currency(character.sum_a)  %>  </td>
-    <td > <%= number_to_currency(character.sum_e) %>  </td>
+    <td > <%= number_to_currency(character.sum_a, options = {:unit => "¥"})  %>  </td>
+    <td > <%= number_to_currency(character.sum_e, options = {:unit => "¥"}) %>  </td>
 
  <td>  
     <%= link_to 'Show', character %>
@@ -39,8 +39,8 @@
 <tbody>
   <tr>
       <th colspan="1">Total:</th>
-      <td > <b> <%=number_to_currency(GameAsset.total)%> </b></td>
-      <td > <b> <%=number_to_currency(GameExpense.total) %> </b></td>
+      <td > <b> <%=number_to_currency(GameAsset.total, options = {:unit => "¥"})%> </b></td>
+      <td > <b> <%=number_to_currency(GameExpense.total, options = {:unit => "¥"}) %> </b></td>
       <td></td>
   </tr> 
 </tbody>

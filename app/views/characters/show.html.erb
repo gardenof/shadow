@@ -17,7 +17,7 @@
 		  <tr>
 			<% @character.game_assets.each do |c| %>
 			<td width="20%"><%= c.name %></td>
-			<td><%= number_to_currency(c.price) %></td>
+			<td><%= number_to_currency(c.price, options = {:unit => "¥"}) %></td>
 
 			<td><%= link_to 'Edit', edit_game_asset_path(c.id) %>
 					<%= link_to 'Destroy', game_asset_path(c.id), confirm: 'Are you sure?', method: :delete %>
@@ -26,7 +26,7 @@
 			<% end %>
 			<tr>
 				<th width="20%">Total:</th>
-				<td> <b> <%= number_to_currency(@total_a) %> </b> </td>
+				<td> <b> <%= number_to_currency(@total_a, options = {:unit => "¥"}) %> </b> </td>
 				<td> </td>
 				</tr>
 		</tbody>
@@ -49,7 +49,7 @@
 			<tr>
 				<% @character.game_expenses.each do |c| %>
 				<td width="20%"><%= c.name %></td>
-				<td><%= number_to_currency(c.price) %></td>
+				<td><%= number_to_currency(c.price, options = {:unit => "¥"}) %></td>
 				<td><%= link_to 'Edit', edit_game_expense_path(c.id) %>
 						<%= link_to 'Destroy', game_expense_path(c.id), confirm: 'Are you sure?', method: :delete %>
 				</td>
@@ -57,7 +57,7 @@
 				<% end %>
 						<tr>
 			<th width="20%">Total:</th>
-			<td> <b> <%= number_to_currency(@total_e) %> </b> </td>
+			<td> <b> <%= number_to_currency(@total_e, options = {:unit => "¥"}) %> </b> </td>
 			<td> </td>
 			</tr>
 		</tbody>
