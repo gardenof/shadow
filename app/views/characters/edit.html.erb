@@ -1,15 +1,18 @@
-<table border="1" cellpadding="5" cellspacing="5" width="100%">
+<table  width="100%">
+<thead>
   <tr>
     <th colspan="4">Editing character</th>
   </tr>
+</thead>
 
   <tr>
   	<td>
   		<%= render 'form' %>
     </td>
   </tr>
-
-  <tr>
-    <th colspan="4"><%= link_to 'Back', characters_path %>  ||  <%= link_to 'Show Character', @character %> </th>
-  </tr> 
 </table>
+
+  
+<div id="menu">
+    <%= link_to 'Back', characters_path %>  ||  <%= link_to 'Show Character', @character %> 
+</div>
