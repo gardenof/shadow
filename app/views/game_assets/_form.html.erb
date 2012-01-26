@@ -21,8 +21,15 @@
     <%= f.number_field :price %>
   </div>
   <div class="field">
-    <%= f.label :amount %><br />
-    <%= f.number_field :amount %>
+  <%=  @game_asset.amount %>
+    <% if @game_asset.amount.nil?  %>
+      <%= f.label :amount %><br />
+      <%= f.number_field :amount, :value => "1" %>
+    <% else %>
+      <%= f.label :amount %><br />
+      <%= f.number_field :amount %>
+    <% end %>
+
   </div>
   <div class="field">
     <%= f.label :equipped %><br />
