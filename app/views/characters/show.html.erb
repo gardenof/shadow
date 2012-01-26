@@ -14,6 +14,7 @@
 			<th>Price</th>
 			<th>Street Cost</th>
 			<th>Amount</th>
+			<th>legality</th>
 			<th>Equipped</th>
 			<th>Buttons</th>
 			</tr>
@@ -24,6 +25,8 @@
 			<td><%= number_to_currency(c.price, options = {:unit => "¥"}) %></td>
 			<td> <%= number_to_currency(c.price-(c.price*0.2), options = {:unit => "¥"}) %> </td>
 			<td ><%= c.amount %></td>
+			<td ><%= c.legality %></td>
+
 			<td >    
 				<% if c.equipped %>
 			     <img  src="/images/check1.png" alt="check" height=20 />

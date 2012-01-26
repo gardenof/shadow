@@ -32,6 +32,12 @@
 
   </div>
   <div class="field">
+    <%= f.label :legality %> <br />
+    Public <%= f.radio_button(:legality, "Public") %> <br>
+    Restricted <%= f.radio_button(:legality, "Restricted") %> <br>
+    Forbidden <%= f.radio_button(:legality, "Forbidden") %> 
+  </div>
+  <div class="field">
     <%= f.label :equipped %><br />
     <%= f.check_box(:equipped, {}, checked_value = "1", unchecked_value = "0") =%>
   </div>
