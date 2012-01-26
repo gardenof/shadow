@@ -13,6 +13,8 @@
 			<th>Name</th>
 			<th>Price</th>
 			<th>Street Cost</th>
+			<th>Amount</th>
+			<th>Equipped</th>
 			<th>Buttons</th>
 			</tr>
 		
@@ -21,6 +23,8 @@
 			<td width="20%"><%= c.name %></td>
 			<td><%= number_to_currency(c.price, options = {:unit => "¥"}) %></td>
 			<td> <%= number_to_currency(c.price-(c.price*0.2), options = {:unit => "¥"}) %> </td>
+			<td ><%= c.amount %></td>
+			<td ><%= c.equipped %></td>
 			<td><%= link_to 'Edit', edit_game_asset_path(c.id) %>
 					<%= link_to 'Destroy', game_asset_path(c.id), confirm: 'Are you sure?', method: :delete %>
 			</td>
@@ -29,6 +33,8 @@
 			<tr>
 				<th width="20%">Total:</th>
 				<td> <b> <%= number_to_currency(@total_a, options = {:unit => "¥"}) %> </b> </td>
+				<td> </td>
+				<td> </td>
 				<td> </td>
 				<td> </td>
 				</tr>
