@@ -33,7 +33,14 @@
 			<td width="20%"><%= c.name %></td>
 			<td><right>
 			<center>
-			
+				<table class="table2">
+				<tr>
+					<td width="100" ><%= number_to_currency(c.price, options = {:unit => "¥"}) %></td>
+				
+					<td width="50"><%= c.amount %></td>
+					<td width="100" ><%= number_to_currency(c.amount*c.price, options = {:unit => "¥"}) %></td>
+				</tr>
+				</table>
 			</center>
 			</right>
 			</td>
