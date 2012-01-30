@@ -1,11 +1,16 @@
 class Character < ActiveRecord::Base
 		has_many :game_assets
 		has_many :game_expenses
+		validates :name, :presence => true
 
 	def sum_a 
 		total = 0
 		self.game_assets.each do |a|
+			if a.price.nil?
+
+			else
 			  total = a.price + total
+			end
 		end
 	total
 	end		

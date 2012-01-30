@@ -11,9 +11,18 @@
 	 <tbody>
 		<tr>
 			<th>Name</th>
-			<th>Price</th>
+			<th>
+			<center>
+				<table class="table2">
+					<tr>
+						<th width="100">Price </th>
+						<th width="50" >Amount</th>
+						<th width="100">Total </th>
+					</tr>
+				</table>
+			<center>
+			</th>
 			<th>Street Cost</th>
-			<th>Amount</th>
 			<th>legality</th>
 			<th>Equipped</th>
 			<th>Buttons</th>
@@ -22,9 +31,21 @@
 		  <tr>
 			<% @character.game_assets.each do |c| %>
 			<td width="20%"><%= c.name %></td>
-			<td><%= number_to_currency(c.price, options = {:unit => "¥"}) %></td>
+			<td><right>
+			<center>
+				<table class="table2">
+				<tr>
+					<td width="100" ><%= number_to_currency(c.price, options = {:unit => "¥"}) %></td>
+				
+					<td width="50"><%= c.amount %></td>
+					<td width="100" ><%= number_to_currency(c.amount*c.price, options = {:unit => "¥"}) %></td>
+				</tr>
+				</table>
+			</center>
+			</right>
+			</td>
 			<td> <%= number_to_currency(c.price-(c.price*0.2), options = {:unit => "¥"}) %> </td>
-			<td ><%= c.amount %></td>
+			
 			<td ><%= c.legality %></td>
 
 			<td >    
@@ -39,12 +60,22 @@
 			<% end %>
 			<tr>
 				<th width="20%">Total:</th>
-				<td> <b> <%= number_to_currency(@total_a, options = {:unit => "¥"}) %> </b> </td>
+				<td> <b>
+				<center>
+				<table class="table2">
+					<tr>
+						<td width="100"> </td>
+						<td width="50" > </td>
+						<td width="100"> <b> <%= number_to_currency(@total_a, options = {:unit => "¥"}) %> </b> </td>
+					</tr>
+				</table> 
+				</center>
+				</td>
 				<td> </td>
 				<td> </td>
 				<td> </td>
 				<td> </td>
-				<td> </td>
+			
 				</tr>
 		</tbody>
 	</table>

@@ -19,7 +19,36 @@ table.table1{
 
 }
 
+/* Table 2 Style */
+table.table2{
+    font-family: "Trebuchet MS", sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.4em;
+    font-style: normal;
+    border-collapse:separate;
 
+}
+.table2 tbody th{
+    color:#ccddee;
+    text-shadow:1px 1px 1px #ccddee;
+    background-color:#9DD929;
+    border:0px solid #ccddee;
+    border-right:0px solid #ccddee;
+    padding:0px 10px;
+    
+}
+.table2 tbody td{
+    padding:5px;
+    text-align: right;
+    background-color:#ccddee;
+    border: 2px solid #ccddee;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    border-radius:2px;
+    color:#666;
+    text-shadow:1px 1px 1px #fff;
+}
 
 
 /* Table Style */

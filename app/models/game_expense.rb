@@ -1,6 +1,6 @@
 class GameExpense < ActiveRecord::Base
 		belongs_to :character
-
+ 			validates :name,:price, :presence => true
 		def self.total 
 		total = 0
      one = GameExpense.all

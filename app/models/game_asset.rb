@@ -1,5 +1,6 @@
 class GameAsset < ActiveRecord::Base
 	belongs_to :character
+	  validates :name,:price,:amount,:legality, :presence => true
 
 	def self.total 
 		total = 0

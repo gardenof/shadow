@@ -1,4 +1,5 @@
 class GameExpensesController < ApplicationController
+  
   # GET /game_expenses
   # GET /game_expenses.json
   def index

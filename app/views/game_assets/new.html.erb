@@ -1,8 +1,11 @@
 <%= stylesheet_link_tag "stylesheet.css" %>
 <table width="100%">
   <thead>
-    <tr>
-      <th colspan="4">New Game Asset For <%= @character.name %> </th>
+    <tr>    
+      <% if @character.nil? %>
+      <% else %>
+       <th colspan="4">New Game Asset For <%= @character.name %> </th>
+      <% end %>
     </tr>
   </thead>
 
@@ -14,5 +17,8 @@
 
   </table>
   <div id= "menu">
-    <%= link_to 'Back', character_path(@character.id) %> </th>
+    <% if @character.nil? %>
+    <% else %>
+      <%= link_to 'Back', character_path(@character.id) %> 
+    <% end %>
   </div> 
