@@ -18,6 +18,36 @@ table.table1{
     background:  url(/images/header-bg.png) repeat-x; 
 
 }
+.table1 tbody th{
+    padding:15px;
+    color:#fff;
+    text-shadow:1px 1px 1px #444;
+    border:1px solid ##99bbbb;
+    border-bottom:3px solid ##99bbbb;
+    background:  url(/images/header-bg.png);
+     background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      color-stop(0%,rgba(17,85,136,1)),
+      color-stop(100%,rgba(34,68,85,1))); 
+      /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(
+      top, 
+      rgba(17,85,136,1) 0%,
+      rgba(34,68,85,1) 100%); 
+      /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(
+      top,
+      rgba(17,85,136,1) 0%,
+      rgba(34,68,85,1) 100%);
+      /* Opera 11.10+ */
+    -webkit-border-top-left-radius:5px;
+    -webkit-border-top-right-radius:5px;
+    -moz-border-radius:5px 5px 0px 0px;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+}
 
 /* Table 2 Style */
 table.table2{
