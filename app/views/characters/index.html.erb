@@ -28,14 +28,18 @@
     <td width="20%"><%= character.name %></td>
     <td > <%= number_to_currency(character.sum_a, options = {:unit => "¥"})  %>  </td>
     <td > <%= number_to_currency(character.sum_e, options = {:unit => "¥"}) %>  </td>
-   
+
+      <% @color= "N/A" %>
       <% character.game_assets.each do |c| %>
+        <% if c.equipped == true %>
         <% if    c.legality == "Forbidden"   %>
            <% @color = c.legality %>
         <% elsif c.legality == "Restricted" && @color != "Forbidden"%>
            <% @color = c.legality %>
         <% elsif  @color != "Forbidden" && @color != "Restricted"  %>
            <% @color = c.legality %>
+        <% end %>
+        <% else %>
         <% end %>
       <% end %>
           
@@ -46,7 +50,6 @@
         <% else %>
             <td style="background-color: #00C90D; color:#000000"><%= @color %></td>
         <% end %>
-          <% @color=0 %>
 
  <td>  
     <%= link_to 'Show', character %>
