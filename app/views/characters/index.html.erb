@@ -19,6 +19,7 @@
     <th width="20%"><b>Name<b></th>
     <th><b>Assets<b></th>
     <th><b>Expenses<b></th>
+    <th><b>Legality<b></th>
     <th><b>Buttons<b></th>
   </tr>
 
@@ -27,6 +28,25 @@
     <td width="20%"><%= character.name %></td>
     <td > <%= number_to_currency(character.sum_a, options = {:unit => "¥"})  %>  </td>
     <td > <%= number_to_currency(character.sum_e, options = {:unit => "¥"}) %>  </td>
+   
+      <% character.game_assets.each do |c| %>
+        <% if    c.legality == "Forbidden"   %>
+           <% @color = c.legality %>
+        <% elsif c.legality == "Restricted" && @color != "Forbidden"%>
+           <% @color = c.legality %>
+        <% elsif  @color != "Forbidden" && @color != "Restricted"  %>
+           <% @color = c.legality %>
+        <% end %>
+      <% end %>
+          
+         <% if   @color == "Forbidden" %>
+            <td style="background-color: #FF0700; color:#000000"><%= @color %></td>
+        <% elsif @color == "Restricted" %>
+            <td style="background-color: #FFD500; color:#000000"><%= @color %></td>
+        <% else %>
+            <td style="background-color: #00C90D; color:#000000"><%= @color %></td>
+        <% end %>
+          <% @color=0 %>
 
  <td>  
     <%= link_to 'Show', character %>
@@ -41,6 +61,7 @@
       <th colspan="1">Total:</th>
       <td > <b> <%=number_to_currency(GameAsset.total, options = {:unit => "¥"})%> </b></td>
       <td > <b> <%=number_to_currency(GameExpense.total, options = {:unit => "¥"}) %> </b></td>
+      <td></td>
       <td></td>
   </tr> 
 </tbody>

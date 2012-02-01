@@ -3,6 +3,10 @@ class Character < ActiveRecord::Base
 		has_many :game_expenses
 		validates :name, :presence => true
 
+def self.character_legality_
+	
+end
+
 	def sum_a 
 		total = 0
 		self.game_assets.each do |a|

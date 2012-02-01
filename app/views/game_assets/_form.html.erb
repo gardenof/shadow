@@ -21,7 +21,6 @@
     <%= f.number_field :price %>
   </div>
   <div class="field">
-  <%=  @game_asset.amount %>
     <% if @game_asset.amount.nil?  %>
       <%= f.label :amount %><br />
       <%= f.number_field :amount, :value => "1" %>
