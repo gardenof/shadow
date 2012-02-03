@@ -3,20 +3,21 @@ class Character < ActiveRecord::Base
 		has_many :game_expenses
 		validates :name, :presence => true
 
-		def character_legality_status
-			send_back= ""
+		def check_legality_status
+			send_back_status= ""
 			game_assets.each  do |c|
 				if c.equipped == true
 					if    c.legality == "Forbidden"   
-            @send_back_legality = c.legality 
-	        elsif c.legality == "Restricted" && @color != "Forbidden"
-            @send_back_legality = c.legality 
-	        elsif  @color != "Forbidden" && @color != "Restricted"  
-            @send_back_legality = c.legality 
+            send_back_status= c.legality 
+	        elsif c.legality == "Restricted" && send_back_status != "Forbidden"
+            send_back_status= c.legality 
+	        elsif send_back_status != "Restricted" && send_back_status != "Forbidden"
+            send_back_status= c.legality
 	        end 
+	      else
 				end
 			end
-			@send_back_legality
+			send_back_status
 		end
 
 	def sum_a 
@@ -36,13 +37,5 @@ class Character < ActiveRecord::Base
 			  total = a.price + total
 		end
 	total
-	end		
-
-	def sum
-		 self.each do |c|
-		 		print name
-		 end
-		 print total
-	end
-
+	end	
 end

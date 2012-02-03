@@ -1,20 +1,20 @@
 <%= stylesheet_link_tag "stylesheet.css" %>
 <table class="table1"  width="100%">
-    <thead>
+  <thead>
     <tr>
       <th colspan="4">
-            <img  src="/images/shadowrun-logo.png" alt="shadowrun" height=125 />
-          
+        <img  src="/images/shadowrun-logo.png" alt="shadowrun" height=125 />
+
       </th>
     </tr>
   </thead>
-</table>
-<table  width="100%">
+  </table>
+  <table  width="100%">
   <thead>
   <tr>
   </tr>
-  </thead>
-  <tbody>
+</thead>
+<tbody>
   <tr>
     <th width="20%"><b>Name<b></th>
     <th><b>Assets<b></th>
@@ -25,42 +25,36 @@
 
   <tr>
     <% @characters.each do |character| %>
-    <td width="20%"><%= character.name %></td>
-    <td > <%= number_to_currency(character.sum_a, options = {:unit => "¥"})  %>  </td>
-    <td > <%= number_to_currency(character.sum_e, options = {:unit => "¥"}) %>  </td>
+      <td width="20%"><%= character.name %></td>
+      <td > <%= number_to_currency(character.sum_a, options = {:unit => "¥"})  %>  </td>
+      <td > <%= number_to_currency(character.sum_e, options = {:unit => "¥"}) %>  </td>
 
-          
-        <% if   character.character_legality_status == "Forbidden" %>
-            <td style="background-color: #FF0700; color:#000000"><%= character.character_legality_status %></td>
-        <% elsif character.character_legality_status == "Restricted" %>
-            <td style="background-color: #FFD500; color:#000000"><%= character.character_legality_status %></td>
-        <% else %>
-            <td style="background-color: #00C90D; color:#000000"><%= character.character_legality_status %></td>
-        <% end %>
+      <% legality_color = color_for_legality(character.check_legality_status) %>
+      <td style="background-color: <%= legality_color %>; color: black;"><%= character.check_legality_status %></td> 
 
-         <td>  
-            <%= link_to 'Show', character %>
-            <%= link_to 'Edit', edit_character_path(character) %>
-            <%= link_to 'Destroy', character, confirm: 'Are you sure?', method: :delete %> 
-    </tr>
-      <% end %>
+      <td>  
+      <%= link_to 'Show', character %>
+      <%= link_to 'Edit', edit_character_path(character) %>
+      <%= link_to 'Destroy', character, confirm: 'Are you sure?', method: :delete %> 
+  </tr>
+    <% end %>
 </tbody>
-<tbody>
-  <tr>
+  <tbody>
+    <tr>
       <th colspan="1">Total:</th>
       <td > <b> <%=number_to_currency(GameAsset.total, options = {:unit => "¥"})%> </b></td>
       <td > <b> <%=number_to_currency(GameExpense.total, options = {:unit => "¥"}) %> </b></td>
       <td></td>
       <td></td>
-  </tr> 
-</tbody>
+    </tr> 
+  </tbody>
 </table>
 
 
-  <div id="menu">
-    <ul>  
-      <li><%= link_to 'Add New Character', new_character_path %></li>
-    </ul>
-  </div>
-     
+<div id="menu">
+  <ul>  
+    <li><%= link_to 'Add New Character', new_character_path %></li>
+  </ul>
+</div>
+
 
