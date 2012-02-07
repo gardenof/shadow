@@ -61,7 +61,7 @@ table.table2{
 }
 .table2 tbody th{
     color:#ccddee;
-    text-shadow:1px 1px 1px #ccddee;
+    text-shadow:1px 1px 1px #000000;
     background-color:#9DD929;
     border:0px solid #ccddee;
     border-right:0px solid #ccddee;
@@ -76,9 +76,9 @@ table.table2{
     -moz-border-radius:2px;
     -webkit-border-radius:2px;
     border-radius:2px;
-    color:#666;
-    text-shadow:1px 1px 1px #fff;
+    color:#115588;
 }
+
 
 
 /* Table Style */
@@ -93,7 +93,7 @@ table{
  thead th{
     padding:10px;
     color:#fff;
-    text-shadow:1px 1px 1px #444;
+    text-shadow:1px 1px 1px #115588;
     border:1px solid ##99bbbb;
     border-bottom:3px solid ##99bbbb;
     background:  url(/images/header-bg.png);
@@ -109,7 +109,7 @@ table{
 }
  tbody th{
     color:#ccddee;
-    text-shadow:1px 1px 1px #ccddee;
+    text-shadow:1px 1px 1px #000000;
     background-color:#9DD929;
     border:1px solid #ccddee;
     border-right:3px solid #ccddee;
@@ -142,7 +142,7 @@ table{
     font-size:16px;
     text-align:center;
     padding:10px 0px;
-    text-shadow:1px 1px 1px #444;
+    text-shadow:1px 1px 1px #000000;
 }
  tfoot th{
     color:#ccddee;
@@ -155,8 +155,7 @@ table{
     -moz-border-radius:2px;
     -webkit-border-radius:2px;
     border-radius:2px;
-    color:#666;
-    text-shadow:1px 1px 1px #fff;
+    color:#115588;
 }
 
 
