@@ -23,10 +23,10 @@ class Character < ActiveRecord::Base
 	def sum_a 
 		total = 0
 		game_assets.each do |a|
-			if a.price.nil?
+			if a.price.nil? || a.amount.nil?
 
 			else
-			  total = a.price + total
+			  total = (a.price*a.amount) + total
 			end
 		end
 	total

@@ -68,7 +68,7 @@ describe Character do
 			new_unequipped_restricted_asset
 			new_unequipped_forbidden_asset
 
-			new_character.sum_a.should == 3000
+			new_character.sum_a.should == 1500000
 		end
 
 		it "should add all the expenses up" do
