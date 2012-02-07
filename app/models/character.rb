@@ -1,6 +1,6 @@
 class Character < ActiveRecord::Base
-		has_many :game_assets
-		has_many :game_expenses
+		has_many :game_assets, :dependent => :destroy
+		has_many :game_expenses, :dependent => :destroy
 		validates :name, :presence => true
 
 		def check_legality_status
