@@ -4,10 +4,14 @@ class GameAsset < ActiveRecord::Base
 
 	def self.total 
 		total = 0
-     one = GameAsset.all
-		one.each do |a|
-			  total = a.price + total
-		end
+		one = GameAsset.all
+			one.each do |a|
+				if a.price.nil? || a.amount.nil?
+
+				else
+			 	 total = (a.price*a.amount) + total
+				end
+			end
 	total
 	end
 
