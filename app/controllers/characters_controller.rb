@@ -3,7 +3,6 @@ class CharactersController < ApplicationController
   # GET /characters.json
   def index    
     @characters = Character.all
-    @eden     = GameAsset.all
     
     respond_to do |format|
       format.html # index.html.erb
@@ -82,6 +81,15 @@ class CharactersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to characters_url }
       format.json { head :ok }
+    end
+  end
+
+  def gmview    
+    @characters = Character.all
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @characters }
     end
   end
 

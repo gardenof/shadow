@@ -1,0 +1,29 @@
+
+
+<% @characters.each do |character| %>
+<div width="100%" style="vertical-align: top">
+<table width="20%" style="float: left">
+  <td> <b><%= character.name %><b> </td>
+
+  <tr> <% legality_color = color_for_legality(character.check_legality_status) %> </tr>
+
+  <td style="background-color: <%= legality_color %>; color: black;"></td> 
+
+  <tr><th>Equipped</th></tr>
+  <% character.game_assets.each do |c| %>
+  <tr> <td><%= c.name %></td> </tr>
+  <% end %>
+  <tr><th>Perception</th></tr>
+  <tr><td><%= character.perception %></td></tr>
+  <tr><th>Surprise</th></tr>
+  <tr><td><%= character.surprise %>  </td></tr>
+  <% end %>  
+
+</table>
+</div>
+
+
+
+<div id="menu">
+  <%= link_to 'Back', characters_path %>
+</div>

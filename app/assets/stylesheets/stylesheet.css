@@ -165,6 +165,7 @@ table{
 /* Menu */
 
 #menu {
+  clear: both;
   width: auto;
   height: 58px;
   margin: 0px auto;

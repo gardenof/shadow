@@ -29,7 +29,16 @@
       <%= f.number_field :amount, :minlength => 15, %>
     <% end %>
 
+<script language=javascript>
+  function output()
+  {
+  alert("testing Text events");
+  }
+</script> 
+<input type=text onBlur="output(5+5)">
+
   </div>
+
   <div class="field">
     <%= f.label :legality %> <br />
     Public <%= f.radio_button(:legality, "Public") %> <br>

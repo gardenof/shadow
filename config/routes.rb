@@ -4,6 +4,8 @@ Shadow::Application.routes.draw do
   resources :game_expenses
   resources :characters
   resources :game_assets
+  match 'gmview' => 'characters#gmview'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
