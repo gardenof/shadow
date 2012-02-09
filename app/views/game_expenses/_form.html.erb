@@ -15,6 +15,10 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+    <div class="field">
+    <%= f.label :pay_cycle, "*Yearly Pay Cycle" %>
+    <%= f.check_box(:pay_cycle, {}, checked_value = "1", unchecked_value = "0") %>
+  </div>
   <div class="field">
     <%= f.label :price %><br />
     <%= f.number_field :price %>
@@ -26,9 +30,11 @@
    
       <%= f.number_field :character_id, :type =>"hidden" %> 
     <% end %>
+
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit %><br/><br/>
+    * default pay cycle is monthly
   </div></center>
 <% end %>

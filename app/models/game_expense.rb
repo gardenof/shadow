@@ -5,7 +5,12 @@ class GameExpense < ActiveRecord::Base
 		total = 0
      one = GameExpense.all
 		one.each do |a|
-			  total = a.price + total
+			if a.pay_cycle == true
+				monthly = a.price/12
+				total = monthly + total
+			else
+		 	 total = a.price + total
+			end
 		end
 	total
 	end

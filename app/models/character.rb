@@ -35,7 +35,12 @@ class Character < ActiveRecord::Base
 	def sum_e
 		total = 0
 		game_expenses.each do |a|
-			  total = a.price + total
+			if a.pay_cycle == true
+				monthly = a.price/12
+				total = monthly + total
+			else
+		 	 total = a.price + total
+			end
 		end
 	total
 	end	

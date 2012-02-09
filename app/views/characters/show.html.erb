@@ -97,13 +97,42 @@
 		<tbody>
 			<tr>
 				<th>Name</th>
-				<th>Price</th>
+				<th>
+					<center>
+						<table class="table2">
+							<tr>
+								<th width="100">Yearly </th>
+								<th width="100" >Monthly</th>
+							</tr>
+						</table>
+					<center>
+				</th>
 				<th>Buttons</th>
 			</tr>
 			<tr>
 				<% @character.game_expenses.each do |c| %>
 				<td width="20%"><%= c.name %></td>
-				<td><%= number_to_currency(c.price, options = {:unit => "¥"}) %></td>
+
+
+			<td>
+			<right>
+			<center>
+				<table class="table2">
+				<tr>
+				<% if c.pay_cycle == true %>
+					<td width="100" ><%= number_to_currency(c.price, options = {:unit => "¥"}) %></td>
+				
+					<td width="100"><%= number_to_currency(c.price/12, options = {:unit => "¥"}) %></td>
+					<% else %>
+					<td width="100" ></td>
+				
+					<td width="100"><%= number_to_currency(c.price, options = {:unit => "¥"}) %></td>
+					<% end %>
+				</tr>
+				</table>
+				</td>
+
+
 				<td><%= link_to 'Edit', edit_game_expense_path(c.id) %>
 						<%= link_to 'Destroy', game_expense_path(c.id), confirm: 'Are you sure?', method: :delete %>
 				</td>
@@ -111,8 +140,18 @@
 				<% end %>
 						<tr>
 			<th width="20%">Total:</th>
-			<td> <b> <%= number_to_currency(@total_e, options = {:unit => "¥"}) %> </b> </td>
-			<td> </td>
+
+			<td>
+			<right>
+			<center>
+				<table class="table2">
+				<tr>
+					<td width="100" ></td>
+					<td width="100"><%= number_to_currency(@total_e, options = {:unit => "¥"}) %></td>
+				</tr>
+				</table>
+				</td>
+
 			</tr>
 		</tbody>
 	</table>

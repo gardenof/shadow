@@ -2,7 +2,7 @@
 <% @characters.each do |character| %>
 <div tyle="vertical-align: top">
 <table width="20%" style="float: left">
-  <td> <b><%= character.name %><b> </td>
+  <td> <b><%= character.name %> P<%= character.perception %> S<%= character.surprise %> <b> </td>
 
   <tr> <% legality_color = color_for_legality(character.check_legality_status) %> </tr>
 
@@ -12,10 +12,7 @@
   <% character.game_assets.each do |c| %>
   <tr> <td><%= c.name %></td> </tr>
   <% end %>
-  <tr><th>Perception</th></tr>
-  <tr><td><%= character.perception %></td></tr>
-  <tr><th>Surprise</th></tr>
-  <tr><td><%= character.surprise %>  </td></tr>
+  
   <% end %>  
 
 </table>
