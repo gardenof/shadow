@@ -2,7 +2,7 @@
 <% @characters.each do |character| %>
 <div tyle="vertical-align: top">
 <table width="20%" style="float: left">
-  <td> <b><%= character.name %> P<%= character.perception %> S<%= character.surprise %> <b> </td>
+  <td> <b><%= character.name %> <FONT COLOR="#000000">P</FONT><%= character.perception %> <FONT COLOR="#000000">S</FONT><%= character.surprise %> <b> </td>
 
   <tr> <% legality_color = color_for_legality(character.check_legality_status) %> </tr>
 
