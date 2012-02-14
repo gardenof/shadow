@@ -10,7 +10,14 @@
 
   <tr><th>Equipped</th></tr>
   <% character.game_assets.each do |c| %>
-  <tr> <td><%= c.name %></td> </tr>
+  <tr>  </tr>
+        <% if c.legality == "Public" %>
+          <td style="background-color: #00C90D; color:#000000"><%= c.name %></td>
+      <% elsif c.legality == "Forbidden" %>
+          <td style="background-color: #FF0700; color:#000000"><%= c.name %></td>
+      <% else %>
+          <td style="background-color: #FFD500; color:#000000"><%= c.name %></td>
+      <% end %>
   <% end %>
   
   <% end %>  
