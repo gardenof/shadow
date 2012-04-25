@@ -6,6 +6,7 @@ require File.expand_path('../config/application', __FILE__)
 
 Shadow::Application.load_tasks
 
+Rake::Task[:default].clear
 Rake::Task[:spec].clear
 
 if Rails.env.test? || Rails.env.development?
@@ -14,3 +15,5 @@ if Rails.env.test? || Rails.env.development?
      t.rspec_opts = "--color"
   end
 end
+
+task :default => :spec
