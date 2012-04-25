@@ -1,0 +1,74 @@
+%p{id:'notice'}
+  = notice
+
+.character
+  %h2= @character.name
+  %p Perception: #{@character.perception}
+  %p Surprise: #{@character.surprise}
+
+  %table.assets
+    %thead
+      %tr
+        %td{colspan: 6} #{@character.name}'s Assets
+
+      %tr
+        %th Name
+        %th Legality
+        %th Equipped
+        %th Qty
+        %th Street Value
+        %th Value
+        %th Buttons
+    %tbody
+      - @character.game_assets.each do |c|
+        %tr
+          %td= c.name
+          %td.legality{class: c.legality.downcase}= c.legality
+          %td
+            - if c.equipped
+              =image_tag 'check1.png'
+          %td= c.amount
+          %td= number_to_currency(c.price-(c.price*0.2), {:unit => '¥'})
+          %td= number_to_currency((c.amount * c.price), {unit: '¥'})
+          %td
+            = link_to 'Edit', edit_game_asset_path(c)
+            = link_to 'Destroy', game_asset_path(c), confirm: 'Are you sure?', method: :delete
+
+        %tr
+          %td{colspan:5} Total:
+          %td= number_to_currency(@total_a, options = {:unit => "¥"})
+          %td= link_to 'Add Asset', new_game_asset_path(:character_id => @character.id)
+
+
+  %table.assets
+    %thead
+      %tr
+        %td{colspan: 5} #{@character.name}'s Expenses
+      %tr
+        %th Name
+        %th Annual
+        %th Monthly
+        %th Buttons
+
+    %tbody
+      - @character.game_expenses.each do |c|
+        %tr
+          %td= c.name
+          - if c.pay_cycle
+            %td= number_to_currency(c.price, unit: '¥')
+            %td= number_to_currency(c.price/12.0, unit: '¥')
+          -else
+            %td
+            %td= number_to_currency(c.price, unit: '¥')
+          %td
+            = link_to 'Edit', edit_game_expense_path(c)
+            = link_to 'Destroy', game_expense_path(c), confirm: 'Are you sure?', method: :delete
+
+        %tr
+          %td{colspan:2} Total Monthly:
+          %td= number_to_currency(@total_e, options = {:unit => "¥"})
+          %td= link_to 'Add Expense', new_game_expense_path(:character_id => @character.id)
+
+#menu
+  = link_to 'Back', characters_path
+

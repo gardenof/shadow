@@ -1,3 +1,25 @@
 // Place all the styles related to the Characters controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.character {
+  color: white;
+  padding: 0 10px 0 40px;
+}
+
+.legality {
+  color: black;
+  background-color: #00C90D;
+}
+
+.legality .forbidden{
+  background-color: #FF0700;
+}
+.legality .restricted{
+  background-color: #FFD500;
+}
+
+table.assets {
+  margin: 10px 0 10px 0;
+  width: 95%;
+}
