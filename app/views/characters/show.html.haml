@@ -17,9 +17,9 @@
         %td{colspan: 6} #{@character.name}'s Assets
 
       %tr
+        %th.status Status
         %th Name
         %th Legality
-        %th Equipped
         %th Qty
         %th Street Value
         %th Value
@@ -27,11 +27,11 @@
     %tbody
       - @character.game_assets.each do |c|
         %tr
+          %td.status
+            - if c.equipped
+              =image_tag 'check2.png', alt: 'Equipped'
           %td= c.name
           %td.legality{class: c.legality.downcase}= c.legality
-          %td
-            - if c.equipped
-              =image_tag 'check2.png'
           %td= c.amount
           %td.currency= to_yen (c.price-(c.price*0.2))
           %td.currency= to_yen (c.amount * c.price)
