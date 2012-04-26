@@ -9,6 +9,10 @@
     </tr>
   </thead>
   </table>
+
+  <%= render partial: 'shared/menu' %>
+
+
   <table  width="100%">
   <thead>
   <tr>
@@ -26,35 +30,34 @@
   <tr>
     <% @characters.each do |character| %>
       <td width="20%"><%= character.name %></td>
-      <td > <%= number_to_currency(character.sum_a, options = {:unit => "¥"})  %>  </td>
-      <td > <%= number_to_currency(character.sum_e, options = {:unit => "¥"}) %>  </td>
+      <td > <%= to_yen(character.sum_a)  %>  </td>
+      <td > <%= to_yen(character.sum_e) %>  </td>
 
       <% legality_color = color_for_legality(character.check_legality_status) %>
-      <td style="background-color: <%= legality_color %>; color: black;"><%= character.check_legality_status %></td> 
+      <td style="background-color: <%= legality_color %>; color: black;"><%= character.check_legality_status %></td>
 
-      <td>  
+      <td>
       <%= link_to 'Show', character %>
       <%= link_to 'Edit', edit_character_path(character) %>
-      <%= link_to 'Destroy', character, confirm: 'Are you sure?', method: :delete %> 
+      <%= link_to 'Destroy', character, confirm: 'Are you sure?', method: :delete %>
   </tr>
     <% end %>
 </tbody>
   <tbody>
     <tr>
       <th colspan="1">Total:</th>
-      <td > <b> <%=number_to_currency(GameAsset.total, options = {:unit => "¥"})%> </b></td>
-      <td > <b> <%=number_to_currency(GameExpense.total, options = {:unit => "¥"}) %> </b></td>
+      <td > <b> <%=to_yen(GameAsset.total)%> </b></td>
+      <td > <b> <%=to_yen(GameExpense.total) %> </b></td>
       <td></td>
       <td></td>
-    </tr> 
+    </tr>
   </tbody>
 </table>
 
 
 <div id="menu">
-  <ul>  
+  <ul>
     <li><%= link_to 'Add New Character', new_character_path %></li>
-     <li>  <%= link_to 'GM View', 'gmview' %></li>
   </ul>
 </div>
 

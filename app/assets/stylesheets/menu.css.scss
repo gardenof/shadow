@@ -1,0 +1,45 @@
+.menu {
+  margin: auto;
+  margin-bottom: 20px;
+  background-color: #333;
+}
+
+.menu ul {
+  list-style-type: none;
+  height: 45px;
+  width: 90%;
+  margin: auto;
+}
+
+.menu li {
+  float: left;
+}
+
+.menu ul a {
+  background-color: #666;
+  background-position: right;
+  padding-right: 32px;
+  padding-left: 32px;
+  display: block;
+  line-height: 45px;
+  text-decoration: none;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 21px;
+  color: white;
+}
+.menu ul a.hover {
+  background-color: #999;
+}
+
+.menu p {
+  background-color: none;
+  background-position: right;
+  padding-right: 32px;
+  padding-left: 32px;
+  display: block;
+  line-height: 45px;
+  text-decoration: none;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 21px;
+  color: #ccc;
+}

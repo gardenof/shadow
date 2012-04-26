@@ -1,11 +1,13 @@
 = stylesheet_link_tag "stylesheet.css"
 = stylesheet_link_tag "characters.css.scss"
 
+= render partial: 'shared/menu'
+
 %p{id:'notice'}
   = notice
 
 .character
-  %h2= @character.name
+  %h2 #{@character.name} [#{link_to "edit", edit_character_path(@character)}]
   %p Perception: #{@character.perception}
   %p Surprise: #{@character.surprise}
 
@@ -71,7 +73,3 @@
         %td{colspan:2} Total Monthly:
         %td.currency= to_yen @total_e
         %td= link_to 'Add Expense', new_game_expense_path(:character_id => @character.id)
-
-#menu
-  = link_to 'Back', characters_path
-
