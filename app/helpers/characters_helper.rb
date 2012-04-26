@@ -1,3 +1,4 @@
+# encoding: utf-8
 module CharactersHelper
 
 	def color_for_legality(legality_status)
@@ -7,5 +8,12 @@ module CharactersHelper
 			else "#00C90D"
 		end
 	end
+
+  def to_yen(number)
+    number_to_currency(number, {
+      unit: '¥',
+      precision: 0
+    })
+  end
 
 end

@@ -26,17 +26,17 @@
           %td.legality{class: c.legality.downcase}= c.legality
           %td
             - if c.equipped
-              =image_tag 'check1.png'
+              =image_tag 'check2.png'
           %td= c.amount
-          %td.currency= number_to_currency(c.price-(c.price*0.2), {:unit => '¥'})
-          %td.currency= number_to_currency((c.amount * c.price), {unit: '¥'})
+          %td.currency= to_yen (c.price-(c.price*0.2))
+          %td.currency= to_yen (c.amount * c.price)
           %td
             = link_to 'Edit', edit_game_asset_path(c)
             = link_to 'Destroy', game_asset_path(c), confirm: 'Are you sure?', method: :delete
 
         %tr
           %td{colspan:5} Total:
-          %td.currency= number_to_currency(@total_a, options = {:unit => "¥"})
+          %td.currency= to_yen @total_a
           %td= link_to 'Add Asset', new_game_asset_path(:character_id => @character.id)
 
 
@@ -55,18 +55,18 @@
         %tr
           %td= c.name
           - if c.pay_cycle
-            %td= number_to_currency(c.price, unit: '¥')
-            %td= number_to_currency(c.price/12.0, unit: '¥')
+            %td.currency= to_yen c.price
+            %td.currency= to_yen c.price/12.0
           -else
             %td
-            %td= number_to_currency(c.price, unit: '¥')
+            %td.currency= to_yen c.price
           %td
             = link_to 'Edit', edit_game_expense_path(c)
             = link_to 'Destroy', game_expense_path(c), confirm: 'Are you sure?', method: :delete
 
         %tr
           %td{colspan:2} Total Monthly:
-          %td= number_to_currency(@total_e, options = {:unit => "¥"})
+          %td.currency= to_yen @total_e
           %td= link_to 'Add Expense', new_game_expense_path(:character_id => @character.id)
 
 #menu
