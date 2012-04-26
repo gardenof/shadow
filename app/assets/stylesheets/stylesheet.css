@@ -19,8 +19,8 @@ table.table1{
     padding:15px;
     color:#fff;
     text-shadow:1px 1px 1px #444;
-    border:1px solid ##99bbbb;
-    border-bottom:3px solid ##99bbbb;
+    border:1px solid #99bbbb;
+    border-bottom:3px solid #99bbbb;
     background:  url(/images/header-bg.png);
      background: -webkit-gradient(
       linear,
@@ -91,8 +91,8 @@ table{
     padding:10px;
     color:#fff;
     text-shadow:1px 1px 1px #115588;
-    border:1px solid ##99bbbb;
-    border-bottom:3px solid ##99bbbb;
+    border:1px solid #99bbbb;
+    border-bottom:3px solid #99bbbb;
     background:  url(/images/header-bg.png);
     -webkit-border-top-left-radius:5px;
     -webkit-border-top-right-radius:5px;
