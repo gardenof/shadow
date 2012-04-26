@@ -37,10 +37,10 @@
             = link_to 'Edit', edit_game_asset_path(c)
             = link_to 'Destroy', game_asset_path(c), confirm: 'Are you sure?', method: :delete
 
-        %tr
-          %td{colspan:5} Total:
-          %td.currency= to_yen @total_a
-          %td= link_to 'Add Asset', new_game_asset_path(:character_id => @character.id)
+      %tr
+        %td{colspan:5} Total:
+        %td.currency= to_yen @total_a
+        %td= link_to 'Add Asset', new_game_asset_path(:character_id => @character.id)
 
 
   %table.assets
@@ -67,10 +67,10 @@
             = link_to 'Edit', edit_game_expense_path(c)
             = link_to 'Destroy', game_expense_path(c), confirm: 'Are you sure?', method: :delete
 
-        %tr
-          %td{colspan:2} Total Monthly:
-          %td.currency= to_yen @total_e
-          %td= link_to 'Add Expense', new_game_expense_path(:character_id => @character.id)
+      %tr
+        %td{colspan:2} Total Monthly:
+        %td.currency= to_yen @total_e
+        %td= link_to 'Add Expense', new_game_expense_path(:character_id => @character.id)
 
 #menu
   = link_to 'Back', characters_path
