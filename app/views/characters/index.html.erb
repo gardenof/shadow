@@ -29,7 +29,7 @@
 
   <tr>
     <% @characters.each do |character| %>
-      <td width="20%"><%= character.name %></td>
+      <td width="20%"><%= link_to character.name, character_path(character) %></td>
       <td > <%= to_yen(character.sum_a)  %>  </td>
       <td > <%= to_yen(character.sum_e) %>  </td>
 
@@ -37,7 +37,6 @@
       <td style="background-color: <%= legality_color %>; color: black;"><%= character.check_legality_status %></td>
 
       <td>
-      <%= link_to 'Show', character %>
       <%= link_to 'Edit', edit_character_path(character) %>
       <%= link_to 'Destroy', character, confirm: 'Are you sure?', method: :delete %>
   </tr>
