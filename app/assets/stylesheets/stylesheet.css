@@ -12,10 +12,10 @@ body {
 
 /* Table 1 Style */
 table.table1{
-  
+
 }
 .table1 thead th{
-    background:  url(/images/header-bg.png) repeat-x; 
+    background:  url(/images/header-bg.png) repeat-x;
 
 }
 .table1 tbody th{
@@ -30,12 +30,12 @@ table.table1{
       left top,
       left bottom,
       color-stop(0%,rgba(17,85,136,1)),
-      color-stop(100%,rgba(34,68,85,1))); 
+      color-stop(100%,rgba(34,68,85,1)));
       /* Chrome,Safari4+ */
       background: -webkit-linear-gradient(
-      top, 
+      top,
       rgba(17,85,136,1) 0%,
-      rgba(34,68,85,1) 100%); 
+      rgba(34,68,85,1) 100%);
       /* Chrome10+,Safari5.1+ */
       background: -o-linear-gradient(
       top,
@@ -66,7 +66,7 @@ table.table2{
     border:0px solid #ccddee;
     border-right:0px solid #ccddee;
     padding:0px 10px;
-    
+
 }
 .table2 tbody td{
     padding:5px;
@@ -119,12 +119,12 @@ table{
       left top,
       left bottom,
       color-stop(0%,rgba(17,85,136,1)),
-      color-stop(100%,rgba(34,68,85,1))); 
+      color-stop(100%,rgba(34,68,85,1)));
       /* Chrome,Safari4+ */
       background: -webkit-linear-gradient(
-      top, 
+      top,
       rgba(17,85,136,1) 0%,
-      rgba(34,68,85,1) 100%); 
+      rgba(34,68,85,1) 100%);
       /* Chrome10+,Safari5.1+ */
       background: -o-linear-gradient(
       top,
@@ -163,14 +163,12 @@ table{
 
 
 /* Menu */
-
 #menu {
-  clear: both;
-  width: auto;
-  height: 58px;
+  width: 940px;
+  height: 76px;
   margin: 0px auto;
-  padding: 5px 5px 0px 5px;
-  background: #D5DEEF url(/images/header-bg-inverted.png) repeat-x;
+  padding: 20px 20px 0px 20px;
+  background: #D5DEEF url(../images/img02.jpg) no-repeat left top;
 }
 
 #menu ul {
@@ -199,6 +197,11 @@ table{
   font-weight: normal;
   color: #B5B5B5;
   border: none;
+}
+
+#menu .current_page_item a {
+  background: url(../images/img03.jpg) repeat-x left top;
+  color: #FFFFFF;
 }
 
 #menu a:hover {

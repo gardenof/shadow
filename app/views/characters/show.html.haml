@@ -28,15 +28,15 @@
             - if c.equipped
               =image_tag 'check1.png'
           %td= c.amount
-          %td= number_to_currency(c.price-(c.price*0.2), {:unit => '¥'})
-          %td= number_to_currency((c.amount * c.price), {unit: '¥'})
+          %td.currency= number_to_currency(c.price-(c.price*0.2), {:unit => '¥'})
+          %td.currency= number_to_currency((c.amount * c.price), {unit: '¥'})
           %td
             = link_to 'Edit', edit_game_asset_path(c)
             = link_to 'Destroy', game_asset_path(c), confirm: 'Are you sure?', method: :delete
 
         %tr
           %td{colspan:5} Total:
-          %td= number_to_currency(@total_a, options = {:unit => "¥"})
+          %td.currency= number_to_currency(@total_a, options = {:unit => "¥"})
           %td= link_to 'Add Asset', new_game_asset_path(:character_id => @character.id)
 
 
