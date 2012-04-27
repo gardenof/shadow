@@ -1,0 +1,18 @@
+%h1 #{@character.name} expenses
+
+%table
+  %tr
+    %th Name
+    %th Monthly?
+    %th
+  - @game_expenses.each do |expn|
+    %tr
+      %td= expn.name
+      %td= expn.price
+      %td
+        = link_to 'Show', character_game_expense_path(@character, expn)
+        = link_to 'Edit', edit_character_game_expense_path(@character, expn)
+        = link_to 'Destroy',
+        character_game_expense_path(@character, expn), confirm: 'Are you sure?', method: :delete
+
+= link_to 'New Game expense', new_character_game_expense_path

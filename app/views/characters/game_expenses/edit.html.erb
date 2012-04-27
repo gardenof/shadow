@@ -1,0 +1,4 @@
+%h2 Editing Expense (#{@game_expense.character.name})
+
+= render partial: 'form'
+= link_to "Return to #{@game_expense.character.name}", character_path(@character)

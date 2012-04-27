@@ -1,12 +1,6 @@
-
-
-
-
-
-Factory.define :characters do |user|
-	user.id										 "1"
-  user.name                  "Michael Hartl"
-  user.perception            "mhartl@example.com"
-  user.surprise              "foobar"
+Factory.define :characters do |f|
+	f.id										 1
+  f.name                  "Michael Hartl"
+  f.perception            12
+  f.surprise              9
 end
-
