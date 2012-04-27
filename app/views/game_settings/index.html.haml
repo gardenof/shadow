@@ -3,6 +3,7 @@
     %tr
       %th Name
       %th Geography
+      %th PCs
       %th Buttons
 
   %tbody
@@ -10,6 +11,7 @@
       %tr
         %td= link_to setting.name, game_setting_path(setting)
         %td= setting.in_world_geography
+        %td= setting.characters.count
         %td
           = link_to 'Edit', edit_game_setting_path(setting)
           = link_to 'Destroy', game_setting_path(setting), confirm: 'Are you sure?', method: :delete

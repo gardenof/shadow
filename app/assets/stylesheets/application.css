@@ -46,6 +46,14 @@ a:hover {
   color: #69c;
 }
 
+input {
+  color: black;
+}
+
+label {
+  color: #345;
+}
+
 table a {
   color: black;
 }
