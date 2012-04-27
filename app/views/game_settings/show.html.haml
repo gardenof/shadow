@@ -2,5 +2,9 @@
   = notice
 
 .game-setting
-  %h2 #{@game_setting.name} [#{link_to "edit", edit_game_setting_path(@game_setting)}]
+  %h2
+    #{@game_setting.name}
+    [#{link_to "edit", edit_game_setting_path(@game_setting)}]
+    [#{link_to 'GM view', game_setting_gmview_path(@game_setting)}]
+
   %p Location: #{@game_setting.in_world_geography}
