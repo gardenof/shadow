@@ -1,0 +1,20 @@
+%table
+  %thead
+    %tr
+      %th Name
+      %th Geography
+      %th Buttons
+
+  %tbody
+    - @game_settings.each do |setting|
+      %tr
+        %td= link_to setting.name, game_setting_path(setting)
+        %td= setting.in_world_geography
+        %td
+          = link_to 'Edit', edit_game_setting_path(setting)
+          = link_to 'Destroy', game_setting_path(setting), confirm: 'Are you sure?', method: :delete
+          = link_to 'GM', game_setting_gmview_path(setting)
+
+= link_to 'Add New setting', new_game_setting_path
+
+

@@ -1,0 +1,22 @@
+= form_for(@game_setting) do |f|
+  - if @game_setting.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@game_setting.errors.count, "error")
+        prohibited this setting from being saved:
+
+      %ul
+        - @game_setting.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    %br
+    = f.text_field :name
+
+  .field
+    = f.label :in_world_geography
+    %br
+    = f.text_field :in_world_geography
+
+  = f.submit

@@ -13,4 +13,17 @@
 
 h2 {
   margin-bottom: 8px;
+  color: #99ccff;
+}
+
+.center-stage {
+  margin: 0 40px 0 40px;
+}
+
+.notices {
+  background-color: #339933;
+}
+
+p.notice {
+  color: white;
 }

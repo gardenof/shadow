@@ -1,9 +1,9 @@
 class CharactersController < ApplicationController
   # GET /characters
   # GET /characters.json
-  def index    
+  def index
     @characters = Character.all
-    
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @characters }
@@ -83,15 +83,4 @@ class CharactersController < ApplicationController
       format.json { head :ok }
     end
   end
-
-  def gmview    
-    @characters = Character.all
-    
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @characters }
-    end
-  end
-
-
 end

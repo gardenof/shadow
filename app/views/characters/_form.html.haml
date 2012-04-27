@@ -12,12 +12,15 @@
   .field
     = f.label :name
     = f.text_field :name
+
+  .field
+    = f.label :game_setting_id
+    = f.collection_select :game_setting_id, GameSetting.all, :id, :name, include_blank: true
   .field
     = f.label :perception
     = f.text_field :perception
   .field
     = f.label :surprise
     = f.text_field :surprise
-
   .actions
     = f.submit

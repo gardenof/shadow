@@ -6,6 +6,8 @@ Shadow::Application.routes.draw do
       resources :game_assets, controller: "characters/game_assets"
   end
 
-  match 'gmview' => 'characters#gmview'
+  resources :game_settings do
+    get :gmview
+  end
 
 end
