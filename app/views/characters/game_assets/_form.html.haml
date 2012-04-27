@@ -1,0 +1,48 @@
+= form_for([@character, @game_asset]) do |f|
+  - if @game_asset.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@game_asset.errors.count, "error")
+        prohibited this game_asset from being saved:
+
+      %ul
+        - @game_asset.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    %br
+    = f.text_field :name
+
+  .field
+    = f.label :price
+    %br
+    = f.number_field :price
+
+  .field
+    = f.label :amount
+    %br
+    - if @game_asset.amount.nil?
+      = f.number_field :amount, :value => "1"
+    - else
+      = f.number_field :amount, :minlength => 15
+
+  .field
+    = f.label :legality
+    %br
+    Public #{f.radio_button(:legality, "Public")}
+    %br
+    Restricted #{f.radio_button(:legality, "Restricted")}
+    %br
+    Forbidden #{f.radio_button(:legality, "Forbidden")}
+
+  .field
+    = f.label :equipped
+    %br
+    = f.check_box(:equipped, {}, checked_value = "1", unchecked_value = "0")
+
+  .field
+    = f.hidden_field :character_id, :value => @character.to_param
+
+  .actions
+    = f.submit

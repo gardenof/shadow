@@ -36,14 +36,13 @@
           %td.currency= to_yen (c.price-(c.price*0.2))
           %td.currency= to_yen (c.amount * c.price)
           %td
-            = link_to 'Edit', edit_game_asset_path(c)
-            = link_to 'Destroy', game_asset_path(c), confirm: 'Are you sure?', method: :delete
+            = link_to 'Edit', edit_character_game_asset_path(@character, c)
+            = link_to 'Destroy', character_game_asset_path(@character, c), confirm: 'Are you sure?', method: :delete
 
       %tr
         %td{colspan:5} Total:
         %td.currency= to_yen @total_a
-        %td= link_to 'Add Asset', new_game_asset_path(:character_id => @character.id)
-
+        %td= link_to 'Add Asset', new_character_game_asset_path(@character)
 
   %table.assets
     %thead
@@ -66,10 +65,10 @@
             %td
             %td.currency= to_yen c.price
           %td
-            = link_to 'Edit', edit_game_expense_path(c)
-            = link_to 'Destroy', game_expense_path(c), confirm: 'Are you sure?', method: :delete
+            = link_to 'Edit', edit_character_game_expense_path(@character, c)
+            = link_to 'Destroy', character_game_expense_path(@character, c), confirm: 'Are you sure?', method: :delete
 
       %tr
         %td{colspan:2} Total Monthly:
         %td.currency= to_yen @total_e
-        %td= link_to 'Add Expense', new_game_expense_path(:character_id => @character.id)
+        %td= link_to 'Add Expense', new_character_game_expense_path(@character)

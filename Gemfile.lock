@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/flipstone/bilge-pump.git
+  revision: 3390d04875ccc20c5bf9d90dd58ead9618adb01e
+  branch: 3390d04
+  specs:
+    bilge-pump (0.0.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -127,6 +134,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bilge-pump!
   coffee-rails (~> 3.1.1)
   factory_girl_rails (~> 1.4.0)
   haml (~> 3.0)
