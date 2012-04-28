@@ -1,3 +1,14 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+class window.GameExpense extends Backbone.Model
+  total: ->
+    if this.get("pay_cycle")
+      this.get("price") / 12
+    else
+      this.get("price")
+
+
+GameExpense.collection = new (Backbone.Collection.extend(
+  model: GameExpense
+  total: ->
+    _.foldl this.models, ((t,expense) -> t + expense.total()), 0
+  ))
+

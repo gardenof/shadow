@@ -1,0 +1,52 @@
+%table.table1{width:"100%"}
+  %thead
+    %tr
+      %th{colspan: 4}
+        %img{src: "/images/shadowrun-logo.png", alt: "shadowrun", height: 125}
+
+.menu
+  %ul
+    %li
+      %p Shadowrun Utility
+    %li= link_to("Characters", characters_path())
+    %li= link_to("Game Settings", game_settings_path())
+
+%table{width: "100%"}
+  %tbody
+    %tr
+      %th{width: "20%"} Name
+      %th Assets
+      %th Expenses
+      %th Legality
+      %th Buttons
+
+  %tbody
+    :each character in characters
+      %tr
+        %td{width:"20%"}= character.get("name")
+        %td= to_yen(character.assetTotal())
+        %td= to_yen(character.expenseTotal())
+        %td.legality{class: legalityClass(character.legalStatus())}
+          = character.legalStatus()
+        %td
+          = link_to("Show", character_path(character))
+          &nbsp;
+          = link_to("Edit", edit_character_path(character))
+          &nbsp;
+          = link_to("Destroy", character_path(character), { confirm: "Are you sure?", method: "delete" })
+
+  %tbody
+    %tr
+      %th{colspan: 1} Total:
+      %td
+        %b= to_yen(GameAsset.collection.total())
+      %td
+        %b= to_yen(GameExpense.collection.total())
+      %td
+      %td
+
+
+#menu
+  %ul
+    %li= link_to("Add New Character", new_character_path())
+
