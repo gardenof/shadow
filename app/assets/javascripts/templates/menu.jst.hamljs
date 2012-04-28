@@ -1,0 +1,6 @@
+.menu
+  %ul
+    %li
+      %p Shadowrun Utility
+    %li= window.HtmlHelpers.link_to("Characters", NamedRoutes.helpers.characters_path())
+    %li= window.HtmlHelpers.link_to("Game Settings", NamedRoutes.helpers.game_settings_path())
