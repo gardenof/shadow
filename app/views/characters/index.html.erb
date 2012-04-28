@@ -1,64 +1,9 @@
-<%= stylesheet_link_tag "stylesheet.css" %>
-<table class="table1"  width="100%">
-  <thead>
-    <tr>
-      <th colspan="4">
-        <img  src="/images/shadowrun-logo.png" alt="shadowrun" height=125 />
-
-      </th>
-    </tr>
-  </thead>
-  </table>
-
-  <%= render partial: 'shared/menu' %>
-
-
-  <table  width="100%">
-  <thead>
-  <tr>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <th width="20%"><b>Name<b></th>
-    <th><b>Assets<b></th>
-    <th><b>Expenses<b></th>
-    <th><b>Legality<b></th>
-    <th><b>Buttons<b></th>
-  </tr>
-
-  <tr>
-    <% @characters.each do |character| %>
-      <td width="20%"><%= character.name %></td>
-      <td > <%= to_yen(character.sum_a)  %>  </td>
-      <td > <%= to_yen(character.sum_e) %>  </td>
-
-      <% legality_color = color_for_legality(character.check_legality_status) %>
-      <td style="background-color: <%= legality_color %>; color: black;"><%= character.check_legality_status %></td>
-
-      <td>
-      <%= link_to 'Show', character %>
-      <%= link_to 'Edit', edit_character_path(character) %>
-      <%= link_to 'Destroy', character, confirm: 'Are you sure?', method: :delete %>
-  </tr>
-    <% end %>
-</tbody>
-  <tbody>
-    <tr>
-      <th colspan="1">Total:</th>
-      <td > <b> <%=to_yen(GameAsset.total)%> </b></td>
-      <td > <b> <%=to_yen(GameExpense.total) %> </b></td>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
-
-
-<div id="menu">
-  <ul>
-    <li><%= link_to 'Add New Character', new_character_path %></li>
-  </ul>
-</div>
-
+<%= javascript_tag do %>
+  $(function() {
+    Character.collection.reset(<%= @characters.to_json.html_safe %>);
+    GameAsset.collection.reset(<%= GameAsset.all.to_json.html_safe %>);
+    GameExpense.collection.reset(<%= GameExpense.all.to_json.html_safe %>);
+    new View.Character.Index();
+  });
+<%- end %>
 
