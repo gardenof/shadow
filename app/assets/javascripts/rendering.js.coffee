@@ -7,4 +7,5 @@ window.Rendering =
 
     JST["templates/#{view}"](_.extend(all_assigns, assigns))
 
+Rendering.helpers.renderTemplate = Rendering.renderTemplate
 window.renderTemplate = Rendering.renderTemplate
