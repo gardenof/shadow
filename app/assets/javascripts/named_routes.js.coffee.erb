@@ -20,7 +20,7 @@ class NamedRoute
       path
 
 window.NamedRoutes = {
-  <% Rails.application.routes.named_routes.routes.each do |_,route| %>
+ <% Rails.application.routes.named_routes.routes.each do |_,route| %>
  <%= route.name %>:
    new NamedRoute
      name: <%= route.name.to_json %>
