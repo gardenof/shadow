@@ -1,5 +1,3 @@
-!= renderTemplate("menu")
-
 .character
   %h2
     = character.get("name")

@@ -1,0 +1,10 @@
+%table.table1{width:"100%"}
+  %thead
+    %tr
+      %th{colspan: 4}
+        %img{src: "/images/shadowrun-logo.png", alt: "shadowrun", height: 125}
+
+!= renderTemplate("menu")
+
+.center-stage
+  != content_for.layout
