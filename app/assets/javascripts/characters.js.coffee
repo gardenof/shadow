@@ -62,7 +62,9 @@ class View.Character.Edit extends Backbone.View
     this.$el.html renderWithLayout(
       'application',
       'characters/edit',
-      character: this.model)
+      character: this.model
+      errors: this.options.errors
+    )
 
     $('body').html(this.$el)
 
@@ -71,6 +73,8 @@ class View.Character.New extends Backbone.View
     this.$el.html renderWithLayout(
       'application',
       'characters/new',
-      character: this.model)
+      character: this.model
+      errors: this.options.errors
+    )
 
     $('body').html(this.$el)

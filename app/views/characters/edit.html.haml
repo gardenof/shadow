@@ -1,7 +1,8 @@
 :javascript
   $(function() {
     var character = new Character(#{@character.to_json});
+    var errors = #{@character.errors.full_messages.to_json};
     GameSetting.collection.reset(#{GameSetting.all.to_json});
-    new View.Character.Edit({model: character}).render();
+    new View.Character.Edit({model: character, errors: errors}).render();
   });
 

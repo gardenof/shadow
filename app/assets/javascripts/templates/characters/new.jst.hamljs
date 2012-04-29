@@ -5,6 +5,6 @@
 
   %tbody
     %tr
-      %td!= renderTemplate("characters/form", { character: character })
+      %td!= renderTemplate("characters/form", { character: character, errors: errors })
 
 != link_to("Back", characters_path())
