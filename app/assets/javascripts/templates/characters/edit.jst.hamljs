@@ -1,0 +1,10 @@
+%table{width: "100%"}
+  %thead
+    %tr
+    %th{colspan:"4"} Editing character
+
+  %tbody
+    %tr
+      %td!= renderTemplate("characters/form", { character: character })
+
+!= link_to("Cancel", character_path(character))

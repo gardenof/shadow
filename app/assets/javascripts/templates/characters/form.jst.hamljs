@@ -1,0 +1,34 @@
+- var f = form_for(character, character_path(character))
+
+!= f.start_form()
+
+.field
+  != f.label("name")
+  != f.text_field("name")
+
+.field
+  != f.label("game_setting_id")
+  != f.collection_select("game_setting_id", GameSetting.collection.models, "id", "name", {include_blank: true})
+.field
+  != f.label("perception")
+  != f.text_field("perception")
+.field
+  != f.label("surprise")
+  != f.text_field("surprise")
+.field
+  != f.label("current_karma")
+  != f.text_field("current_karma")
+.field
+  != f.label("lifetime_karma")
+  != f.text_field("lifetime_karma")
+.field
+  != f.label("current_cash")
+  != f.text_field("current_cash")
+.field
+  != f.label("play_style")
+  != f.text_field("play_style")
+
+.actions
+  != f.submit()
+
+!= f.end_form()

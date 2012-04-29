@@ -56,3 +56,12 @@ class View.Character.Show extends Backbone.View
       character: this.model)
 
     $('body').html(this.$el)
+
+class View.Character.Edit extends Backbone.View
+  render: ->
+    this.$el.html renderWithLayout(
+      'application',
+      'characters/edit',
+      character: this.model)
+
+    $('body').html(this.$el)
