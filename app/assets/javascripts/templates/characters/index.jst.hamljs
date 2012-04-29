@@ -1,11 +1,3 @@
-%table.table1{width:"100%"}
-  %thead
-    %tr
-      %th{colspan: 4}
-        %img{src: "/images/shadowrun-logo.png", alt: "shadowrun", height: 125}
-
-!= JST["templates/menu"]()
-
 %table{width: "100%"}
   %tbody
     %tr
@@ -24,11 +16,11 @@
         %td.legality{class: legalityClass(character.legalStatus())}
           = character.legalStatus()
         %td
-          = link_to("Show", character_path(character))
+          != link_to("Show", character_path(character))
           &nbsp;
-          = link_to("Edit", edit_character_path(character))
+          != link_to("Edit", edit_character_path(character))
           &nbsp;
-          = link_to("Destroy", character_path(character), { confirm: "Are you sure?", method: "delete" })
+          != link_to("Destroy", character_path(character), { confirm: "Are you sure?", method: "delete" })
 
   %tbody
     %tr
@@ -43,5 +35,5 @@
 
 #menu
   %ul
-    %li= link_to("Add New Character", new_character_path())
+    %li!= link_to("Add New Character", new_character_path())
 

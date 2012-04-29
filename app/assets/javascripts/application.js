@@ -9,6 +9,7 @@
 //= require underscore
 //= require backbone
 //= require haml
+//= require hamljs_escape
 //= require accounting.min
 //= require_tree .
 

@@ -1,0 +1,68 @@
+.character
+  %h2
+    = character.get("name")
+    [
+    != link_to("edit", edit_character_path(character))
+    ]
+  %p Perception: #{character.get("perception")}
+  %p Surprise: #{character.get("surprise")}
+
+  %table.assets
+    %thead
+      %tr
+        %td{colspan: 6} #{character.get("name")}&apos;s Assets
+
+      %tr
+        %th.status Status
+        %th Name
+        %th Legality
+        %th Qty
+        %th Street Value
+        %th Value
+        %th Buttons
+    %tbody
+      :each c in character.assets()
+        %tr
+          %td.status
+            :if c.get("equipped")
+              != image_tag("check2.png", { alt: "Equipped" })
+          %td= c.get("name")
+          %td.legality{class: legalityClass(c.get("legality"))}= c.get("legality")
+          %td= c.get("amount")
+          %td.currency= to_yen(c.streetValue())
+          %td.currency= to_yen(c.total())
+          %td
+            != link_to("Edit", edit_character_game_asset_path(character, c))
+            &nbsp;
+            != link_to("Destroy", character_game_asset_path(character, c), { confirm: "Are you sure?", method: "delete" })
+
+      %tr
+        %td{colspan:5} Total:
+        %td.currency= to_yen(character.assetTotal())
+        %td!= link_to("Add Asset", new_character_game_asset_path(character))
+
+  %table.assets
+    %thead
+      %tr
+        %td{colspan: 5} #{character.get("name")}&apos;s Expenses
+      %tr
+        %th Name
+        %th Annual
+        %th Monthly
+        %th Buttons
+
+    %tbody
+      :each c in character.expenses()
+        %tr
+          %td= c.get("name")
+          %td.currency= to_yen(c.annualTotal())
+          %td.currency= to_yen(c.total())
+          %td
+            != link_to("Edit", edit_character_game_expense_path(character, c))
+            &nbsp;
+            != link_to("Destroy", character_game_expense_path(character, c), { confirm: "Are you sure?", method: "delete" })
+
+      %tr
+        %td{colspan:2} Total Monthly:
+        %td.currency= to_yen(character.expenseTotal())
+        %td!= link_to("Add Expense", new_character_game_expense_path(character))

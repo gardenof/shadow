@@ -1,7 +1,7 @@
 (function() {
 
   describe("GameAsset", function() {
-    return describe("total", function() {
+    describe("total", function() {
       it("is product of price and amount", function() {
         var asset;
         asset = new GameAsset({
@@ -20,6 +20,16 @@
           price: 2
         });
         return expect(asset.total()).toBe(void 0);
+      });
+    });
+    return describe("streetValue", function() {
+      return it("is 80% of total", function() {
+        var asset;
+        asset = new GameAsset({
+          price: 2,
+          amount: 5
+        });
+        return expect(asset.streetValue()).toBe(8);
       });
     });
   });

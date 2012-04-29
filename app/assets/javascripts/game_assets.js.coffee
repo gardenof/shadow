@@ -10,6 +10,9 @@ class window.GameAsset extends Backbone.Model
     if price && amount
       price * amount
 
+  streetValue: ->
+    this.total() * 0.8
+
 GameAsset.collection = new (Backbone.Collection.extend(
   model: GameAsset
   total: ->

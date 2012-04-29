@@ -5,6 +5,9 @@ class window.GameExpense extends Backbone.Model
     else
       this.get("price")
 
+  annualTotal: ->
+    this.total() * 12
+
 
 GameExpense.collection = new (Backbone.Collection.extend(
   model: GameExpense
