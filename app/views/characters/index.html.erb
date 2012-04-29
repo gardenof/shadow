@@ -1,8 +1,0 @@
-<%= javascript_tag do %>
-  $(function() {
-    Character.collection.reset(<%= @characters.to_json.html_safe %>);
-    GameAsset.collection.reset(<%= GameAsset.all.to_json.html_safe %>);
-    GameExpense.collection.reset(<%= GameExpense.all.to_json.html_safe %>);
-    new View.Character.Index().render();
-  });
-<%- end %>

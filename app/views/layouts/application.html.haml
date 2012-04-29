@@ -11,5 +11,13 @@
   %body
     = render partial: 'shared/menu'
 
+    :javascript
+      $(function() {
+        Character.collection.reset(#{Character.all.to_json});
+        GameAsset.collection.reset(#{GameAsset.all.to_json});
+        GameExpense.collection.reset(#{GameExpense.all.to_json});
+        GameSetting.collection.reset(#{GameSetting.all.to_json});
+      });
+
     .center-stage
       = yield

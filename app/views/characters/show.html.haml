@@ -1,8 +1,6 @@
 :javascript
   $(function() {
-    var character = new Character(#{@character.to_json});
-    GameAsset.collection.reset(#{@character.game_assets.to_json});
-    GameExpense.collection.reset(#{@character.game_expenses.to_json});
+    var character = Character.collection.get(#{@character.id.to_json});
     new View.Character.Show({model: character}).render();
   });
 
