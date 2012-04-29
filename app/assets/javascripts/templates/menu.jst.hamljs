@@ -2,5 +2,5 @@
   %ul
     %li
       %p Shadowrun Utility
-    %li= link_to("Characters", characters_path())
-    %li= link_to("Game Settings", game_settings_path())
+    %li!= link_to("Characters", characters_path())
+    %li!= link_to("Game Settings", game_settings_path())
