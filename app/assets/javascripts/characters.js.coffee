@@ -39,12 +39,42 @@ Character.collection = new (Backbone.Collection.extend(
 View.Character = {}
 
 class View.Character.Index extends Backbone.View
-  initialize: ->
-    this.render()
-
   render: ->
-    this.$el.html renderTemplate('characters/index',
-                                 characters: Character.collection.models)
+    this.$el.html renderWithLayout(
+      'application',
+      'characters/index',
+      characters: Character.collection.models)
+
     $('body').html(this.$el)
 
 
+class View.Character.Show extends Backbone.View
+  render: ->
+    this.$el.html renderWithLayout(
+      'application',
+      'characters/show',
+      character: this.model)
+
+    $('body').html(this.$el)
+
+class View.Character.Edit extends Backbone.View
+  render: ->
+    this.$el.html renderWithLayout(
+      'application',
+      'characters/edit',
+      character: this.model
+      errors: this.options.errors
+    )
+
+    $('body').html(this.$el)
+
+class View.Character.New extends Backbone.View
+  render: ->
+    this.$el.html renderWithLayout(
+      'application',
+      'characters/new',
+      character: this.model
+      errors: this.options.errors
+    )
+
+    $('body').html(this.$el)

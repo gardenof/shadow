@@ -8,4 +8,7 @@ describe "GameExpense", ->
       expense = new GameExpense price: 36, pay_cycle: true
       expect(expense.total()).toBe 3
 
-
+  describe "annualTotal", ->
+    it "is total * 12", ->
+      expense = new GameExpense price: 3
+      expect(expense.annualTotal()).toBe 36

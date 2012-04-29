@@ -1,7 +1,7 @@
 (function() {
 
   describe("GameExpense", function() {
-    return describe("total", function() {
+    describe("total", function() {
       it("is price", function() {
         var expense;
         expense = new GameExpense({
@@ -16,6 +16,15 @@
           pay_cycle: true
         });
         return expect(expense.total()).toBe(3);
+      });
+    });
+    return describe("annualTotal", function() {
+      return it("is total * 12", function() {
+        var expense;
+        expense = new GameExpense({
+          price: 3
+        });
+        return expect(expense.annualTotal()).toBe(36);
       });
     });
   });
