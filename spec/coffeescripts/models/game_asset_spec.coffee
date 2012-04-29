@@ -11,3 +11,7 @@ describe "GameAsset", ->
       asset = new GameAsset price: 2
       expect(asset.total()).toBe undefined
 
+  describe "streetValue", ->
+    it "is 80% of total", ->
+      asset = new GameAsset price: 2, amount: 5
+      expect(asset.streetValue()).toBe 8

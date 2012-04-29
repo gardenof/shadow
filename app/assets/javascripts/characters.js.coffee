@@ -39,12 +39,14 @@ Character.collection = new (Backbone.Collection.extend(
 View.Character = {}
 
 class View.Character.Index extends Backbone.View
-  initialize: ->
-    this.render()
-
   render: ->
     this.$el.html renderTemplate('characters/index',
                                  characters: Character.collection.models)
     $('body').html(this.$el)
 
 
+class View.Character.Show extends Backbone.View
+  render: ->
+    this.$el.html renderTemplate('characters/show',
+                                 character: this.model)
+    $('body').html(this.$el)
