@@ -46,12 +46,29 @@ class FormBuilder
     this.object = object
     this.url = url
 
+  form_action: ->
+    if this.url
+      return this.url
+
+    route_base = this.object.constructor.name.toUnderscore()
+
+    if this.object.id
+      NamedRoutes.helpers[route_base + '_path'](this.object)
+    else
+      NamedRoutes.helpers[route_base + 's_path']()
+
+  fake_method: ->
+    if this.object.id
+      'PUT'
+    else
+      'POST'
+
   label: (attribute) ->
     this.content_tag('label', attribute.humanize()) + ' '
 
   start_form: ->
-    this.open_tag('form', action: this.url, method: 'POST') +
-    this.content_tag('input', '', { type: 'hidden', name: '_method', value: 'put'})
+    this.open_tag('form', action: this.form_action(), method: 'POST') +
+    this.content_tag('input', '', { type: 'hidden', name: '_method', value: this.fake_method()})
 
   end_form: ->
     HtmlHelpers.close_tag 'form'

@@ -1,0 +1,7 @@
+:javascript
+  $(function() {
+    var character = new Character(#{@character.to_json});
+    GameSetting.collection.reset(#{GameSetting.all.to_json});
+    new View.Character.New({model: character}).render();
+  });
+

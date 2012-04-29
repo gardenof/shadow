@@ -1,0 +1,10 @@
+%table{width: "100%"}
+  %thead
+    %tr
+    %th{colspan:"4"} New character
+
+  %tbody
+    %tr
+      %td!= renderTemplate("characters/form", { character: character })
+
+!= link_to("Back", characters_path())

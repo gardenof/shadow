@@ -1,4 +1,4 @@
-- var f = form_for(character, character_path(character))
+- var f = form_for(character)
 
 != f.start_form()
 
