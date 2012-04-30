@@ -109,7 +109,7 @@ class FormBuilder
     "#{this.object_name()}[#{attribute}]"
 
   object_name: ->
-    this.object.constructor.name.toUnderscore()
+    this.object.model_name
 
   submit: (text) ->
     this.content_tag(
