@@ -10,7 +10,7 @@
   %tbody
     :each character in characters
       %tr
-        %td{width:"20%"}= character.get("name")
+        %td{width:"20%"}!= link_to(character.get("name"), character_path(character))
         %td= to_yen(character.assetTotal())
         %td= to_yen(character.expenseTotal())
         %td.legality{class: legalityClass(character.legalStatus())}
