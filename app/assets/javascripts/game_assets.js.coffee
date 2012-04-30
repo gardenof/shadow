@@ -1,6 +1,13 @@
 #= require named_routes
 #
 class window.GameAsset extends Backbone.Model
+  collection: new (Backbone.Collection.extend(
+    url: NamedRoutes.helpers.game_assets_path
+    model: GameAsset
+    total: ->
+      _.foldl this.models, ((t,asset) -> t + asset.total()), 0
+    ))
+
   total: ->
     price = this.get "price"
     amount = this.get "amount"
@@ -11,10 +18,5 @@ class window.GameAsset extends Backbone.Model
   streetValue: ->
     this.total() * 0.8
 
-GameAsset.collection = new (Backbone.Collection.extend(
-  url: NamedRoutes.helpers.game_assets_path
-  model: GameAsset
-  total: ->
-    _.foldl this.models, ((t,asset) -> t + asset.total()), 0
-  ))
+GameAsset.collection = GameAsset::collection
 

@@ -2,6 +2,11 @@
 #=require named_routes
 
 class window.Character extends Backbone.Model
+  collection: new (Backbone.Collection.extend(
+    model: Character
+    url: NamedRoutes.helpers.characters_path
+    ))
+
   assets: ->
     GameAsset.collection.where character_id: this.id
 
@@ -34,11 +39,7 @@ class window.Character extends Backbone.Model
 
              "Public"
 
-Character.collection = new (Backbone.Collection.extend(
-  model: Character
-  url: NamedRoutes.helpers.characters_path
-  ))
-
+Character.collection = Character::collection
 View.Character = {}
 
 class View.Character.Index extends Backbone.View
