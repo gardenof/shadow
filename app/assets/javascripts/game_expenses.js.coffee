@@ -1,3 +1,5 @@
+#= required named_routes
+#
 class window.GameExpense extends Backbone.Model
   total: ->
     if this.get("pay_cycle")
@@ -10,6 +12,7 @@ class window.GameExpense extends Backbone.Model
 
 
 GameExpense.collection = new (Backbone.Collection.extend(
+  url: NamedRoutes.helpers.game_expenses_path
   model: GameExpense
   total: ->
     _.foldl this.models, ((t,expense) -> t + expense.total()), 0

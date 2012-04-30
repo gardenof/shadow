@@ -1,4 +1,5 @@
 #=require view
+#=require named_routes
 
 class window.Character extends Backbone.Model
   assets: ->
@@ -34,7 +35,9 @@ class window.Character extends Backbone.Model
              "Public"
 
 Character.collection = new (Backbone.Collection.extend(
-  model: Character))
+  model: Character
+  url: NamedRoutes.helpers.characters_path
+  ))
 
 View.Character = {}
 
