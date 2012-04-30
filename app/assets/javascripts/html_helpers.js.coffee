@@ -50,12 +50,7 @@ class FormBuilder
     if this.url
       return this.url
 
-    route_base = this.object.constructor.name.toUnderscore()
-
-    if this.object.id
-      NamedRoutes.helpers[route_base + '_path'](this.object)
-    else
-      NamedRoutes.helpers[route_base + 's_path']()
+    this.object.url()
 
   fake_method: ->
     if this.object.id

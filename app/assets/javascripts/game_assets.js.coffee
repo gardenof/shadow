@@ -1,7 +1,5 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-
+#= require named_routes
+#
 class window.GameAsset extends Backbone.Model
   total: ->
     price = this.get "price"
@@ -14,6 +12,7 @@ class window.GameAsset extends Backbone.Model
     this.total() * 0.8
 
 GameAsset.collection = new (Backbone.Collection.extend(
+  url: NamedRoutes.helpers.game_assets_path
   model: GameAsset
   total: ->
     _.foldl this.models, ((t,asset) -> t + asset.total()), 0
