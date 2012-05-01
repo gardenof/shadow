@@ -2,6 +2,8 @@
 #=require named_routes
 
 class window.Character extends Backbone.Model
+  model_name: 'character'
+
   collection: new (Backbone.Collection.extend(
     model: Character
     url: NamedRoutes.helpers.characters_path

@@ -1,6 +1,8 @@
 #= required named_routes
 #
 class window.GameExpense extends Backbone.Model
+  model_name: 'game_expense'
+
   collection: new (Backbone.Collection.extend(
     url: NamedRoutes.helpers.game_expenses_path
     model: GameExpense
