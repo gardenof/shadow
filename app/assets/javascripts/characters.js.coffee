@@ -55,6 +55,9 @@ class View.Character.Index extends Backbone.View
 
 
 class View.Character.Show extends Backbone.View
+  initialize: ->
+    this.model.bind 'change', this.render, this
+
   render: ->
     this.$el.html renderWithLayout(
       'application',

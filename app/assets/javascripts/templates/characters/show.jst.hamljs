@@ -13,7 +13,7 @@
         %td{colspan: 6} #{character.get("name")}&apos;s Assets
 
       %tr
-        %th.status Status
+        %th.status Eq?
         %th Name
         %th Legality
         %th Qty
@@ -25,7 +25,9 @@
         %tr
           %td.status
             :if c.get("equipped")
-              != image_tag("check2.png", { alt: "Equipped" })
+              %input.equipped{type: "checkbox", checked: true}
+            :if !c.get("equipped")
+              %input.equipped{type: "checkbox"}
           %td= c.get("name")
           %td.legality{class: legalityClass(c.get("legality"))}= c.get("legality")
           %td= c.get("amount")
