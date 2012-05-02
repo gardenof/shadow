@@ -8,5 +8,26 @@ class window.GameSetting extends Backbone.Model
     model: GameSetting
     ))
 
-GameSetting.collection = GameSetting::collection
+  characters: ->
+    Character.collection.where game_setting_id: this.id
 
+GameSetting.collection = GameSetting::collection
+View.GameSetting = {}
+
+class View.GameSetting.Index extends Backbone.View
+  render: ->
+    this.$el.html renderWithLayout(
+      'application',
+      'game_settings/index',
+      game_settings: GameSetting.collection.models)
+
+    $('body').html(this.$el)
+
+class View.GameSetting.GmView extends Backbone.View
+  render: ->
+    this.$el.html renderWithLayout(
+      'application',
+      'game_settings/gmview',
+      game_setting: this.model)
+
+    $('body').html(this.$el)

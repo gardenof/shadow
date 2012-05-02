@@ -1,0 +1,19 @@
+%table{width: "100%"}
+  %thead
+    %tr
+      %th Name
+      %th Geography
+      %th PCs
+      %th Buttons
+  %tbody
+    :each setting in game_settings
+      %tr
+        %td!= link_to(setting.get("name"), game_setting_path(setting))
+        %td!= setting.get("in_world_geography")
+        %td!= setting.characters().length
+        %td
+          != link_to("Edit", edit_game_setting_path(setting))
+          &nbsp;
+          != link_to("GM", game_setting_gmview_path(setting))
+
+!= link_to("Add New Setting", new_game_setting_path())

@@ -1,0 +1,18 @@
+:each pc in game_setting.characters()
+  %table.gm-table
+    %thead
+      %tr
+        %th
+          %b= pc.get("name")
+          %span.attribute P
+          = pc.get("perception")
+          %span.attribute S
+          = pc.get("surprise")
+    %tbody
+      %tr
+        %td.legality{class: legalityClass(pc.legalStatus())}= pc.legalStatus()
+      %tr
+        %th Carrying
+      :each asset in pc.equippedAssets()
+        %tr
+          %td.legality{class: legalityClass(asset.get("legality"))}= asset.get("name")
