@@ -6,8 +6,8 @@
     ]
   %p Perception: #{character.get("perception")}
   %p Surprise: #{character.get("surprise")}
-  %p
-    Commlink:
+  .commlink
+    Commlink Mode:
     :if character.get("commlink_status")
       %input.commlink-status{type: "checkbox", checked: true}
     :if !character.get("commlink_status")

@@ -8,6 +8,13 @@
           = pc.get("perception")
           %span.attribute S
           = pc.get("surprise")
+      %tr
+        %td.commlink-status
+          Commlink:&nbsp;
+          :if pc.get("commlink_status")
+            ACTIVE
+          :if !pc.get("commlink_status")
+            HIDDEN
     %tbody
       %tr
         %td.legality{class: legalityClass(pc.legalStatus())}= pc.legalStatus()
