@@ -4,17 +4,21 @@
       %tr
         %th
           %b= pc.get("name")
-          %span.attribute P
+      %tr.attribute
+        %td
+          %span.label Perception &nbsp;
           = pc.get("perception")
-          %span.attribute S
+      %tr.attribute
+        %td
+          %span.label Surprise &nbsp;
           = pc.get("surprise")
-      %tr
+      %tr.attribute
         %td.commlink-status
-          Commlink:&nbsp;
+          %span.label Commlink:&nbsp;
           :if pc.get("commlink_status")
-            ACTIVE
+            %span.active ACTIVE
           :if !pc.get("commlink_status")
-            HIDDEN
+            %span.hidden HIDDEN
     %tbody
       %tr
         %td.legality{class: legalityClass(pc.legalStatus())}= pc.legalStatus()

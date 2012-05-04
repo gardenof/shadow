@@ -3,6 +3,12 @@ table.gm-table{
    float: left;
 }
 
-table.gm-table .attribute{
-  color: green;
+table.gm-table tr.attribute span.label{
+  display: inline-block;
+  width: 100px;
+  color: #999;
+}
+
+table.gm-table td.commlink-status span.hidden{
+  color: #999;
 }
