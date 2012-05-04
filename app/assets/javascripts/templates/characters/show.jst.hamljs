@@ -4,16 +4,19 @@
     [
     != link_to("edit", edit_character_path(character))
     ]
-  %p Perception: #{character.get("perception")}
-  %p Surprise: #{character.get("surprise")}
+  .attributes
+    %p Perception: #{character.get("perception")}
+    %p Surprise: #{character.get("surprise")}
+    %p Karma: #{character.get("current_karma")}
   .commlink
-    Commlink Mode:
-    :if character.get("commlink_status")
-      %input.commlink-status{type: "checkbox", checked: true}
-    :if !character.get("commlink_status")
-      %input.commlink-status{type: "checkbox"}
+    Commlink
+    .status-slider
+      :if character.get("commlink_status")
+        %input.commlink-status{type: "checkbox", checked: true}
+      :if !character.get("commlink_status")
+        %input.commlink-status{type: "checkbox"}
 
-  %table.assets
+  %table.gear.assets
     %thead
       %tr
         %td{colspan: 6} #{character.get("name")}&apos;s Assets
@@ -21,7 +24,6 @@
       %tr
         %th.status Eq?
         %th Name
-        %th Legality
         %th Qty
         %th Street Value
         %th Value
@@ -29,13 +31,10 @@
     %tbody
       :each c in character.assets()
         %tr
-          %td.status
+          %td
             :if c.get("equipped")
-              %input.equipped{type: "checkbox", checked: true}
-            :if !c.get("equipped")
-              %input.equipped{type: "checkbox"}
-          %td= c.get("name")
-          %td.legality{class: legalityClass(c.get("legality"))}= c.get("legality")
+              %img.equipped{src:"/assets/check2.png"}
+          %td.legality{class: legalityClass(c.get("legality"))}= c.get("name")
           %td= c.get("amount")
           %td.currency= to_yen(c.streetValue())
           %td.currency= to_yen(c.total())
@@ -45,11 +44,11 @@
             != link_to("Destroy", character_game_asset_path(character, c), { confirm: "Are you sure?", method: "delete" })
 
       %tr
-        %td{colspan:5} Total:
+        %td{colspan:4} Total:
         %td.currency= to_yen(character.assetTotal())
         %td!= link_to("Add Asset", new_character_game_asset_path(character))
 
-  %table.assets
+  %table.gear.expenses
     %thead
       %tr
         %td{colspan: 5} #{character.get("name")}&apos;s Expenses

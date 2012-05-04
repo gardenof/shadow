@@ -18,8 +18,9 @@
   background-color: #FFD500;
 }
 
-table.assets {
+table.gear {
   margin: 10px 0 10px 0;
+  width: 100%;
 }
 
 td.currency {
@@ -34,6 +35,20 @@ td.status img {
   height: 20px;
 }
 
+.attributes {
+  float: left;
+}
+
 .commlink {
   float: right;
+  padding-left: 40px;
+  height: 40px;
+}
+
+.status-slider {
+  margin-top: 4px;
+}
+
+img.equipped {
+  width: 20px;
 }
