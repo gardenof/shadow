@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120427000613) do
+ActiveRecord::Schema.define(:version => 20120504014854) do
 
   create_table "characters", :force => true do |t|
     t.string   "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20120427000613) do
     t.integer  "current_cash"
     t.string   "play_style"
     t.integer  "game_setting_id"
+    t.boolean  "commlink_status"
   end
 
   create_table "game_assets", :force => true do |t|

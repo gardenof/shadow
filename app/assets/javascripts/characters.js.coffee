@@ -55,6 +55,9 @@ class View.Character.Index extends Backbone.View
 
 
 class View.Character.Show extends Backbone.View
+  events:
+    'change input.commlink-status': 'updateCommlink'
+
   initialize: ->
     this.model.bind 'change', this.render, this
 
@@ -65,6 +68,10 @@ class View.Character.Show extends Backbone.View
       character: this.model)
 
     $('body').html(this.$el)
+
+  updateCommlink: ->
+    commlink = this.$ 'input.commlink-status'
+    this.model.save commlink_status: commlink.prop('checked')
 
 class View.Character.Edit extends Backbone.View
   render: ->
