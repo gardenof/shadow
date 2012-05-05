@@ -9,12 +9,6 @@
     %p Surprise: #{character.get("surprise")}
     %p Karma: #{character.get("current_karma")}
   .commlink
-    Commlink
-    .status-slider
-      :if character.get("commlink_status")
-        %input.commlink-status{type: "checkbox", checked: true}
-      :if !character.get("commlink_status")
-        %input.commlink-status{type: "checkbox"}
 
   .game-assets-table
 

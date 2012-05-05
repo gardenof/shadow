@@ -1,0 +1,6 @@
+Commlink
+.status-slider
+  :if commlink.get("active")
+    %input.active{type: "checkbox", checked: true}
+  :if !commlink.get("active")
+    %input.active{type: "checkbox"}

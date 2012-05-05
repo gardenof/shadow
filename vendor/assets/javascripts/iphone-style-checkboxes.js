@@ -125,8 +125,6 @@
       var new_left;
       if (typeof this.onChange === "function") {
         this.onChange(this.elem, this.elem.prop('checked'));
-      } else if (typeof this.onChange === "object") {
-        this.onChange.checkboxChange(this.elem);
       }
       if (this.isDisabled()) {
         this.container.addClass(this.disabledClass);
