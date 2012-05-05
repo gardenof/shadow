@@ -1,9 +1,8 @@
 require 'spec_helper'
 
-describe Characters::GameExpensesController do
+describe GameExpensesController do
   include BilgePump::Specs
 
-  model_scope [:character]
   model_class GameExpense
 
   render_views

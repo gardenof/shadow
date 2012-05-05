@@ -1,11 +1,9 @@
 Shadow::Application.routes.draw do
   root :to => 'characters#index'
 
-  resources :characters do
-      resources :game_expenses, controller: "characters/game_expenses"
-  end
-
+  resources :characters
   resources :game_assets
+  resources :game_expenses
 
   resources :game_settings do
     get :gmview
