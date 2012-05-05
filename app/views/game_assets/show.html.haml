@@ -1,0 +1,16 @@
+%p{id:"notice"}= @notice
+
+%p
+  %b Name:
+  = @game_asset.name
+
+%p
+  %b Price:
+  = @game_asset.price
+
+%p
+  %b User:
+  = @game_asset.character_id
+
+= link_to 'Edit', edit_game_asset_path(@game_asset) |
+= link_to 'Back', game_assets_path

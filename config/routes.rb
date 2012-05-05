@@ -3,8 +3,9 @@ Shadow::Application.routes.draw do
 
   resources :characters do
       resources :game_expenses, controller: "characters/game_expenses"
-      resources :game_assets, controller: "characters/game_assets"
   end
+
+  resources :game_assets
 
   resources :game_settings do
     get :gmview

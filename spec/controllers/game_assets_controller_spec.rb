@@ -1,9 +1,8 @@
 require 'spec_helper'
 
-describe Characters::GameAssetsController do
+describe GameAssetsController do
   include BilgePump::Specs
 
-  model_scope [:character]
   model_class GameAsset
 
   render_views
