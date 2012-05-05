@@ -76,12 +76,11 @@ class View.Character.Show extends Backbone.View
         uncheckedLabel: 'HIDDEN'
       })
 
+    new View.GameAsset.Table({model: this.model}).render();
+
   updateCommlink: ->
     commlink = this.$ 'input.commlink-status'
     this.model.save commlink_status: commlink.prop('checked')
-
-  checkboxChange: (element) ->
-    this.updateCommlink();
 
 class View.Character.Edit extends Backbone.View
   render: ->

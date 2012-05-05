@@ -1,0 +1,18 @@
+%thead
+  %tr
+    %td{colspan: 6} #{character.get("name")}&apos;s Assets
+
+  %tr
+    %th.status Eq?
+    %th Name
+    %th Qty
+    %th Street Value
+    %th Value
+    %th Buttons
+%tbody.assets
+
+%tbody.asset-totals
+  %tr
+    %td{colspan:4} Total:
+    %td.currency= to_yen(character.assetTotal())
+    %td!= link_to("Add Asset", "#")

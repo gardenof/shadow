@@ -16,37 +16,7 @@
       :if !character.get("commlink_status")
         %input.commlink-status{type: "checkbox"}
 
-  %table.gear.assets
-    %thead
-      %tr
-        %td{colspan: 6} #{character.get("name")}&apos;s Assets
-
-      %tr
-        %th.status Eq?
-        %th Name
-        %th Qty
-        %th Street Value
-        %th Value
-        %th Buttons
-    %tbody
-      :each c in character.assets()
-        %tr
-          %td
-            :if c.get("equipped")
-              %img.equipped{src:"/assets/check2.png"}
-          %td.legality{class: legalityClass(c.get("legality"))}= c.get("name")
-          %td= c.get("amount")
-          %td.currency= to_yen(c.streetValue())
-          %td.currency= to_yen(c.total())
-          %td
-            != link_to("Edit", edit_character_game_asset_path(character, c))
-            &nbsp;
-            != link_to("Destroy", character_game_asset_path(character, c), { confirm: "Are you sure?", method: "delete" })
-
-      %tr
-        %td{colspan:4} Total:
-        %td.currency= to_yen(character.assetTotal())
-        %td!= link_to("Add Asset", new_character_game_asset_path(character))
+  .game-assets-table
 
   %table.gear.expenses
     %thead
@@ -65,11 +35,11 @@
           %td.currency= to_yen(c.annualTotal())
           %td.currency= to_yen(c.total())
           %td
-            != link_to("Edit", edit_character_game_expense_path(character, c))
+            != link_to("Edit", edit_game_expense_path(c))
             &nbsp;
-            != link_to("Destroy", character_game_expense_path(character, c), { confirm: "Are you sure?", method: "delete" })
+            != link_to("Destroy", game_expense_path(c), { confirm: "Are you sure?", method: "delete" })
 
       %tr
         %td{colspan:2} Total Monthly:
         %td.currency= to_yen(character.expenseTotal())
-        %td!= link_to("Add Expense", new_character_game_expense_path(character))
+        %td!= link_to("Add Expense", new_game_expense_path())
