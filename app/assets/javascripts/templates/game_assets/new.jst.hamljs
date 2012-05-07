@@ -1,0 +1,10 @@
+%table{width: "100%"}
+  %thead
+    %tr
+      %th{colspan="4"} New Game Asset For #{character.get("name")}
+
+  %tbody
+    %tr
+      %td!= renderTemplate("game_assets/form", { asset: asset, character: character, errors: errors })
+
+!= link_to("Back", characters_path(character))

@@ -4,4 +4,3 @@
     var errors = #{@character.errors.full_messages.to_json};
     new View.Character.New({model: character, errors: errors}).render();
   });
-

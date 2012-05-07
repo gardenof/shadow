@@ -1,4 +1,6 @@
-%h2 Editing Asset (#{@game_asset.character.name})
-
-= render partial: 'form'
-= link_to "Return to #{@game_asset.character.name}", character_path(@character)
+:javascript
+  $(function() {
+    var game_asset = GameAsset.collection.get(#{@game_asset.id.to_json});
+    var errors = #{@game_asset.errors.full_messages.to_json};
+    new View.GameAsset.Edit({model: game_asset, errors: errors}).render();
+  });

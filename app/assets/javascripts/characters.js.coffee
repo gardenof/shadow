@@ -45,6 +45,9 @@ Character.collection = Character::collection
 View.Character = {}
 
 class View.Character.Index extends Backbone.View
+  initialize: ->
+    Character.collection.bind 'change', this.render, this
+
   render: ->
     this.$el.html renderWithLayout(
       'application',

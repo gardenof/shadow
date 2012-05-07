@@ -1,0 +1,6 @@
+%h2 Editing Asset 
+  != asset.get("name")
+
+  != renderTemplate("game_assets/form", { asset: asset, errors: errors })
+
+!= link_to("back", character_path(asset.get("character_id")))

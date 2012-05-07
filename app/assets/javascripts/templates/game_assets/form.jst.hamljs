@@ -1,0 +1,45 @@
+- var f = form_for(asset)
+
+:if errors && errors.length > 0
+  #error_explanation
+    %ul
+      :each message in errors
+        %li= message
+
+!= f.start_form()
+
+.field
+  != f.label("name")
+  %br
+  != f.text_field("name")
+%br
+.field
+  != f.label("price")
+  %br
+  != f.text_field("price")
+%br
+.field
+  != f.label("amount")
+  %br
+  != f.text_field("amount")
+%br
+.field
+  != f.label("legality")
+  %br
+  Public
+  !=f.radio_button("legality", "Public")
+  %br
+  Restricted
+  !=f.radio_button("legality", "Restricted")
+  %br
+  Forbidden
+  !=f.radio_button("legality", "Forbidden")
+%br
+.field
+  != f.label("equipped")
+  != f.check_box("equipped")
+
+.actions
+  != f.submit()
+
+!= f.end_form()

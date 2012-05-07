@@ -77,6 +77,48 @@ class FormBuilder
       value: this.input_value(attribute)
     )
 
+  radio_button: (tag_name, tag_value) ->
+    this.content_tag(
+      'input',
+      '',
+      type: 'radio'
+      name: this.input_name(tag_name)
+      value: tag_value
+      checked: this.are_you_checked(tag_name,tag_value)
+    )
+
+  check_box: (tag_name) ->
+    this.content_tag(
+      'input',
+      '',
+      type: 'hidden'
+      name: this.input_name(tag_name)
+      value: 0
+    ) +
+    this.content_tag(
+      'input',
+      '',
+      type: 'checkbox'
+      name: this.input_name(tag_name)
+      value: 1
+      checked: this.are_you_checked(tag_name, "true")
+    )
+
+  are_you_checked: (tag_name, value) ->
+    if this.input_value(tag_name) == value
+      checked_value = "checked"
+    else
+      checked_value = undefined
+
+  hidden_field: (tag_name, value) ->
+    this.content_tag(
+      'input',
+      '',
+      type: 'hidden'
+      name: this.input_name(tag_name)
+      value: value
+    )
+
   collection_select: (attribute, collection, val_attr, text_attr, options) ->
     blank = if options?.include_blank
               this.content_tag 'option', ''

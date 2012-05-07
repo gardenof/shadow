@@ -1,0 +1,31 @@
+%h1 Game Asset
+
+%p 
+  Name: 
+  != asset.get("name")
+
+%p 
+  Price: 
+  != asset.get("price")
+
+%p 
+  amount: 
+  != asset.get("amount")
+
+%p 
+  legality: 
+  != asset.get("legality")
+
+%p 
+  equipped: 
+  != asset.get("equipped")
+
+%p 
+  User: 
+  != asset.get("character_id")
+
+!= link_to("Edit", edit_character_game_asset_path(asset.get("character_id"), asset))
+&nbsp;
+!= link_to("Destroy", character_game_asset_path(asset.get("character_id"), asset),{confirm: "Are you sure?", method: "delete" })
+&nbsp;
+!= link_to("back", character_path(asset.get("character_id")))
