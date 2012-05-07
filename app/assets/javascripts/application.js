@@ -11,6 +11,7 @@
 //= require haml
 //= require hamljs_escape
 //= require accounting.min
+//= require iphone-style-checkboxes
 //= require_tree .
 
 

@@ -1,10 +1,9 @@
 require 'spec_helper'
 
-describe Characters::GameExpensesController do
-  include BilgePump::Specs
+describe GameAssetsController do
+  include BilgePump::Specs only: [:index, :show, :create, :edit, :update, :destroy]
 
-  model_scope [:character]
-  model_class GameExpense
+  model_class GameAsset
 
   render_views
 

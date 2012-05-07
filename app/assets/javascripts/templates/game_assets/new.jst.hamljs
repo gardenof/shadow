@@ -7,4 +7,4 @@
     %tr
       %td!= renderTemplate("game_assets/form", { asset: asset, character: character, errors: errors })
 
-!= link_to("Back", characters_path(character))
+!= link_to("Back", character_path(character))

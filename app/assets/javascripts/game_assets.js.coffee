@@ -3,14 +3,10 @@
 class window.GameAsset extends Backbone.Model
   model_name: 'game_asset'
 
-  url: -> 
-    if this.isNew() 
-      NamedRoutes.helpers.character_game_assets_path(this.get("character_id"))
-    else
-      NamedRoutes.helpers.character_game_asset_path(this.get("character_id"), this)
 
   collection: new (Backbone.Collection.extend(
     model: GameAsset
+    url: NamedRoutes.helpers.game_assets_path
     total: ->
       _.foldl this.models, ((t,asset) -> t + asset.total()), 0
     ))
@@ -69,3 +65,32 @@ class View.GameAsset.New extends Backbone.View
     )
 
     $('body').html(this.$el)
+
+class View.GameAsset.Table extends Backbone.View
+  tagName: "table"
+  className: "gear assets"
+
+  render: ->
+    this.$el.html renderTemplate(
+      'game_assets/_table',
+      character: this.model)
+
+    $('.game-assets-table').html(this.$el)
+
+    (new View.GameAsset.Row({model: asset}).render()) for asset in this.model.assets();
+
+class View.GameAsset.Row extends Backbone.View
+  tagName: "tr"
+
+  events:
+    'change input.equipped': 'updateEquipped'
+
+  render: ->
+    this.$el.html renderTemplate(
+      'game_assets/_row',
+      asset: this.model)
+    $('tbody.assets').append(this.$el)
+
+  updateEquipped: =>
+    checkbox = this.$ 'input.equipped'
+    this.model.save equipped: checkbox.prop('checked')

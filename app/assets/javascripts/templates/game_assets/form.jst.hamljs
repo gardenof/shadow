@@ -39,6 +39,10 @@
   != f.label("equipped")
   != f.check_box("equipped")
 
+.field
+  != f.hidden_field("character_id",asset.get("character_id"))
+  != f.hidden_field("id",asset.get("id"))
+
 .actions
   != f.submit()
 

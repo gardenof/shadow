@@ -1,0 +1,13 @@
+%td
+  :if asset.get("equipped")
+    %input.equipped{type: "checkbox", checked: true}
+  :if !asset.get("equipped")
+    %input.equipped{type: "checkbox"}
+%td.legality{class: legalityClass(asset.get("legality"))}= asset.get("name")
+%td= asset.get("amount")
+%td.currency= to_yen(asset.streetValue())
+%td.currency= to_yen(asset.total())
+%td
+  != link_to("Edit", edit_game_asset_path(asset))
+  &nbsp;
+  != link_to("Destroy", game_asset_path(asset), { confirm: "Are you sure?", method: "delete" })

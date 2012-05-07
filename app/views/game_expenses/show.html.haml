@@ -1,0 +1,11 @@
+%p{id:"notice"}= notice
+
+%p
+  %b Name:
+  = @game_expense.name
+%p
+  %b Price:
+  = @game_expense.price
+
+= link_to 'Edit', edit_game_expense_path(@game_expense) |
+= link_to 'Back', game_expenses_path

@@ -1,36 +1,3 @@
-// Place all the styles related to the Characters controller here.
+// Place all the styles related to the GameAssets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-.character {
-  color: white;
-}
-
-.legality {
-  color: black;
-  background-color: #00C90D;
-}
-
-.legality.forbidden{
-  background-color: #FF0700;
-}
-.legality.restricted{
-  background-color: #FFD500;
-}
-
-table.assets {
-  margin: 10px 0 10px 0;
-  width: 95%;
-}
-
-td.currency {
-  text-align: right;
-}
-
-td.status {
-  width: 60px;
-}
-
-td.status img {
-  height: 20px;
-}
