@@ -14,6 +14,17 @@ class GameAssetsController < ApplicationController
     end
   end
 
+  def destroy
+    @game_asset = GameAsset.find(params[:id])
+    @character = Character.find(@game_asset.character_id)
+    @game_asset.destroy
+
+    respond_to do |format|
+      format.html { redirect_to character_path(@character) }
+      format.json { head :ok }
+    end
+  end
+
   def update
     @game_asset = GameAsset.find(params[:id])
 
