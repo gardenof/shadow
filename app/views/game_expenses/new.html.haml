@@ -1,2 +1,9 @@
-%h2 New Game Expense
-= render partial: 'form'
+:javascript
+  $(function() {
+    var character = Character.collection.get(#{@character.to_json});
+    var expn = new GameExpense(#{@game_expense.to_json});
+    expn.set("character_id",character.get("id"))
+    expn.set("amount",1)
+    var errors = #{@game_expense.errors.full_messages.to_json};
+    new View.GameExpense.New({model: expn, character: character, errors: errors}).render();
+  });

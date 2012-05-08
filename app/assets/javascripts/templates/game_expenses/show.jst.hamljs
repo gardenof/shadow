@@ -12,6 +12,10 @@
   Character ID: 
   != expn.get("character_id")
 
+%p 
+  Yearly Pay Cycle: 
+  != expn.get("pay_cycle")
+
 
 != link_to("Edit", edit_game_expense_path(expn))
 &nbsp;

@@ -1,0 +1,10 @@
+%table{width: "100%"}
+  %thead
+    %tr
+      %th{colspan="4"} New Game Expense For #{character.get("name")}
+
+  %tbody
+    %tr
+      %td!= renderTemplate("game_expenses/form", { expn: expn, character: character, errors: errors })
+
+!= link_to("Back", character_path(character))

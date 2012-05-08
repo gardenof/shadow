@@ -1,0 +1,33 @@
+- var f = form_for(expn)
+
+:if errors && errors.length > 0
+  #error_explanation
+    %ul
+      :each message in errors
+        %li= message
+
+!= f.start_form()
+
+.field
+  != f.label("name")
+  %br
+  != f.text_field("name")
+%br
+.field
+  != f.label("*Yearly Pay Cycle")
+  != f.check_box("pay_cycle")
+%br
+.field
+  != f.label("price")
+  %br
+  != f.text_field("price")
+
+.field
+  != f.hidden_field("character_id",expn.get("character_id"))
+  != f.hidden_field("id",expn.get("id"))
+
+.actions
+  != f.submit()
+
+  * default pay cycle is monthly
+!= f.end_form()

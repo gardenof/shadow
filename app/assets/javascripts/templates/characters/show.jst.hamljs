@@ -36,4 +36,4 @@
       %tr
         %td{colspan:2} Total Monthly:
         %td.currency= to_yen(character.expenseTotal())
-        %td!= link_to("Add Expense", new_game_expense_path())
+        %td!= link_to("Add Expense", new_game_expense_with_id_path(character.get("id")))

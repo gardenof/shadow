@@ -1,0 +1,6 @@
+%h2 Editing Expense 
+  != expn.get("name")
+
+  != renderTemplate("game_expenses/form", { expn: expn, errors: errors })
+
+!= link_to("back", character_path(expn.get("character_id")))

@@ -1,3 +1,6 @@
-%h2 Editing Expense (#{@game_expense.character.name})
-
-= render partial: 'form'
+:javascript
+  $(function() {
+    var expn = GameExpense.collection.get(#{@game_expense.to_json});
+    var errors = #{@game_expense.errors.full_messages.to_json};
+    new View.GameExpense.Edit({model: expn, errors: errors}).render();
+  });

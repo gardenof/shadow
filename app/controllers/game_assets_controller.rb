@@ -9,7 +9,7 @@ class GameAssetsController < ApplicationController
     @game_asset = GameAsset.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html 
       format.json { render json: @game_asset }
     end
   end

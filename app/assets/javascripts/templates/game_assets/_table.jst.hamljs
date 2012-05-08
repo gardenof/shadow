@@ -15,4 +15,4 @@
   %tr
     %td{colspan:4} Total:
     %td.currency= to_yen(character.assetTotal())
-    %td!= link_to("Add Asset", eden_path(character.get("id")))
+    %td!= link_to("Add Asset", new_game_asset_with_id_path(character.get("id")))

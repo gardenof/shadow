@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe GameExpensesController do
-  include BilgePump::Specs
+  include BilgePump::Specs only: [:index, :show, :create, :edit, :update, :destroy]
 
   model_class GameExpense
 

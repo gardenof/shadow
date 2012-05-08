@@ -40,3 +40,26 @@ class View.GameExpense.Show extends Backbone.View
       errors: this.options.errors)
 
     $('body').html(this.$el)
+
+class View.GameExpense.New extends Backbone.View
+  render: ->
+    this.$el.html renderWithLayout(
+      'application',
+      'game_expenses/new',
+      expn: this.model
+      errors: this.options.errors
+      character: this.options.character
+    )
+
+    $('body').html(this.$el)
+
+class View.GameExpense.Edit extends Backbone.View
+  render: ->
+    this.$el.html renderWithLayout(
+      'application',
+      'game_expenses/edit',
+      expn: this.model
+      errors: this.options.errors
+    )
+
+    $('body').html(this.$el)

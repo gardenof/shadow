@@ -3,6 +3,16 @@ class GameExpensesController < ApplicationController
 
   model_class GameExpense
 
+  def new
+    @character = Character.find(params[:id])
+    @game_expense = GameExpense.new
+
+    respond_to do |format|
+      format.html 
+      format.json { render json: @game_expense }
+    end
+  end
+
   def destroy
     @game_expense = GameExpense.find(params[:id])
     @character = Character.find(@game_expense.character_id)
