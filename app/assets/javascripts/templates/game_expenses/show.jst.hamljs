@@ -1,0 +1,20 @@
+%h1 Game Expens
+
+%p 
+  Name: 
+  != expn.get("name")
+
+%p 
+  Price: 
+  != expn.get("price")
+
+%p 
+  Character ID: 
+  != expn.get("character_id")
+
+
+!= link_to("Edit", edit_game_expense_path(expn))
+&nbsp;
+!= link_to("Destroy", game_expense_path(expn),{confirm: "Are you sure?", method: "delete" })
+&nbsp;
+!= link_to("back", character_path(expn.get("character_id")))

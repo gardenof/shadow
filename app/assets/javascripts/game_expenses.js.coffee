@@ -30,3 +30,13 @@ class View.GameExpense.Index extends Backbone.View
       game_expenses: GameExpense.collection.models)
 
     $('body').html(this.$el)
+
+class View.GameExpense.Show extends Backbone.View
+  render: ->
+    this.$el.html renderWithLayout(
+      'application',
+      'game_expenses/show',
+      expn: this.model
+      errors: this.options.errors)
+
+    $('body').html(this.$el)
