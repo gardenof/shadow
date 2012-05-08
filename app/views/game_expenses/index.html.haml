@@ -1,18 +1,4 @@
-%h1 All Expenses
-
-%table
-  %tr
-    %th Name
-    %th Monthly?
-    %th
-  - @game_expenses.each do |expn|
-    %tr
-      %td= expn.name
-      %td= expn.price
-      %td
-        = link_to 'Show', game_expense_path(expn)
-        = link_to 'Edit', edit_game_expense_path(expn)
-        = link_to 'Destroy',
-        game_expense_path(expn), confirm: 'Are you sure?', method: :delete
-
-= link_to 'New Game expense', new_game_expense_path
+:javascript
+  $(function() {
+    new View.GameExpense.Index().render();
+  });

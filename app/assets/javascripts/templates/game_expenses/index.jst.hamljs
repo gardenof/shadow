@@ -1,0 +1,22 @@
+%h1 All Expenses
+
+%table
+  %tbody
+    %tr
+     %th Name
+     %th Monthly?
+     %th Character ID
+     %th 
+
+  %tbody
+    :each expn in game_expenses
+      %tr
+        %td= expn.get("name")
+        %td= expn.get("price")
+        %td= expn.get("character_id")
+        %td
+          != link_to("Show", game_expense_path(expn))
+          &nbsp;
+          != link_to("Edit", edit_game_expense_path(expn))
+          &nbsp;
+          != link_to("Destroy", game_expense_path(expn),{confirm: "Are you sure?", method: "delete" })
