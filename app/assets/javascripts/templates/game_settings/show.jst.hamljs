@@ -1,0 +1,9 @@
+.game-setting
+  %h2
+    #{game_setting.get("name")}
+    &nbsp;
+    [!{link_to("edit", edit_game_setting_path(game_setting))}]
+    &nbsp;
+    [!{link_to("GM view", game_setting_gmview_path(game_setting))}]
+
+  %p Location: #{game_setting.get("in_world_geography")}

@@ -1,4 +1,5 @@
-#= required named_routes
+#=require named_routes
+#=require data_sync
 #
 class window.GameExpense extends Backbone.Model
   model_name: 'game_expense'
@@ -20,6 +21,7 @@ class window.GameExpense extends Backbone.Model
     this.total() * 12
 
 GameExpense.collection = GameExpense::collection
+DataSync.register 'GameExpense', GameExpense.collection
 View.GameExpense = {}
 
 class View.GameExpense.Index extends Backbone.View
@@ -53,6 +55,14 @@ class View.GameExpense.New extends Backbone.View
 
     $('body').html(this.$el)
 
+ShadowWorkspace.on 'route:game_expenses.new', (character_id) ->
+  character = Character.collection.get character_id
+  expense = new GameExpense character_id: character_id,
+                            amount: 1
+
+  new View.GameExpense.New({model: expense, character: character}).render()
+
+
 class View.GameExpense.Edit extends Backbone.View
   render: ->
     this.$el.html renderWithLayout(
@@ -63,3 +73,8 @@ class View.GameExpense.Edit extends Backbone.View
     )
 
     $('body').html(this.$el)
+
+ShadowWorkspace.on 'route:game_expenses.edit', (id) ->
+  expense = GameExpense.collection.get id
+  new View.GameExpense.Edit({model: expense}).render()
+

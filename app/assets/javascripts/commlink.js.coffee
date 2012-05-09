@@ -1,5 +1,6 @@
 #=require view
 #=require named_routes
+#=require data_sync
 
 class window.Commlink extends Backbone.Model
   model_name: 'commlink'
@@ -10,6 +11,7 @@ class window.Commlink extends Backbone.Model
     ))
 
 Commlink.collection = Commlink::collection
+DataSync.register 'Commlink', Commlink.collection
 View.Commlink = {}
 
 class View.Commlink.Show extends Backbone.View
