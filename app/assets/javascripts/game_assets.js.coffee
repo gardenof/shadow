@@ -1,4 +1,5 @@
-#= require named_routes
+#=require named_routes
+#=require data_sync
 #
 class window.GameAsset extends Backbone.Model
   model_name: 'game_asset'
@@ -22,6 +23,7 @@ class window.GameAsset extends Backbone.Model
     this.total() * 0.8
 
 GameAsset.collection = GameAsset::collection
+DataSync.register 'GameAsset', GameAsset.collection
 View.GameAsset = {}
 
 class View.GameAsset.Index extends Backbone.View
@@ -54,6 +56,10 @@ class View.GameAsset.Edit extends Backbone.View
 
     $('body').html(this.$el)
 
+ShadowWorkspace.on 'route:game_assets.edit', (id) ->
+  asset = GameAsset.collection.get id
+  new View.GameAsset.Edit({model: asset}).render()
+
 class View.GameAsset.New extends Backbone.View
   render: ->
     this.$el.html renderWithLayout(
@@ -65,6 +71,13 @@ class View.GameAsset.New extends Backbone.View
     )
 
     $('body').html(this.$el)
+
+ShadowWorkspace.on 'route:game_assets.new', (character_id) ->
+  character = Character.collection.get character_id
+  asset = new GameAsset character_id: character_id,
+                        amount: 1
+
+  new View.GameAsset.New({model: asset, character: character}).render()
 
 class View.GameAsset.Table extends Backbone.View
   tagName: "table"

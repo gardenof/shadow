@@ -1,5 +1,6 @@
 class GameAssetsController < ApplicationController
   include BilgePump::Controller
+  respond_to :html, :json
 
   model_class GameAsset
 

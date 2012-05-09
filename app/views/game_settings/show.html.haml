@@ -1,10 +1,6 @@
-%p{id:'notice'}
-  = notice
+:javascript
+  $(function() {
+    var game_setting = GameSetting.collection.get(#{@game_setting.id.to_json});
+    new View.GameSetting.Show({model: game_setting}).render();
+  });
 
-.game-setting
-  %h2
-    #{@game_setting.name}
-    [#{link_to "edit", edit_game_setting_path(@game_setting)}]
-    [#{link_to 'GM view', game_setting_gmview_path(@game_setting)}]
-
-  %p Location: #{@game_setting.in_world_geography}
