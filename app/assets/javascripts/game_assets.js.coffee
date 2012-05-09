@@ -74,8 +74,7 @@ class View.GameAsset.New extends Backbone.View
 
 ShadowWorkspace.on 'route:game_assets.new', (character_id) ->
   character = Character.collection.get character_id
-  asset = new GameAsset character_id: character_id,
-                        amount: 1
+  asset = new GameAsset character_id: character_id, amount: 1
 
   new View.GameAsset.New({model: asset, character: character}).render()
 
