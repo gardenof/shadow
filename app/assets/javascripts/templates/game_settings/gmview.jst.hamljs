@@ -15,9 +15,9 @@
       %tr.attribute
         %td.commlink-status
           %span.label Commlink:&nbsp;
-          :if pc.get("commlink_status")
+          :if pc.commlink().get("active") == true
             %span.active ACTIVE
-          :if !pc.get("commlink_status")
+          :if pc.commlink().get("active") == false
             %span.hidden HIDDEN
     %tbody
       %tr
