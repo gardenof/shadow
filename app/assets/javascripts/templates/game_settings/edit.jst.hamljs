@@ -1,0 +1,5 @@
+%h2 Edit Game Setting
+
+!= renderTemplate("game_settings/form", { game_setting: game_setting, errors: errors })
+
+!= link_to("All Game Settings", game_settings_path())

@@ -1,0 +1,24 @@
+- var f = form_for(game_setting)
+
+:if errors && errors.length > 0
+  #error_explanation
+    %ul
+      :each message in errors
+        %li= message
+
+!= f.start_form()
+
+.field
+  != f.label("name")
+  %br
+  != f.text_field("name")
+
+.field
+  != f.label("in_world_geography")
+  %br
+  != f.text_field("in_world_geography")
+
+!= f.submit()
+
+!= f.end_form()
+

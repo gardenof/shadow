@@ -23,6 +23,35 @@ class View.GameSetting.Index extends Backbone.View
 
     $('body').html(this.$el)
 
+class View.GameSetting.Show extends Backbone.View
+  render: ->
+    this.$el.html renderWithLayout(
+      'application',
+      'game_settings/show',
+      game_setting: this.model)
+
+    $('body').html(this.$el)
+
+class View.GameSetting.New extends Backbone.View
+  render: ->
+    this.$el.html renderWithLayout(
+      'application',
+      'game_settings/new',
+      game_setting: this.model
+      errors: this.options.errors)
+
+    $('body').html this.$el
+
+class View.GameSetting.Edit extends Backbone.View
+  render: ->
+    this.$el.html renderWithLayout(
+      'application',
+      'game_settings/edit',
+      game_setting: this.model
+      errors: this.options.errors)
+
+    $('body').html this.$el
+
 class View.GameSetting.GmView extends Backbone.View
   render: ->
     this.$el.html renderWithLayout(
