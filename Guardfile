@@ -1,4 +1,4 @@
 guard 'coffeescript', :output => 'spec/javascripts' do
-  watch('^spec/coffeescripts/(.*)\.coffee')
+  watch %r(^spec/coffeescripts/(.*)\.coffee)
 end
 
