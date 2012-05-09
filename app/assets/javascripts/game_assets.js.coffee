@@ -1,4 +1,5 @@
-#= require named_routes
+#=require named_routes
+#=require data_sync
 #
 class window.GameAsset extends Backbone.Model
   model_name: 'game_asset'
@@ -22,6 +23,7 @@ class window.GameAsset extends Backbone.Model
     this.total() * 0.8
 
 GameAsset.collection = GameAsset::collection
+DataSync.register 'GameAsset', GameAsset.collection
 View.GameAsset = {}
 
 class View.GameAsset.Index extends Backbone.View

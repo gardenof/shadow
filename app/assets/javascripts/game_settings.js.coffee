@@ -1,4 +1,5 @@
-#= require named_routes
+#=require named_routes
+#=require data_sync
 #
 class window.GameSetting extends Backbone.Model
   model_name: 'game_setting'
@@ -12,6 +13,7 @@ class window.GameSetting extends Backbone.Model
     Character.collection.where game_setting_id: this.id
 
 GameSetting.collection = GameSetting::collection
+DataSync.register 'GameSetting', GameSetting.collection
 View.GameSetting = {}
 
 class View.GameSetting.Index extends Backbone.View

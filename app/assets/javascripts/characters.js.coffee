@@ -1,6 +1,7 @@
 #=require view
 #=require routes
 #=require named_routes
+#=require data_sync
 
 class window.Character extends Backbone.Model
   model_name: 'character'
@@ -52,6 +53,8 @@ class window.Character extends Backbone.Model
              "Public"
 
 Character.collection = Character::collection
+DataSync.register 'Character', Character.collection
+
 View.Character = {}
 
 class View.Character.Index extends Backbone.View

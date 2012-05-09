@@ -1,4 +1,5 @@
-#= required named_routes
+#=require named_routes
+#=require data_sync
 #
 class window.GameExpense extends Backbone.Model
   model_name: 'game_expense'
@@ -20,6 +21,7 @@ class window.GameExpense extends Backbone.Model
     this.total() * 12
 
 GameExpense.collection = GameExpense::collection
+DataSync.register 'GameExpense', GameExpense.collection
 View.GameExpense = {}
 
 class View.GameExpense.Index extends Backbone.View

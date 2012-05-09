@@ -1,42 +1,28 @@
 class DataSync
   constructor: ->
-    @syncStatus = {}
-
-  collections: ['Character', 'GameAsset', 'GameExpense', 'GameSetting', 'Commlink']
+    @syncs = []
 
   checkFrequency: 1000
   syncFrequency: 20 * 1000
   failureBackoffFactor: 3
 
+  register: (name, collection) ->
+    @syncs.push new CollectionSync(name, collection)
+
   start: (initial) ->
-    @reset collection, initial[collection] for collection in @collections
+    sync.reset initial[sync.name] for sync in @syncs
     @syncLoop()
 
   stop: ->
     @stopSync = true
-
-  reset: (collectionName, models) ->
-    if models
-      window[collectionName].collection.reset models
-    else
-      console?.log? "No initial models provided for #{collectionName}"
-
-    @syncCompleted collectionName
-
-  fetch: (collectionName) ->
-    @syncStarted collectionName
-    window[collectionName].collection.fetch(
-      success: => @syncCompleted collectionName
-      error: => @syncFailed collectionName
-    )
 
   syncLoop: =>
     if @stopSync
       @stopSync = false
       return
 
-    name = @nominateNextSync()
-    @fetch(name) if name
+    sync = @nominateNextSync()
+    sync?.fetch()
     setTimeout @syncLoop, @checkFrequency
 
   nominateNextSync: ->
@@ -44,23 +30,44 @@ class DataSync
     completedFreq = @syncFrequency
     failedFreq = completedFreq * @failureBackoffFactor
 
-    eligibleStatus = _.find @syncStatus,
-                            (sync) ->
-                              (sync.status == 'completed' && (now - sync.at > completedFreq)) ||
-                              (sync.status == 'failed' && (now - sync.at > failedFreq))
+    _.find @syncs, (sync) -> sync.isEligibleAt now, completedFreq, failedFreq
 
-    eligibleStatus?.name
+class CollectionSync
+  constructor: (@name, @collection) ->
+    @status = 'never'
+    @at = new Date()
 
-  syncStarted: (collectionName) ->
-    @syncStatus[collectionName] = { status: 'started', at: new Date(), name: collectionName }
+  reset: (models) ->
+    if models
+      @collection.reset models
+    else
+      console?.log? "No initial models provided for #{collectionName}"
 
-  syncCompleted: (collectionName) ->
-    @syncStatus[collectionName] = { status: 'completed', at: new Date(), name: collectionName }
+    @syncCompleted()
 
-  syncFailed: (collectionName) ->
-    console?.log? "Sync of #{collectionName} failed at #{new Date()}"
+  fetch: ->
+    @syncStarted()
+    @collection.fetch
+      success: => @syncCompleted()
+      error: => @syncFailed()
 
-    @syncStatus[collectionName] = { status: 'failed', at: new Date(), name: collectionName }
+  isEligibleAt: (now, completedFreq, failedFreq) ->
+    (@status == 'completed' && (now - @at > completedFreq)) ||
+    (@status == 'failed' && (now - @at > failedFreq))
+
+  updateStatus: (status) ->
+    @status = status
+    @at = new Date()
+
+  syncStarted: ->
+    @updateStatus 'started'
+
+  syncCompleted: ->
+    @updateStatus 'completed'
+
+  syncFailed: ->
+    @updateStatus 'failed'
+    console?.log? "Sync of #{@name} failed at #{@at}"
 
 window.DataSync = new DataSync()
 
