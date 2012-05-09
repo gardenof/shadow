@@ -53,6 +53,14 @@ class View.GameExpense.New extends Backbone.View
 
     $('body').html(this.$el)
 
+ShadowWorkspace.on 'route:game_expenses.new', (character_id) ->
+  character = Character.collection.get character_id
+  expense = new GameExpense character_id: character_id,
+                            amount: 1
+
+  new View.GameExpense.New({model: expense, character: character}).render()
+
+
 class View.GameExpense.Edit extends Backbone.View
   render: ->
     this.$el.html renderWithLayout(
@@ -63,3 +71,8 @@ class View.GameExpense.Edit extends Backbone.View
     )
 
     $('body').html(this.$el)
+
+ShadowWorkspace.on 'route:game_expenses.edit', (id) ->
+  expense = GameExpense.collection.get id
+  new View.GameExpense.Edit({model: expense}).render()
+

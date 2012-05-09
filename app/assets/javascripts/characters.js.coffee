@@ -1,4 +1,5 @@
 #=require view
+#=require routes
 #=require named_routes
 
 class window.Character extends Backbone.Model
@@ -65,6 +66,8 @@ class View.Character.Index extends Backbone.View
 
     $('body').html(this.$el)
 
+ShadowWorkspace.on 'route:characters.index', ->
+  new View.Character.Index().render()
 
 class View.Character.Show extends Backbone.View
   render: ->
@@ -78,6 +81,10 @@ class View.Character.Show extends Backbone.View
     new View.Commlink.Show({model: this.model.commlink()}).render()
     new View.GameAsset.Table({model: this.model}).render()
 
+ShadowWorkspace.on 'route:characters.show', (id) ->
+  character = Character.collection.get parseInt(id)
+  new View.Character.Show({model: character}).render()
+
 class View.Character.Edit extends Backbone.View
   render: ->
     this.$el.html renderWithLayout(
@@ -89,6 +96,10 @@ class View.Character.Edit extends Backbone.View
 
     $('body').html(this.$el)
 
+ShadowWorkspace.on 'route:characters.edit', (id) ->
+  character = Character.collection.get parseInt(id)
+  new View.Character.Edit({model: character}).render()
+
 class View.Character.New extends Backbone.View
   render: ->
     this.$el.html renderWithLayout(
@@ -99,3 +110,7 @@ class View.Character.New extends Backbone.View
     )
 
     $('body').html(this.$el)
+
+ShadowWorkspace.on 'route:characters.new', (id) ->
+  character = new Character()
+  new View.Character.New({model: character}).render()

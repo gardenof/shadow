@@ -1,3 +1,4 @@
+!= link_to("Google", "http://google.com")
 %table{width: "100%"}
   %tbody
     %tr

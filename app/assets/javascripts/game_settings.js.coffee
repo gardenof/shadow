@@ -23,6 +23,10 @@ class View.GameSetting.Index extends Backbone.View
 
     $('body').html(this.$el)
 
+
+ShadowWorkspace.on "route:game_settings.index", ->
+  new View.GameSetting.Index().render()
+
 class View.GameSetting.Show extends Backbone.View
   render: ->
     this.$el.html renderWithLayout(
@@ -31,6 +35,10 @@ class View.GameSetting.Show extends Backbone.View
       game_setting: this.model)
 
     $('body').html(this.$el)
+
+ShadowWorkspace.on "route:game_settings.show", (id) ->
+  game_setting = GameSetting.collection.get id
+  new View.GameSetting.Show({model: game_setting}).render()
 
 class View.GameSetting.New extends Backbone.View
   render: ->
@@ -42,6 +50,10 @@ class View.GameSetting.New extends Backbone.View
 
     $('body').html this.$el
 
+ShadowWorkspace.on "route:game_settings.new", ->
+  game_setting = new GameSetting
+  new View.GameSetting.New({model: game_setting}).render()
+
 class View.GameSetting.Edit extends Backbone.View
   render: ->
     this.$el.html renderWithLayout(
@@ -52,6 +64,10 @@ class View.GameSetting.Edit extends Backbone.View
 
     $('body').html this.$el
 
+ShadowWorkspace.on "route:game_settings.edit", (id) ->
+  game_setting = GameSetting.collection.get id
+  new View.GameSetting.Edit({model: game_setting}).render()
+
 class View.GameSetting.GmView extends Backbone.View
   render: ->
     this.$el.html renderWithLayout(
@@ -60,3 +76,8 @@ class View.GameSetting.GmView extends Backbone.View
       game_setting: this.model)
 
     $('body').html(this.$el)
+
+ShadowWorkspace.on "route:game_settings.gmview", (id) ->
+  setting = GameSetting.collection.get id
+  new View.GameSetting.GmView({model: setting}).render()
+
