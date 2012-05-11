@@ -2,5 +2,5 @@
   $(function() {
     var expn = GameExpense.collection.get(#{@game_expense.to_json});
     var errors = #{@game_expense.errors.full_messages.to_json};
-    new View.GameExpense.Edit({model: expn, errors: errors}).render();
+    ShadowWorkspace.show(new View.GameExpense.Edit({model: expn, errors: errors}));
   });

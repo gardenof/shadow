@@ -2,5 +2,5 @@
   $(function() {
     var character = Character.collection.get(#{@character.id.to_json});
     var errors = #{@character.errors.full_messages.to_json};
-    new View.Character.Edit({model: character, errors: errors}).render();
+    ShadowWorkspace.show(new View.Character.Edit({model: character, errors: errors}));
   });

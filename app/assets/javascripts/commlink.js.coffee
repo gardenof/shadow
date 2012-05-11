@@ -18,18 +18,21 @@ class View.Commlink.Show extends Backbone.View
   className: "commlink"
 
   render: ->
-    this.$el.html renderTemplate(
-      'commlinks/_show',
-      commlink: this.model)
+    @$el.html renderTemplate(
+      'commlinks/_show'
+      commlink: this.model
+    )
 
-    $('.commlink').html(this.$el)
-
-    $('.commlink input.active').iphoneStyle(
-      {
-        onChange: this.updateActive,
-        checkedLabel: 'ACTIVE',
+    $(document).on 'workspace:live', @$el, =>
+      @$('input.active').iphoneStyle(
+        checkedLabel: 'ACTIVE'
         uncheckedLabel: 'HIDDEN'
-      })
+        resizeHandle: true
+        resizeContainer: true
+        onChange: this.updateActive
+      )
+
+    this
 
   updateActive: =>
     commlink = this.$ 'input.active'

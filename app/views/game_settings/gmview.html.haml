@@ -1,5 +1,5 @@
 :javascript
   $(function() {
     var setting = GameSetting.collection.get(#{@game_setting.id.to_json});
-    new View.GameSetting.GmView({model: setting}).render();
+    ShadowWorkspace.show(new View.GameSetting.GmView({model: setting}));
   });

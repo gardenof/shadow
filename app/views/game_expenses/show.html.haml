@@ -1,5 +1,5 @@
 :javascript
   $(function() {
     var expn = GameExpense.collection.get(#{@game_expense.id.to_json});
-    new View.GameExpense.Show({model: expn}).render();
+    ShadowWorkspace.show(new View.GameExpense.Show({model: expn}));
   });
