@@ -1,6 +1,10 @@
 class window.Workspace extends Backbone.Router
   constructor: (@options) ->
-    super
+    super(@options)
+    @_bindLinkNavigation()
+
+  $el: ->
+    $(@options.elementSelector)
 
   routes:
     "": "characters.index"
@@ -22,20 +26,20 @@ class window.Workspace extends Backbone.Router
     "game_settings/:id/gmview": "game_settings.gmview"
 
   show: (view) ->
-    $(@options.elementSelector).html view.render().el
+    @$el().html view.render().el
+    @_bindLinkNavigation()
     view.$('*').trigger 'workspace:live', this
 
+  _bindLinkNavigation: ->
+    _this = this
+    @$el().find('a').click (event) ->
+      $this = $(this)
+      method = $this.data('method')
+      href = $this.attr('href')
+
+      if _.isUndefined(method) && !(/^([a-zA-Z]+):\/\//.test(href))
+        _this.navigate href, trigger: true
+        event.preventDefault()
+
 window.ShadowWorkspace = new Workspace elementSelector: 'body'
-
-$('a').live 'click', (event) ->
-  $this = $(this)
-  method = $this.data('method')
-  href = $this.attr('href')
-
-  if _.isUndefined(method) && !(/^([a-zA-Z]+):\/\//.test(href))
-    r = ShadowWorkspace.navigate href, trigger: true
-    event.preventDefault()
-
-
-$ -> Backbone.history.start pushState: true, silent: true
 

@@ -1,7 +1,7 @@
 (function() {
 
   describe('Workspace', function() {
-    return describe('show', function() {
+    describe('show', function() {
       beforeEach(function() {
         return setFixtures("<div class='workspace'></div>");
       });
@@ -33,6 +33,30 @@
         expect(handler).toHaveBeenCalled();
         expect(handler.argsForCall[0][0].target).toBe(element[0]);
         return expect(handler.argsForCall[0][1]).toBe(workspace);
+      });
+    });
+    return describe("link navigation in workspace", function() {
+      beforeEach(function() {
+        return Backbone.history.start({
+          silent: true
+        });
+      });
+      afterEach(function() {
+        Backbone.history.stop({
+          silent: true
+        });
+        return window.location.hash = '';
+      });
+      return it("emits routing events", function() {
+        var handler, workspace;
+        setFixtures("<div class='workspace'><a href='/characters'></a></div>");
+        workspace = new Workspace({
+          elementSelector: '.workspace'
+        });
+        handler = jasmine.createSpy('route handler');
+        workspace.on("route:characters.index", handler);
+        $(".workspace a").trigger('click');
+        return expect(handler).toHaveBeenCalled();
       });
     });
   });

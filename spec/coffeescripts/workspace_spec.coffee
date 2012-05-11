@@ -28,4 +28,22 @@ describe 'Workspace', ->
       expect(handler.argsForCall[0][0].target).toBe(element[0])
       expect(handler.argsForCall[0][1]).toBe(workspace)
 
+  describe "link navigation in workspace", ->
+    beforeEach ->
+      Backbone.history.start silent: true
+
+    afterEach ->
+      Backbone.history.stop silent: true
+      window.location.hash = ''
+
+    it "emits routing events", ->
+      setFixtures "<div class='workspace'><a href='/characters'></a></div>"
+      workspace = new Workspace elementSelector: '.workspace'
+      handler = jasmine.createSpy('route handler')
+      workspace.on "route:characters.index", handler
+
+      $(".workspace a").trigger 'click'
+      expect(handler).toHaveBeenCalled()
+
+
 

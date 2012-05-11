@@ -20,6 +20,8 @@
           GameSetting: #{GameSetting.all.to_json},
           Commlink: #{Commlink.all.to_json}
         });
+
+        Backbone.history.start({pushState: true, silent: true});
       });
 
     .center-stage
