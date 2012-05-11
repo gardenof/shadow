@@ -1,4 +1,7 @@
-class Workspace extends Backbone.Router
+class window.Workspace extends Backbone.Router
+  constructor: (@options) ->
+    super
+
   routes:
     "": "characters.index"
     "characters": "characters.index"
@@ -18,7 +21,11 @@ class Workspace extends Backbone.Router
     "game_settings/:id/edit": "game_settings.edit"
     "game_settings/:id/gmview": "game_settings.gmview"
 
-window.ShadowWorkspace = new Workspace
+  show: (view) ->
+    $(@options.elementSelector).html view.render().el
+    view.$('*').trigger 'workspace:live', this
+
+window.ShadowWorkspace = new Workspace elementSelector: 'body'
 
 $('a').live 'click', (event) ->
   $this = $(this)

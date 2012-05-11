@@ -5,5 +5,5 @@
     expn.set("character_id",character.get("id"))
     expn.set("amount",1)
     var errors = #{@game_expense.errors.full_messages.to_json};
-    new View.GameExpense.New({model: expn, character: character, errors: errors}).render();
+    ShadowWorkspace.show(new View.GameExpense.New({model: expn, character: character, errors: errors}));
   });

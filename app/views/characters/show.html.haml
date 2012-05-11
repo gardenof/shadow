@@ -1,6 +1,6 @@
 :javascript
   $(function() {
     var character = Character.collection.get(#{@character.id.to_json});
-    new View.Character.Show({model: character}).render();
+    ShadowWorkspace.show(new View.Character.Show({model: character}));
   });
 

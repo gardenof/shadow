@@ -27,4 +27,5 @@ group :test, :development do
 
   gem 'guard'
   gem 'guard-coffeescript'
+  gem 'guard-shell'
 end

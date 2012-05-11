@@ -108,3 +108,4 @@ describe "Character", ->
         legality: 'Forbidden'
 
       expect(character.legalStatus()).toBe "Public"
+

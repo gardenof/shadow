@@ -75,6 +75,8 @@ GEM
     guard-coffeescript (0.6.0)
       coffee-script (>= 2.2.0)
       guard (>= 0.8.3)
+    guard-shell (0.4.0)
+      guard (>= 0.2.0)
     haml (3.1.4)
     haml-sprockets (0.0.3)
       sprockets (~> 2.0.0)
@@ -173,6 +175,7 @@ DEPENDENCIES
   factory_girl_rails (~> 1.4.0)
   guard
   guard-coffeescript
+  guard-shell
   haml (~> 3.0)
   haml-sprockets
   jasmine (= 1.2.0.rc3)!

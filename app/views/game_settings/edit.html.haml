@@ -2,6 +2,6 @@
   $(function() {
     var game_setting = new GameSetting(#{@game_setting.to_json});
     var errors = #{@game_setting.errors.full_messages.to_json};
-    new View.GameSetting.Edit({model: game_setting, errors: errors}).render();
+    ShadowWorkspace.show(new View.GameSetting.Edit({model: game_setting, errors: errors}));
   });
 
