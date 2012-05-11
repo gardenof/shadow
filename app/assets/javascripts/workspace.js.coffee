@@ -1,7 +1,7 @@
 class window.Workspace extends Backbone.Router
   constructor: (@options) ->
     super(@options)
-    @_bindLinkNavigation()
+    @_tryBindingLinkNavigation()
 
   $el: ->
     $(@options.elementSelector)
@@ -26,13 +26,18 @@ class window.Workspace extends Backbone.Router
     "game_settings/:id/gmview": "game_settings.gmview"
 
   show: (view) ->
+    @_tryBindingLinkNavigation()
     @$el().html view.render().el
-    @_bindLinkNavigation()
     view.$('*').trigger 'workspace:live', this
+
+  _tryBindingLinkNavigation: ->
+    if @$el().size() > 0
+      @_bindLinkNavigation()
+      @_tryBindingLinkNavigation = -> false
 
   _bindLinkNavigation: ->
     _this = this
-    @$el().find('a').click (event) ->
+    @$el().on 'click', 'a', (event) ->
       $this = $(this)
       method = $this.data('method')
       href = $this.attr('href')
