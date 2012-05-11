@@ -1,5 +1,5 @@
 :javascript
   $(function() {
     var asset = GameAsset.collection.get(#{@game_asset.id.to_json});
-    new View.GameAsset.Show({model: asset}).render();
+    ShadowWorkspace.show(new View.GameAsset.Show({model: asset}));
   });

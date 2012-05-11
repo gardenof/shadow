@@ -1,4 +1,5 @@
 #=require named_routes
+#=require workspace
 #=require data_sync
 #
 class window.GameAsset extends Backbone.Model
@@ -33,7 +34,7 @@ class View.GameAsset.Index extends Backbone.View
       'game_assets/index',
       game_assets: GameAsset.collection.models)
 
-    $('body').html(this.$el)
+    this
 
 class View.GameAsset.Show extends Backbone.View
   render: ->
@@ -43,7 +44,7 @@ class View.GameAsset.Show extends Backbone.View
       asset: this.model
       errors: this.options.errors)
 
-    $('body').html(this.$el)
+    this
 
 class View.GameAsset.Edit extends Backbone.View
   render: ->
@@ -54,11 +55,11 @@ class View.GameAsset.Edit extends Backbone.View
       errors: this.options.errors
     )
 
-    $('body').html(this.$el)
+    this
 
 ShadowWorkspace.on 'route:game_assets.edit', (id) ->
   asset = GameAsset.collection.get id
-  new View.GameAsset.Edit({model: asset}).render()
+  ShadowWorkspace.show new View.GameAsset.Edit(model: asset)
 
 class View.GameAsset.New extends Backbone.View
   render: ->
@@ -70,13 +71,14 @@ class View.GameAsset.New extends Backbone.View
       character: this.options.character
     )
 
-    $('body').html(this.$el)
+    this
+
 
 ShadowWorkspace.on 'route:game_assets.new', (character_id) ->
   character = Character.collection.get character_id
   asset = new GameAsset character_id: character_id, amount: 1
 
-  new View.GameAsset.New({model: asset, character: character}).render()
+  ShadowWorkspace.show new View.GameAsset.New(model: asset, character: character)
 
 class View.GameAsset.Table extends Backbone.View
   tagName: "table"
@@ -85,11 +87,16 @@ class View.GameAsset.Table extends Backbone.View
   render: ->
     this.$el.html renderTemplate(
       'game_assets/_table',
-      character: this.model)
+      character: @model)
 
-    $('.game-assets-table').html(this.$el)
+    @renderAsset asset for asset in @model.assets()
 
-    (new View.GameAsset.Row({model: asset}).render()) for asset in this.model.assets();
+    this
+
+  renderAsset: (asset) ->
+    @$('tbody').append(
+      new View.GameAsset.Row(model: asset).render().el
+    )
 
 class View.GameAsset.Row extends Backbone.View
   tagName: "tr"
@@ -101,7 +108,8 @@ class View.GameAsset.Row extends Backbone.View
     this.$el.html renderTemplate(
       'game_assets/_row',
       asset: this.model)
-    $('tbody.assets').append(this.$el)
+
+    this
 
   updateEquipped: =>
     checkbox = this.$ 'input.equipped'

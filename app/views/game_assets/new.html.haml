@@ -5,5 +5,5 @@
     asset.set("character_id",character.get("id"))
     asset.set("amount",1)
     var errors = #{@game_asset.errors.full_messages.to_json};
-    new View.GameAsset.New({model: asset, character: character, errors: errors}).render();
+    ShadowWorkspace.show(new View.GameAsset.New({model: asset, character: character, errors: errors}));
   });

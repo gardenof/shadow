@@ -1,4 +1,5 @@
 #=require named_routes
+#=require workspace
 #=require data_sync
 #
 class window.GameExpense extends Backbone.Model
@@ -31,7 +32,7 @@ class View.GameExpense.Index extends Backbone.View
       'game_expenses/index',
       game_expenses: GameExpense.collection.models)
 
-    $('body').html(this.$el)
+    this
 
 class View.GameExpense.Show extends Backbone.View
   render: ->
@@ -41,7 +42,7 @@ class View.GameExpense.Show extends Backbone.View
       expn: this.model
       errors: this.options.errors)
 
-    $('body').html(this.$el)
+    this
 
 class View.GameExpense.New extends Backbone.View
   render: ->
@@ -53,14 +54,14 @@ class View.GameExpense.New extends Backbone.View
       character: this.options.character
     )
 
-    $('body').html(this.$el)
+    this
 
 ShadowWorkspace.on 'route:game_expenses.new', (character_id) ->
   character = Character.collection.get character_id
   expense = new GameExpense character_id: character_id,
                             amount: 1
 
-  new View.GameExpense.New({model: expense, character: character}).render()
+  ShadowWorkspace.show new View.GameExpense.New(model: expense, character: character)
 
 
 class View.GameExpense.Edit extends Backbone.View
@@ -72,9 +73,9 @@ class View.GameExpense.Edit extends Backbone.View
       errors: this.options.errors
     )
 
-    $('body').html(this.$el)
+    this
 
 ShadowWorkspace.on 'route:game_expenses.edit', (id) ->
   expense = GameExpense.collection.get id
-  new View.GameExpense.Edit({model: expense}).render()
+  ShadowWorkspace.show new View.GameExpense.Edit(model: expense)
 

@@ -2,5 +2,5 @@
   $(function() {
     var game_asset = GameAsset.collection.get(#{@game_asset.id.to_json});
     var errors = #{@game_asset.errors.full_messages.to_json};
-    new View.GameAsset.Edit({model: game_asset, errors: errors}).render();
+    ShadowWorkspace.show(new View.GameAsset.Edit({model: game_asset, errors: errors}));
   });
