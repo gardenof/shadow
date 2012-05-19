@@ -25,7 +25,6 @@ group :test, :development do
     git: "git://github.com/pivotal/jasmine-gem.git",
     branch: "c72e8d248d49a1ebe53f31a09ac511194ad4edf1"
 
-  gem 'guard'
-  gem 'guard-coffeescript'
+  gem 'rack-asset-compiler'
   gem 'guard-shell'
 end
