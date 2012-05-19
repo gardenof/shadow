@@ -94,7 +94,7 @@ class View.GameAsset.Table extends Backbone.View
     this
 
   renderAsset: (asset) ->
-    @$('tbody').append(
+    @$('tbody.assets').append(
       new View.GameAsset.Row(model: asset).render().el
     )
 
@@ -104,13 +104,16 @@ class View.GameAsset.Row extends Backbone.View
   events:
     'change input.equipped': 'updateEquipped'
 
-  render: ->
+  initialize: ->
+    @model.on 'change', @render
+
+  render: =>
     this.$el.html renderTemplate(
       'game_assets/_row',
       asset: this.model)
 
     this
 
-  updateEquipped: =>
-    checkbox = this.$ 'input.equipped'
+  updateEquipped: (event) =>
+    checkbox = $(event.target)
     this.model.save equipped: checkbox.prop('checked')

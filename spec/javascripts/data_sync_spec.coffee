@@ -47,6 +47,19 @@ describe "DataSync", ->
 
         expect(onChange).toHaveBeenCalled()
 
+      it "doesn't prevent future change events from firing", ->
+        @coll.add id: "foo"
+        @sync.fetch()
+
+        request = mostRecentAjaxRequest()
+        request.response Fixtures.FooChanged
+
+        onChange = jasmine.createSpy 'onChange'
+        @coll.get('foo').on 'change', onChange
+        @coll.get('foo').set name: "Not Foo"
+
+        expect(onChange).toHaveBeenCalled()
+
       it "removes models that are no longer in the collection", ->
         collRemove = jasmine.createSpy 'collRemove'
         modelRemove = jasmine.createSpy 'modelRemove'

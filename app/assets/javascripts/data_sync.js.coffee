@@ -3,7 +3,7 @@ class DataSync
     @syncs = []
 
   checkFrequency: 1000
-  syncFrequency: 20 * 1000
+  syncFrequency: 10 * 1000
   failureBackoffFactor: 3
 
   register: (name, collection) ->
@@ -69,7 +69,7 @@ class window.CollectionSync
         @collection.add attributes
 
     synced_ids = @syncCollection.pluck 'id'
-    ids_to_remove = _.without(ids, synced_ids)
+    ids_to_remove = _.difference(ids, synced_ids)
     @collection.remove ids_to_remove
 
   isEligibleAt: (now, completedFreq, failedFreq) ->
