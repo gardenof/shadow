@@ -32,8 +32,11 @@ class DataSync
 
     _.find @syncs, (sync) -> sync.isEligibleAt now, completedFreq, failedFreq
 
-class CollectionSync
+class window.CollectionSync
   constructor: (@name, @collection) ->
+    @syncCollection = new Backbone.Collection
+    @syncCollection.url = @collection.url
+
     @status = 'never'
     @at = new Date()
 
@@ -47,9 +50,27 @@ class CollectionSync
 
   fetch: ->
     @syncStarted()
-    @collection.fetch
-      success: => @syncCompleted()
+    @syncCollection.fetch
+      success: => @fetchSucceeded()
       error: => @syncFailed()
+
+  fetchSucceeded: ->
+    @mergeFetchResults()
+    @syncCompleted()
+
+  mergeFetchResults:->
+    ids = @collection.pluck 'id'
+
+    for attributes in @syncCollection.models
+      model = @collection.get attributes.id
+      if model
+        model.set attributes
+      else
+        @collection.add attributes
+
+    synced_ids = @syncCollection.pluck 'id'
+    ids_to_remove = _.without(ids, synced_ids)
+    @collection.remove ids_to_remove
 
   isEligibleAt: (now, completedFreq, failedFreq) ->
     (@status == 'completed' && (now - @at > completedFreq)) ||
@@ -63,6 +84,7 @@ class CollectionSync
     @updateStatus 'started'
 
   syncCompleted: ->
+
     @updateStatus 'completed'
 
   syncFailed: ->
