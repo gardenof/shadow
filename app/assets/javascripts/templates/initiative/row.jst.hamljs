@@ -1,0 +1,4 @@
+%td= model.get("name")
+%td= model.get("pool") || ""
+%td= model.get("score") || ""
+%td= model.get("rolls") || ""

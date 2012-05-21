@@ -1,0 +1,21 @@
+.close-button X
+
+%h3 Initiative
+
+- var f = form_for(model)
+
+!= f.collection_select("game_setting_id", GameSetting.collection.models, "id", "name", {include_blank: true})
+
+%button.add-setting-characters Add Characters
+%button.re-roll-all Re-Roll All
+
+%table
+  %tbody
+    %tr
+      %th Name
+      %th Pool
+      %th Score
+      %th Roll
+
+  %tbody.characters
+
