@@ -7,9 +7,12 @@ class Initiative extends Backbone.Model
     @participants.on 'remove', (a...) => @trigger('remove', a...)
 
   addCharacter: (character) ->
-    @participants.add new Participant
+    @addParticipant new Participant
       name: character.get('name')
       pool: character.get('surprise')
+
+  addParticipant: (participant) ->
+    @participants.add participant
 
   reRollAll: ->
     p.reRoll() for p in @participants.models
@@ -46,6 +49,7 @@ class View.InitiativeBoard extends Backbone.View
   events:
     'click .close-button': 'close'
     'click .add-setting-characters': 'addSettingCharacters'
+    'click .add-new-participant': 'addNewParticipant'
     'click .re-roll-all': 'reRollAll'
 
   initialize: ->
@@ -60,6 +64,9 @@ class View.InitiativeBoard extends Backbone.View
 
   close: ->
     @$el.hide()
+
+  addNewParticipant: ->
+    @model.addParticipant new Participant
 
   addSettingCharacters: ->
     setting_id = @$(':input[name="initiative[game_setting_id]"]').val()
@@ -76,7 +83,12 @@ class View.InitiativeBoard extends Backbone.View
 
   rowsInInitiativeOrder: ->
     _.sortBy @rows, (row) ->
-      -row.model.get("score")
+      score = row.model.get "score"
+
+      if score
+        -score
+      else
+        0
 
   reOrderRows: ->
     for row in @rowsInInitiativeOrder()
@@ -117,7 +129,6 @@ class View.InitiativeRow extends Backbone.View
     @render()
 
   update: ->
-    console.log "here"
     @model.set
       name: @$('input[name="name"]').val()
       pool: parseInt(@$('input[name="pool"]').val())

@@ -7,6 +7,7 @@
 != f.collection_select("game_setting_id", GameSetting.collection.models, "id", "name", {include_blank: true})
 
 %button.add-setting-characters Add Characters
+%button.add-new-participant Add New Participant
 %button.re-roll-all Re-Roll All
 
 %table
