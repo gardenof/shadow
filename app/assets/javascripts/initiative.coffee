@@ -55,6 +55,7 @@ class View.InitiativeBoard extends Backbone.View
   initialize: ->
     @model = new Initiative
     @model.on 'add', @addRow
+    @model.on 'remove', @removeRow
     @$el.draggable()
     @rows = []
 
@@ -81,6 +82,10 @@ class View.InitiativeBoard extends Backbone.View
     @rows.push view
     @$('.characters').append view.render().el
 
+  removeRow: (participant) =>
+    @rows = _.reject @rows, (row) ->
+      row.model == participant
+
   rowsInInitiativeOrder: ->
     _.sortBy @rows, (row) ->
       score = row.model.get "score"
@@ -103,12 +108,14 @@ class View.InitiativeRow extends Backbone.View
 
   events:
     'click .edit-button': 'edit'
-    'click .cancel-button': 'noEdit'
+    'click .done-button': 'done'
+    'click .remove-button': 'destroy'
     'change input': 'update'
     'keyUp input': 'update'
 
   initialize: ->
     @model.on 'change', @render
+    @model.on 'destroy', @destroyed
     @_edit = false
 
   render: =>
@@ -119,10 +126,17 @@ class View.InitiativeRow extends Backbone.View
 
     this
 
-  noEdit: (event) ->
+  destroyed: =>
+    @remove()
+
+  done: (event) ->
     event.stopPropagation()
     @_edit = false
     @render()
+
+  destroy: (event) ->
+    event.stopPropagation()
+    @model.destroy()
 
   edit: (event) ->
     event.stopPropagation()
