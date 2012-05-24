@@ -32,13 +32,13 @@ class Pool
 class Participant extends Backbone.Model
   initialize: (a...) ->
     super a...
-    @_pool = new Pool parseInt(@get('pool'))
 
   reRoll: ->
-    @_pool.roll()
+    pool = new Pool parseInt(@get('pool'))
+    pool.roll()
     @set
-      rolls: @_pool.rolls?.join(", ")
-      score: @_pool.hits()
+      rolls: pool.rolls?.join(", ")
+      score: pool.hits()
 
 class View.InitiativeBoard extends Backbone.View
   className: 'initiative-board'
@@ -52,6 +52,7 @@ class View.InitiativeBoard extends Backbone.View
     @model = new Initiative
     @model.on 'add', @addRow
     @$el.draggable()
+    @rows = []
 
   render: ->
     @$el.html renderTemplate('initiative/show', model: @model)
@@ -70,18 +71,53 @@ class View.InitiativeBoard extends Backbone.View
 
   addRow: (participant) =>
     view = new View.InitiativeRow model: participant
+    @rows.push view
     @$('.characters').append view.render().el
+
+  rowsInInitiativeOrder: ->
+    _.sortBy @rows, (row) ->
+      -row.model.get("score")
+
+  reOrderRows: ->
+    for row in @rowsInInitiativeOrder()
+      @$('.characters').append row.el
 
   reRollAll: ->
     @model.reRollAll()
+    @reOrderRows()
 
 class View.InitiativeRow extends Backbone.View
   tagName: 'tr'
 
+  events:
+    'click .edit-button': 'edit'
+    'click .cancel-button': 'noEdit'
+    'change input': 'update'
+
   initialize: ->
     @model.on 'change', @render
+    @_edit = false
 
   render: =>
-    @$el.html renderTemplate('initiative/row', model: @model)
+    if @_edit
+      @$el.html renderTemplate('initiative/row_edit', model: @model)
+    else
+      @$el.html renderTemplate('initiative/row', model: @model)
+
     this
 
+  noEdit: (event) ->
+    event.stopPropagation()
+    @_edit = false
+    @render()
+
+  edit: (event) ->
+    event.stopPropagation()
+    @_edit = true
+    @render()
+
+  update: ->
+    console.log "here"
+    @model.set
+      name: @$('input[name="name"]').val()
+      pool: parseInt(@$('input[name="pool"]').val())

@@ -35,3 +35,12 @@
   table-layout: fixed;
   width: 100%;
 }
+
+.initiative-board table .cancel-button {
+  margin-right: 5px;
+}
+
+.initiative-board table input {
+  width: 50px;
+}
+
