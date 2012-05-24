@@ -1,9 +1,9 @@
 %td
   %a.cancel-button{href: "#"}X
-  %input{name: "name", value: model.get("name") }
+  %input{name: "name", value: model.get("name") || "" }
 
 %td
-  %input{name: "pool", value: model.get("pool") }
+  %input{name: "pool", value: model.get("pool") || "" }
 
 %td= model.get("score") || ""
 %td= model.get("rolls") || ""

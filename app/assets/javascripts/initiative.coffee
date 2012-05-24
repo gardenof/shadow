@@ -105,6 +105,7 @@ class View.InitiativeRow extends Backbone.View
     'click .edit-button': 'edit'
     'click .cancel-button': 'noEdit'
     'change input': 'update'
+    'keyUp input': 'update'
 
   initialize: ->
     @model.on 'change', @render
