@@ -52,11 +52,14 @@ class View.InitiativeBoard extends Backbone.View
     'click .add-new-participant': 'addNewParticipant'
     'click .re-roll-all': 'reRollAll'
 
+    'mousedown': 'startDrag'
+    'mouseup': 'stopDrag'
+
   initialize: ->
     @model = new Initiative
     @model.on 'add', @addRow
     @model.on 'remove', @removeRow
-    @$el.draggable()
+    $(document).mousemove @drag
     @rows = []
 
   render: ->
@@ -102,6 +105,37 @@ class View.InitiativeBoard extends Backbone.View
   reRollAll: ->
     @model.reRollAll()
     @reOrderRows()
+
+  startDrag: (event) ->
+    if $(event.target).is(':input, button, a, :submit')
+      return
+
+    @_dragging = true
+    @_dragOrigin = { x: event.pageX, y: event.pageY }
+    @_elOrigin = 
+      x: parseInt @$el.css("left")
+      y: parseInt @$el.css("top")
+
+    event.stopPropagation()
+    event.preventDefault()
+
+  stopDrag: (event) ->
+    if @_dragging
+      @_dragging = false
+      @_dragOrigin = null
+      @_elOrigin = null
+
+      event.stopPropagation()
+      event.preventDefault()
+
+  drag: (event) =>
+    if @_dragging
+      event.stopPropagation()
+      event.preventDefault()
+      @$el.css
+        top: @_elOrigin.y + event.pageY - @_dragOrigin.y
+        left: @_elOrigin.x + event.pageX - @_dragOrigin.x
+
 
 class View.InitiativeRow extends Backbone.View
   tagName: 'tr'
