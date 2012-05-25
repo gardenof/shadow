@@ -44,3 +44,13 @@
   width: 50px;
 }
 
+@-webkit-keyframes activePass {
+  0% {background-color: #2C2;}
+  50% {background-color: #5D5;}
+  100% {background-color: #2C2;}
+}
+
+.initiativePass.active {
+  background-color: #2C2;
+  -webkit-animation: activePass 4s ease-in-out infinite;
+}

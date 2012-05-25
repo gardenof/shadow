@@ -1,5 +1,5 @@
 #=require view
- 
+
 class Initiative extends Backbone.Model
   initialize: ->
     @participants = new Backbone.Collection
@@ -16,6 +16,32 @@ class Initiative extends Backbone.Model
 
   reRollAll: ->
     p.reRoll() for p in @participants.models
+    @resetInitiative()
+
+  resetInitiative: ->
+    for p in @participants.models
+      p.set "activePass", null
+
+    @inInitiativeOrder()[0]?.set "activePass", 1
+
+  nextInitiative: ->
+    inOrder = @inInitiativeOrder()
+    active = _.find inOrder, (m) -> m.get("activePass")
+
+    if active
+      currentPass = active.get "activePass"
+      active.set "activePass", null
+      index = _.indexOf inOrder, active
+
+      if index < (inOrder.length - 1)
+        inOrder[index + 1]?.set "activePass", currentPass
+      else
+        inOrder[0]?.set "activePass", (currentPass % 4) + 1
+
+
+  inInitiativeOrder: ->
+    _.sortBy @participants.models, (model) ->
+      model.initiativeSortOrder()
 
   model_name: 'initiative'
 
@@ -43,6 +69,20 @@ class Participant extends Backbone.Model
       rolls: pool.rolls?.join(", ")
       score: pool.hits()
 
+  passClass: (passN) ->
+    if @get('activePass') == passN
+      'active'
+    else
+      ''
+
+  initiativeSortOrder: ->
+    score = @get "score"
+
+    if score
+      -score
+    else
+      0
+
 class View.InitiativeBoard extends Backbone.View
   className: 'initiative-board'
 
@@ -51,6 +91,7 @@ class View.InitiativeBoard extends Backbone.View
     'click .add-setting-characters': 'addSettingCharacters'
     'click .add-new-participant': 'addNewParticipant'
     'click .re-roll-all': 'reRollAll'
+    'click .next-initiative': 'nextInitiative'
 
     'mousedown': 'startDrag'
     'mouseup': 'stopDrag'
@@ -91,12 +132,7 @@ class View.InitiativeBoard extends Backbone.View
 
   rowsInInitiativeOrder: ->
     _.sortBy @rows, (row) ->
-      score = row.model.get "score"
-
-      if score
-        -score
-      else
-        0
+      row.model.initiativeSortOrder()
 
   reOrderRows: ->
     for row in @rowsInInitiativeOrder()
@@ -105,6 +141,9 @@ class View.InitiativeBoard extends Backbone.View
   reRollAll: ->
     @model.reRollAll()
     @reOrderRows()
+
+  nextInitiative: ->
+    @model.nextInitiative()
 
   startDrag: (event) ->
     if $(event.target).is(':input, button, a, :submit')

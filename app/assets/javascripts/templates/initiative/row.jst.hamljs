@@ -3,5 +3,5 @@
     = model.get("name") ? model.get("name") : "Unnamed"
 
 %td= model.get("pool") || ""
-%td= model.get("score") || ""
-%td= model.get("rolls") || ""
+
+!= renderTemplate("initiative/row_common_cells", {model: model})

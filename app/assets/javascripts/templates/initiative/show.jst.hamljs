@@ -9,6 +9,7 @@
 %button.add-setting-characters Add Characters
 %button.add-new-participant Add New Participant
 %button.re-roll-all Re-Roll All
+%button.next-initiative Next
 
 %table
   %tbody
@@ -16,7 +17,10 @@
       %th Name
       %th Pool
       %th Score
-      %th Roll
+      %th.ip1 IP1
+      %th.ip2 IP2
+      %th.ip3 IP3
+      %th.ip4 IP4
 
   %tbody.characters
 

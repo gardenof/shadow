@@ -1,0 +1,7 @@
+%td{title: model.get("rolls") || ""}
+  = model.get("score") || ""
+
+%td.initiativePass{class: model.passClass(1)}
+%td.initiativePass{class: model.passClass(2)}
+%td.initiativePass{class: model.passClass(3)}
+%td.initiativePass{class: model.passClass(4)}
