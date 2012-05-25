@@ -46,5 +46,5 @@ class window.Workspace extends Backbone.Router
         _this.navigate href, trigger: true
         event.preventDefault()
 
-window.ShadowWorkspace = new Workspace elementSelector: 'body'
+window.ShadowWorkspace = new Workspace elementSelector: '#workspace'
 

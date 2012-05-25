@@ -1,0 +1,7 @@
+%td
+  %a.edit-button{href: "#"}
+    = model.get("name") ? model.get("name") : "Unnamed"
+
+%td= model.get("pool") || ""
+
+!= renderTemplate("initiative/row_common_cells", {model: model})

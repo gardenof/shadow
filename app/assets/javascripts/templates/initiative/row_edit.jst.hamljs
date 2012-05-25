@@ -1,0 +1,11 @@
+%td
+  %input{name: "name", value: model.get("name") || "" }
+  .actions
+    %a.done-button{href: "#"}Done
+    |
+    %a.remove-button{href: "#"}Remove
+
+%td
+  %input{name: "pool", value: model.get("pool") || "" }
+
+!= renderTemplate("initiative/row_common_cells", {model: model})
