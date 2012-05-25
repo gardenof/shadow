@@ -1,0 +1,29 @@
+.toolbar {
+  position: fixed;
+  top: 170px;
+  width: 30px;
+  height: 200px;
+
+  background-color: #345;
+  background-color: rgba(51,68,85,0.95);
+
+  border-style: solid;
+  border-color: #99BBBB;
+  border-width: 2px 2px 2px 0px;
+  box-shadow: 0px 0px 6px #ABC;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.toolbar button {
+  display: block;
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  background: transparent;
+  border-width: 0px 0px 2px 0px;
+  border-color: #99BBBB;
+  border-style: solid;
+  cursor: pointer;
+  font-family: Courier, monospace;
+}

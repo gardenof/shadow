@@ -1,0 +1,26 @@
+.close-button X
+
+%h3 Initiative
+
+- var f = form_for(model)
+
+!= f.collection_select("game_setting_id", GameSetting.collection.models, "id", "name", {include_blank: true})
+
+%button.add-setting-characters Add Characters
+%button.add-new-participant Add New Participant
+%button.re-roll-all Re-Roll All
+%button.next-initiative Next
+
+%table
+  %tbody
+    %tr
+      %th.name Name
+      %th Pool
+      %th Score
+      %th.initiativePass 1
+      %th.initiativePass 2
+      %th.initiativePass 3
+      %th.initiativePass 4
+
+  %tbody.characters
+
