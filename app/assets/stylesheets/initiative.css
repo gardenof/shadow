@@ -50,6 +50,14 @@
   100% {background-color: #2C2;}
 }
 
+.initiative-board .name {
+  width: 150px;
+}
+
+.initiativePass {
+  width: 15px;
+}
+
 .initiativePass.active {
   background-color: #2C2;
   -webkit-animation: activePass 4s ease-in-out infinite;
